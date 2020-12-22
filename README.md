@@ -1,3 +1,8 @@
+# Projekt Spoker.io
+Codename Spoker.io is a MERN Stack eCommerce application. Using powerful cloud noSQL MongDB and the popular React.js frontend framework to create a unique shopping experience for the cyclists. While empowering shops  of any size to increase sales and customer satisfaction. Name is subject to change later.
+
+## Getting Started: 
+To run the project use the following commands:
 ### `npm start`
 
 Runs the app in the development mode.\
