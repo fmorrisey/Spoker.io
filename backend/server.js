@@ -14,11 +14,12 @@ app.use(express.json());
 
 //===============================
 // connection string parser for MongoDB
+// connection constructor 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {
     useNewUrlParser: true, 
     useCreateIndex: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true //added 12.22 to use newest
 });
 const connection = mongoose.connection;
 
