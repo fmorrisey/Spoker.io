@@ -10,7 +10,7 @@ const Product = props => (
     <td>{props.product.productType}</td>
     <td>{props.product.style}</td>
     <td>${props.product.msrpCost} / ${props.product.priceRetail}</td>
-    <td><br /></td>
+    <td></td>
     <td>
       <Link to={"/edit/"+props.product._id}>edit</Link> | <a href="#" onClick={() => { props.deleteProduct(props.product._id) }}>delete</a>
     </td>
@@ -63,7 +63,6 @@ export default class ProductList extends Component {
               <th>Type</th>
               <th>Style</th>
               <th>MSRP / Retail</th>
-              
             </tr>
           </thead>
           <tbody>
