@@ -38,8 +38,8 @@ app.listen(port, () => {
 //================================
 // Routers
 const productsRouter = require('./routes/product');
-const brandsRouter = require('./routes/brand');
+const manufacturerRouter = require('./routes/manufacturer');
 //... More routers to come
 
 app.use('/products', productsRouter);
-app.use('/brands', brandsRouter);
+app.use('/manufacturers', manufacturerRouter);

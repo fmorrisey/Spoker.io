@@ -11,7 +11,7 @@ router.route('/').get((req, res) => {
 //============CRUDs==============
 router.route('/add').post((req, res) => {
     const productName = req.body.productName;
-    const brand = req.body.brand;
+    const manufacturer = req.body.manufacturer;
     const productType = req.body.productType;
     const style = req.body.style;
     const description = req.body.description;
@@ -21,7 +21,7 @@ router.route('/add').post((req, res) => {
     
     const newProduct = new Product({
         productName,
-        brand,
+        manufacturer,
         productType,
         style,
         description,
@@ -54,7 +54,7 @@ router.route('/update/:id').post((req, res) => {
     Product.findById(req.params.id)
            .then(product => {
             product.productName = req.body.productName;
-            product.brand = req.body.brand;
+            product.manufacturer = req.body.manufacturer;
             product.productType = req.body.productType;
             product.style = req.body.style;
             product.description = req.body.description;

@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const brandSchema = new Schema({
-    brandName: {
+const manufacturerSchema = new Schema({
+    manufacturerName: {
         type: String,
         required: true,
         unique: true,
@@ -14,6 +14,6 @@ const brandSchema = new Schema({
     //url: { type: String, required: true}
 });
 
-const Brand = mongoose.model('Brand', brandSchema);
+const manufacturer = mongoose.model('manufacturer', manufacturerSchema);
 
-module.exports = Brand;
+module.exports = manufacturer;
