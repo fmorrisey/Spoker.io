@@ -9,10 +9,10 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-    const manufacturerName = req.body.manufacturerName;
+    const manuName = req.body.manuName;
         
     const newmanufacturer = new manufacturer({
-        manufacturerName,
+        manuName,
     });
 
     newmanufacturer.save()
