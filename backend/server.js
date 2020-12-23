@@ -37,8 +37,8 @@ app.listen(port, () => {
 
 //================================
 // Routers
-const productsRouter = require('./routes/products');
-const brandsRouter = require('./routes/brands');
+const productsRouter = require('./routes/product');
+const brandsRouter = require('./routes/brand');
 //... More routers to come
 
 app.use('/products', productsRouter);
