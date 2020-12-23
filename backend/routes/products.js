@@ -10,7 +10,7 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
     const productName = req.body.productName;
     const brand = Enum(req.body.brand);
-    const 
+    const productType
     
     
     

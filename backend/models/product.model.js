@@ -16,7 +16,12 @@ const productSchema = new Schema({
     description: {type: String, required: false},                                       // Sales Jargon
     msrpCost: { type: Number, required: [true, 'MSRP cost required'] },                 // msrpCost ex $2500
     priceRetail: { type: Number, required: [true, 'Retail price required'] },           // retail price ex $2799
-    serialNumber: {type: String, required: true}                                        // ex 189-891hj134jkl-8013
+                                         // ex 189-891hj134jkl-8013
+    img:
+    {
+        data: Buffer,
+        contentType: String
+    }
 }, {
     timeStamp: true,
 });

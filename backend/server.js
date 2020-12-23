@@ -34,3 +34,11 @@ app.listen(port, () => {
     console.log(`Spoker is live! Running on port: ${port}` );
 });
 
+//================================
+// Routers
+const productsRouter = require('./routes/products');
+const brandsRouter = require('./routes/brands');
+//... More routers to come
+
+app.use('/products', productsRouter);
+app.use('/brands', brandsRouter);
