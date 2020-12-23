@@ -17,8 +17,8 @@ const productSchema = new Schema({
     //style: [{ type: Schema.Types.ObjectId, ref: 'Style', required: true}],              // Road, Endurance, Kids, Tandem, etc
 
     brand: {type: String, required: true},                                              // Trek, Specialized, Cervelo, etc.
-    productType:{type: String, required: true},  // Bike, Accessory, Component, etc
-    style: {type: String, required: true},              // Road, Endurance, Kids, Tandem, etc
+    productType:{type: String, required: true},                                         // Bike, Accessory, Component, etc
+    style: {type: String, required: true},                                              // Road, Endurance, Kids, Tandem, etc
     description: {type: String, required: false},                                       // Sales Jargon
     msrpCost: { type: Number, required: [true, 'MSRP cost required'] },                 // msrpCost ex $2500
     priceRetail: { type: Number, required: [true, 'Retail price required'] },           // retail price ex $2799
