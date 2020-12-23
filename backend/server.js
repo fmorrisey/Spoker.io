@@ -42,4 +42,4 @@ const brandsRouter = require('./routes/brand');
 //... More routers to come
 
 app.use('/products', productsRouter);
-//app.use('/brands', brandsRouter);
+app.use('/brands', brandsRouter);

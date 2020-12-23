@@ -16,7 +16,7 @@ const productSchema = new Schema({
     //productType: [{ type: Schema.Types.ObjectId, ref: 'ProductType', required: true}],  // Bike, Accessory, Component, etc
     //style: [{ type: Schema.Types.ObjectId, ref: 'Style', required: true}],              // Road, Endurance, Kids, Tandem, etc
 
-    brand: [{type: Schema.Types.ObjectId, ref: 'Brand', required: true}],               // Trek, Specialized, Cervelo, etc.
+    //brand: [{type: Schema.Types.ObjectId, ref: 'Brand', required: true}],               // Trek, Specialized, Cervelo, etc.
     productType: [{ type: Schema.Types.ObjectId, ref: 'ProductType', required: true}],  // Bike, Accessory, Component, etc
     style: [{ type: Schema.Types.ObjectId, ref: 'Style', required: true}],              // Road, Endurance, Kids, Tandem, etc
     description: {type: String, required: false},                                       // Sales Jargon
