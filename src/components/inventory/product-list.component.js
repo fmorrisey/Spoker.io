@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const Product = props => (
   <tr>
-    <td>{props.product.productName}</td>
+    <td><Link to={"/details/"+props.product._id}>{props.product.productName}</Link></td>
     <td>{props.product.manuName}</td>
     <td>{props.product.productType}</td>
     <td>{props.product.style}</td>
@@ -51,6 +51,7 @@ export default class ProductList extends Component {
   }
 
   render() {
+    const isEmptyInventory = this.state.products.length === 0;
     return (
       <div className="container">
         <div className="col-md-12">
@@ -71,6 +72,6 @@ export default class ProductList extends Component {
         </table>
         </div>
       </div>
-    )
+    );
   }
 }

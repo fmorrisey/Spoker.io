@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-export default class AddProduct extends Component {
+export default class EditProduct extends Component {
   constructor(props) {
     super(props);
 
@@ -140,7 +140,7 @@ export default class AddProduct extends Component {
     return (
       <div className="container">
         <div className="col-md-12">
-          <h3>Add a new product into store inventory</h3>
+          <h3>Update a preexisting product</h3>
           <form onSubmit={e => e.preventDefault()}>
             {/* PRODUCT NAME */}
             <div className="form-group">
@@ -205,7 +205,7 @@ export default class AddProduct extends Component {
                 type="text"
                 required
                 className="form-control"
-                value={this.state.Description}
+                value={this.state.description}
                 onChange={this.onChangeDescription}
               />
             </div>
