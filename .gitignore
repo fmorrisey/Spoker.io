@@ -25,7 +25,3 @@ yarn-debug.log*
 yarn-error.log*
 
 #user specific
-package-lock.json
-package.json
-/backend/package-lock.json
-/backend/package.json
