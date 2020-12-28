@@ -1,19 +1,23 @@
 "use strict";
+
 // Package dependencies
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 5000;
+
+require('dotenv').config();
+require('./auth/config/passport')
 
 app.use(cors());
 app.use(express.json());
 
 
-//===============================
+
+//===========MONGOOSE x MongoDB=============
 // connection string parser for MongoDB
 // connection constructor 
 const uri = process.env.ATLAS_URI;
@@ -28,15 +32,12 @@ connection.once('open', () =>{
     console.log('MongoDB database connection established successfully')
 })
 
-
-//================================
 // connection port messages for successful launch!
 app.listen(port, () => {
     console.log(`Spoker is live! Running on port: ${port}` );
 });
 
-//================================
-// Routers
+//===========ROUTERS==============
 const productsRouter = require('./inventory/routes/product');
 const brandsRouter = require('./inventory/routes/brand');
 const categoriesRouter = require('./inventory/routes/category');
