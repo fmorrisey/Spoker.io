@@ -37,9 +37,13 @@ app.listen(port, () => {
 
 //================================
 // Routers
-const productsRouter = require('./routes/product');
-const manufacturersRouter = require('./routes/manufacturer');
+const productsRouter = require('./inventory/routes/product');
+const brandsRouter = require('./inventory/routes/brand');
+const categoriesRouter = require('./inventory/routes/category');
+const departmentsRouter = require('./inventory/routes/department');
 //... More routers to come
 
 app.use('/products', productsRouter);
-app.use('/manufacturers', manufacturersRouter);
+app.use('/brands', brandsRouter);
+app.use('/categories', categoriesRouter);
+app.use('/departments', departmentsRouter);

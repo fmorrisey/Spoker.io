@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
+    department:{type: String, required: true},                                         // Bike, Accessory, Component, etc
+    category: {type: String, required: true},                                              // Road, Endurance, Kids, Tandem, etc
     productName: {  // Example Domane AlR3
         type: String,
         required: true,
@@ -16,9 +18,7 @@ const productSchema = new Schema({
     //productType: [{ type: Schema.Types.ObjectId, ref: 'ProductType', required: true}],  // Bike, Accessory, Component, etc
     //style: [{ type: Schema.Types.ObjectId, ref: 'Style', required: true}],              // Road, Endurance, Kids, Tandem, etc
 
-    manuName: {type: String, required: true},                                              // Trek, Specialized, Cervelo, etc.
-    productType:{type: String, required: true},                                         // Bike, Accessory, Component, etc
-    style: {type: String, required: true},                                              // Road, Endurance, Kids, Tandem, etc
+    brand: {type: String, required: true},                                              // Trek, Specialized, Cervelo, etc.
     description: {type: String, required: false},                                       // Sales Jargon
     msrpCost: { type: Number, required: [true, 'MSRP cost required'] },                 // msrpCost ex $2500
     priceRetail: { type: Number, required: [true, 'Retail price required'] },           // retail price ex $2799
