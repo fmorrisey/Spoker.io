@@ -5,7 +5,9 @@ export default class Landing extends Component {
   render() {
     return (
       <div>
-        <p>You are on the Landing Page Component!</p>
+        <div className="container">
+        <h4>You are on the <br />Landing Page Component!</h4>
+        </div>
       </div>
     )
   }
