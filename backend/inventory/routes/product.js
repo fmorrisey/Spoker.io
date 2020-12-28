@@ -1,6 +1,7 @@
 "use strict";
 const router = require('express').Router();
 let Product = require('../models/product.model');
+let Brand = require('../models/brand.model');
 
 router.route('/').get((req, res) => {
     Product.find()

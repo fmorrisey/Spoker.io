@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const productInstanceSchema = new Schema({
     product: { type: Schema.Types.ObjectId, ref: 'product', required: true},
     status: {type: String, required: true, enum: ['In Stock', 'Back Order', 'Loaned', 'Discontinued'], default: 'On Order'},
-    quantity: {type: Number, required: true}
+   
 });
 
 //Virtual for the product URl
