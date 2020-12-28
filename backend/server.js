@@ -10,11 +10,12 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 require('dotenv').config();
-require('./auth/config/passport')
 
 app.use(cors());
 app.use(express.json());
 
+//===========PASSORT x JWTAuth=============
+require('./auth/config/passport')
 
 
 //===========MONGOOSE x MongoDB=============
