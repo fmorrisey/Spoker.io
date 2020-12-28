@@ -4,9 +4,11 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-
+const passport = require('passport');
+const bodyParser = require('body-parser');
 
 const app = express();
+
 const port = process.env.PORT || 5000;
 
 require('dotenv').config();
@@ -15,7 +17,16 @@ app.use(cors());
 app.use(express.json());
 
 //===========PASSORT x JWTAuth=============
-require('./auth/config/passport')
+require('./auth/config/passport');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(passport.initialize());
+
+const loginUser = require('./auth/routes/loginUser');
+const registerUser = require('./auth/routes/registerUser');
+const findUser = require('./auth/routes/findUser');
+const deleteUser = require('./auth/routes/deleteUser');
+const updateUser = require('./auth/routes/updateUser');
 
 
 //===========MONGOOSE x MongoDB=============
@@ -49,3 +60,5 @@ app.use('/products', productsRouter);
 app.use('/brands', brandsRouter);
 app.use('/categories', categoriesRouter);
 app.use('/departments', departmentsRouter);
+
+module.exports = app;
