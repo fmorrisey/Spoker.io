@@ -5,10 +5,10 @@ export default class AddProduct extends Component {
   constructor(props) {
     super(props);
 
+    this.onChangeDepartment = this.onChangeDepartment.bind(this);
+    this.onChangeCategory = this.onChangeCategory.bind(this);
     this.onChangeProductName = this.onChangeProductName.bind(this);
-    this.onChangeManufacturer = this.onChangeManufacturer.bind(this);
-    this.onChangeProductType = this.onChangeProductType.bind(this);
-    this.onChangeStyle = this.onChangeStyle.bind(this);
+    this.onChangeBrand = this.onChangeBrand.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
     this.onChangeMSRP = this.onChangeMSRP.bind(this);
     this.onChangeRetail = this.onChangeRetail.bind(this);
@@ -17,28 +17,28 @@ export default class AddProduct extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
+      department: 'Bike',
+      category: '',
       productName: '',
-      manuName: '',
-      productType: '',
-      style: '',
+      brand: '',
       description: '',
       msrpCost: 0,
       priceRetail: 0,
       img: "NA",
-      manufacturers: [], //Crucial for mapping dropdowns
+      brands: [], //Crucial for mapping dropdowns
     }
   }
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/manufacturers/")
+      .get("http://localhost:5000/brands/")
       .then((response) => {
         if (response.data.length > 0) {
           this.setState({
-            manufacturers: response.data.map(
-              (manufacturer) => manufacturer.manuName
+            brands: response.data.map(
+              (brand) => brand.brand
             ),
-            manuName: response.data[0].manuName
+            brand: response.data[0].brand
           })
         }
       })
@@ -47,9 +47,9 @@ export default class AddProduct extends Component {
       })
   }
 
-  onChangeManufacturer(e) {
+  onChangeBrand(e) {
     this.setState({
-      manuName: e.target.value
+      brand: e.target.value
     })
   }
 
@@ -59,15 +59,15 @@ export default class AddProduct extends Component {
     })
   }
 
-  onChangeProductType(e) {
+  onChangeDepartment(e) {
     this.setState({
-      productType: e.target.value,
+      department: e.target.value,
     })
   }
 
-  onChangeStyle(e) {
+  onChangeCategory(e) {
     this.setState({
-      style: e.target.value
+      category: e.target.value
     })
   }
 
@@ -99,10 +99,10 @@ export default class AddProduct extends Component {
     e.preventDefault();
 
     const product = {
+      department: this.state.department,
+      category: this.state.category,
       productName: this.state.productName,
-      manuName: this.state.manuName,
-      productType: this.state.productType,
-      style: this.state.style,
+      brand: this.state.brand,
       description: this.state.description,
       msrpCost: this.state.msrpCost,
       priceRetail: this.state.priceRetail,
@@ -112,19 +112,7 @@ export default class AddProduct extends Component {
 
     axios
       .post("http://localhost:5000/products/add", product)
-      .then((res) => console.log(res.data));
-
-    // this.setState = ({
-    //   productName: '',
-    //   manuName: '',
-    //   productType: '',
-    //   style: '',
-    //   description: '',
-    //   msrpCost: 0,
-    //   priceRetail: 0,
-    //   img: "NA",
-    // });
-    //   setTimeout(() => { console.log(JSON.stringify(product) + "Product added"); }, 2000)
+      .then((res) => console.log(res.data));  
 
     window.location = "/inventory";
   }
@@ -135,6 +123,31 @@ export default class AddProduct extends Component {
         <div className="col-md-12">
           <h3>Add a new product into store inventory</h3>
           <form onSubmit={e => e.preventDefault()}>
+            
+            {/* Department */}
+            <div className="form-group">
+              <label>Department: </label>
+              <input
+                type="text"
+                required
+                className="form-control"
+                value={this.state.department}
+                onChange={this.onChangeDepartment}
+              />
+            </div>
+
+            {/* category */}
+            <div className="form-group">
+              <label>Category: </label>
+              <input
+                type="text"
+                required
+                className="form-control"
+                value={this.state.category}
+                onChange={this.onChangeCategory}
+              />
+            </div>
+
             {/* PRODUCT NAME */}
             <div className="form-group">
               <label>Product Name: </label>
@@ -149,53 +162,30 @@ export default class AddProduct extends Component {
 
             {/* Manufacturer */}
             <div className="form-group">
-              <label>Manufacturer: </label>
+              <label>Brand: </label>
               <select
                 ref="userInput"
                 required
                 className="form-control"
-                value={this.state.manuName}
-                onChange={this.onChangeManufacturer}
+                value={this.state.brand}
+                onChange={this.onChangeBrand}
               >
-                {this.state.manufacturers.map(function (manufacturer) {
+                {this.state.brands.map(function (brand) {
                   return (
-                    <option key={manufacturer} value={manufacturer}>
-                      {manufacturer}
+                    <option key={brand} value={brand}>
+                      {brand}
                     </option>
                   );
                 })}
               </select>
-            </div>
-
-            {/* Type of Product */}
-            <div className="form-group">
-              <label>Type of Product: </label>
-              <input
-                type="text"
-                required
-                className="form-control"
-                value={this.state.productType}
-                onChange={this.onChangeProductType}
-              />
-            </div>
-
-            {/* Style */}
-            <div className="form-group">
-              <label>Style: </label>
-              <input
-                type="text"
-                required
-                className="form-control"
-                value={this.state.style}
-                onChange={this.onChangeStyle}
-              />
-            </div>
+            </div>            
 
             {/* Description */}
             <div className="form-group">
               <label>Description: </label>
-              <input
+              <textarea
                 type="text"
+                rows="5"
                 required
                 className="form-control"
                 value={this.state.Description}

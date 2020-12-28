@@ -6,14 +6,13 @@ import axios from 'axios';
 const Product = props => (
   <tr>
     <td><Link to={"/details/"+props.product._id}>{props.product.productName}</Link></td>
-    <td>{props.product.manuName}</td>
-    <td>{props.product.productType}</td>
-    <td>{props.product.style}</td>
+    <td>{props.product.brand}</td>
+    <td>{props.product.department}</td>
+    <td>{props.product.category}</td>
     <td>${props.product.msrpCost} / ${props.product.priceRetail}</td>
-    <td></td>
-    <td>
+    {/* <td>
       <Link to={"/edit/"+props.product._id}>edit</Link> | <a href="#" onClick={() => { props.deleteProduct(props.product._id) }}>delete</a>
-    </td>
+    </td> */}
   </tr>
 )
 export default class ProductList extends Component {
@@ -60,9 +59,9 @@ export default class ProductList extends Component {
           <thead className="thead-light">
             <tr>
               <th>Name</th>
-              <th>Manufacturer</th>
-              <th>Type</th>
-              <th>Style</th>
+              <th>Brand</th>
+              <th>Dept.</th>
+              <th>Category</th>
               <th>MSRP / Retail</th>
             </tr>
           </thead>
