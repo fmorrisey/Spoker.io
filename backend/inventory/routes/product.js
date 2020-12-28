@@ -10,10 +10,10 @@ router.route('/').get((req, res) => {
 
 //============CRUDs==============
 router.route('/add').post((req, res) => {
-    const productName = req.body.productName;
-    const brand = req.body.brand;
     const department = req.body.department;
     const category = req.body.category;
+    const productName = req.body.productName;
+    const brand = req.body.brand;
     const description = req.body.description;
     const msrpCost = Number(req.body.msrpCost);
     const priceRetail = Number(req.body.priceRetail);
