@@ -23,12 +23,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(passport.initialize());
 
-const loginUser = require('./auth/routes/loginUser');
-const registerUser = require('./auth/routes/registerUser');
-const findUser = require('./auth/routes/findUser');
-const deleteUser = require('./auth/routes/deleteUser');
-const updateUser = require('./auth/routes/updateUser');
+const loginUserRouter = require('./auth/routes/loginUser');
+const registerUserRouter = require('./auth/routes/registerUser');
+const findUserRouter = require('./auth/routes/findUser');
+const deleteUserRouter = require('./auth/routes/deleteUser');
+const updateUserRouter = require('./auth/routes/updateUser');
 
+app.use('/login', loginUserRouter);
+app.use('/register', registerUserRouter);
+app.use('/findUser', findUserRouter);
+app.use('/deleteUser', deleteUserRouter);
+app.use('/updateUser', updateUserRouter);
 
 //===========MONGOOSE x MongoDB=============
 // connection string parser for MongoDB
