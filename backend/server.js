@@ -29,7 +29,15 @@ app.use(bodyParser.json());
 
 
 //===========PASSORT x JWTAuth=============
+const users = require('./auth/routes/users');
+//Passport Middleware
+app.use(passport.initialize());
 
+//Passport Config
+require('./auth/passport')(passport);
+
+//Routes
+app.use('/auth/routes/users', users)
 
 //===========MONGOOSE x MongoDB=============
 // connection string parser for MongoDB
