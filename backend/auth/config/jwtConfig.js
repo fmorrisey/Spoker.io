@@ -2,5 +2,6 @@
 //Change to the .env file later
 
 module.exports = {
-    secret: 'jwt-secret',
-};
+    "alg": "RS256",
+    "typ": "JWT"
+  };
