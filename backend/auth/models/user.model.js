@@ -44,8 +44,8 @@ const userSchema = new Schema({
         unique: false,
         trim: true,
     },
-    resetPasswordToken: {type: String},
-    resetPasswordExpires: {type: Date},
+    //resetPasswordToken: {type: String},
+    //resetPasswordExpires: {type: Date},
 
 });
 
