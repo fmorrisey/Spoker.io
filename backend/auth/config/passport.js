@@ -5,11 +5,11 @@ const bcrypt = require('bcrypt');
 
 const BCRYPT_SALT_ROUNDS = 12;
 
-const passport = require('passport'),
-    localStrategy = require('passport-local').Strategy,
-    User = require('../models/user.model'),
-    JWTstrategy = require('passport-jwt').Strategy,
-    ExtractJWT = require('passport-jwt').ExtractJWT;
+const passport = require('passport');
+const localStrategy = require('passport-local').Strategy;
+const JWTstrategy = require('passport-jwt').Strategy;
+const ExtractJWT = require('passport-jwt').ExtractJWT;
+const User = require('../models/user.model');
 
 passport.use(
     'register',
@@ -79,18 +79,31 @@ new localStrategy(
     },
   );
 
-const opts = {
-  jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme('JWT'),
-  secretOrKey: jwtSecret.secret,
-};
+// const opts = {
+//   jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme('JWT'),
+//   secretOrKey: jwtSecret.secret,
+// };
+
+const jwtPrivateSecret = process.env.JWT_PRIVATE_SECRET.replace(/\\n/g, "\n");
+
+const options = {
+    secretOrKey: jwtPublicSecret,
+    algorithms: ['RS256'],
+    passReqToCallback: true,
+  };
+  
+  options.jwtFromRequest = ExtractJwt.fromExtractors([
+    ExtractJwt.fromAuthHeaderAsBearerToken(),
+    req => cookieExtractor(req),
+  ]);
 
 passport.use(
   'jwt',
-  new JWTstrategy(opts, (jwt_payload, done) => {
+  new JWTstrategy(options, (jwt_payload, done) => {
     try {
       User.findOne({
         $or: {
-          username: jwt_payload._id,
+          _id: jwt_payload._id,
         },
       }).then(user => {
         if (user) {
