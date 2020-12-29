@@ -6,7 +6,7 @@ const BCRYPT_SALT_ROUNDS = 12;
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const JWTstrategy = require('passport-jwt').Strategy;
-const ExtractJWT = require('passport-jwt').ExtractJWT;
+const ExtractJWT = require('passport-jwt').ExtractJwt;
 const User = require('../models/user.model');
 
 passport.use(
@@ -76,24 +76,11 @@ new localStrategy(
     }
   },
 );
-/*
-const opts = {
-  secretOrKey: jwtSecret.secret,
-  algorithms: ['RS256'],
-  passReqToCallback: true,
-};
-
-opts.jwtFromRequest = ExtractJWT.fromExtractors([
-  ExtractJwt.fromAuthHeaderAsBearerToken(),
-  req => cookieExtractor(req),
-]);
-  
-
 
 
 const opts = {
   jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme('JWT'),
-  secretOrKey: jwtSecret.secret,
+  secretOrKey: process.env.JWT_PRIVATE_SECRET,
 };
 
 
@@ -121,4 +108,18 @@ passport.use(
     }
   }),
 );
+
+/*
+const opts = {
+  secretOrKey: jwtSecret.secret,
+  algorithms: ['RS256'],
+  passReqToCallback: true,
+};
+
+opts.jwtFromRequest = ExtractJWT.fromExtractors([
+  ExtractJwt.fromAuthHeaderAsBearerToken(),
+  req => cookieExtractor(req),
+]);
+  
+
 */
