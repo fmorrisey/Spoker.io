@@ -28,4 +28,4 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ### Project Thank Yous:
-- @paigen11 for her article on Passport and JWT [https://itnext.io/implementing-json-web-tokens-passport-js-in-a-javascript-application-with-react-b86b1f313436](Link)
+- Paige Nidedringhaus[github](https://github.com/paigen11/mysql-registration-passport) for her article on Passport and JWT [Link Here](https://itnext.io/implementing-json-web-tokens-passport-js-in-a-javascript-application-with-react-b86b1f313436).
