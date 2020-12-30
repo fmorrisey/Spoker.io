@@ -25,7 +25,7 @@ app.use(
 );
 app.use(bodyParser.json());
 
-//===========PASSORT x JWTAuth=============
+//===========PASSPORT x JWTAuth=============
 //Passport Middleware
 app.use(passport.initialize());
 
