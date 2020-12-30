@@ -12,11 +12,11 @@ export default class Navbar extends Component {
 
                 
                 <div>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" 
+                    <span><button className="navbar-toggler" type="button" data-toggle="collapse" 
                         data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
+                    </button></span>
+                </div>            
                 
                 <div className="collapse navbar-collapse order-3" id="navbarNavDropdown">
                    
@@ -43,7 +43,7 @@ export default class Navbar extends Component {
                             </div>
                         </li>
                     </ul>
-                    <div className="justify-content-center order-0">
+                    <div className="search">
                         <ul className="navbar-nav mx-auto ">
                             <li className="navbar-item">
                                 <form className="d-flex form-inline">
