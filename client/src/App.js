@@ -3,8 +3,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Navbar from "./components/navbar.component";
-import Landing from "./components/landing.component";
+import Navbar from "./components/layout/navbar.component";
+import Landing from "./components/layout/landing.component";
 
 import AddProduct from "./components/inventory/product-add.component";
 import EditProduct from "./components/inventory/product-edit.component";
