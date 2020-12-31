@@ -13,17 +13,25 @@ class Login extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            username: '',
+            email: '',
             password: '',
             errors: {}
         };
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.auth.isAuthenticated) {
-          this.props.history.push("/inventory"); // push user to dashboard when they login
+    componentDidMount() {
+        // If logged in and user navigates to Login page, should redirect them to dashboard
+        if (this.props.auth.isAuthenticated) {
+          this.props.history.push("/inventory");
         }
-    if (nextProps.errors) {
+      }
+    
+      componentWillReceiveProps(nextProps) {
+        if (nextProps.auth.isAuthenticated) {
+          this.props.history.push("/inventory");
+        }
+    
+        if (nextProps.errors) {
           this.setState({
             errors: nextProps.errors
           });
@@ -38,7 +46,7 @@ class Login extends Component {
         e.preventDefault();
 
         const userData = {
-            username: this.state.username,
+            email: this.state.email,
             password: this.state.password,
         };
 
@@ -64,20 +72,20 @@ class Login extends Component {
 
                         <form onSubmit={this.onSubmit}>
                             <div className="form-group">
-                                <label>Username: </label>
+                                <label>Email: </label>
                                 <span className="red-text">
-                                    {errors.username}
-                                    {errors.usernamenotfound}
+                                    {errors.email}
+                                    {errors.emailnotfound}
                                 </span>
                                 <input
                                     onChange={this.onChange}
-                                    value={this.state.username}
-                                    error={errors.username}
-                                    id="username"
-                                    type="text"
+                                    value={this.state.email}
+                                    error={errors.email}
+                                    id="email"
+                                    type="email"
                                     className={classnames("", {
-                                        invalid: errors.username ||
-                                        errors.usernamenotfound
+                                        invalid: errors.email ||
+                                        errors.emailnotfound
                                     })}
                                 />
                             </div>

@@ -23,14 +23,14 @@ class Register extends Component {
         };
     }
 
-    /*
+    // Lifecycle methods
     componentDidMount() {
          //Redirect is logged in
          if (this.props.auth.isAuthenticated()) {
              this.props.history.push('/inventory');
          }
     }
-    */
+    
     componentWillReceiveProps(nextProps) {
          if (nextProps.errors) {
              this.setState({ errors: nextProps.errors});
