@@ -24,6 +24,7 @@ function Routes() {
     return (
     <div>
     <Navbar />
+    {/* <Landing /> */}
       <Switch>
         {/* AUTH */}
         <Route path="/login" component={Login} />
