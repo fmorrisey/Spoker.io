@@ -16,7 +16,7 @@ import EditProduct from "./container/inventory/product-edit";
 import DetailsProduct from "./container/inventory/product-details";
 import ProductList from "./container/inventory/product-list";
 
-//=============Manager================
+//=============Manager================ 
 import SalesManager from "./container/manager/sales";
 import OrdersManager from "./container/manager/orders";
 
