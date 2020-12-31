@@ -4,7 +4,7 @@ import Routes from '../routes';
 
 //========= REDUX =============
 import { Provider } from 'react-redux';
-import store from './store';
+import store from '../store';
 
 
 function App() {
