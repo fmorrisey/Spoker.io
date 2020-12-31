@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { registeruser } from '../../actions/authActions';
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions/authActions';
 import classnames from 'classnames';
 
-export default class Register extends Component {
+class Login extends Component {
     constructor(props) {
         super(props);
         // These pass states in the constructor to the events
@@ -17,6 +18,17 @@ export default class Register extends Component {
             errors: {}
         };
     }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.auth.isAuthenticated) {
+          this.props.history.push("/inventory"); // push user to dashboard when they login
+        }
+    if (nextProps.errors) {
+          this.setState({
+            errors: nextProps.errors
+          });
+        }
+      }
   
     onChange(e) {
         this.setState({ [e.target.id]: e.target.value });
@@ -31,6 +43,7 @@ export default class Register extends Component {
         };
 
         console.log(userData);
+        this.props.loginUser(userData);
 
     }
 
@@ -42,38 +55,54 @@ export default class Register extends Component {
                 <div className="row">
                     <div className="col-md-8 offset-2">
                         <p>
-                            <Link to="/home" className="btn btn-primary waves-effect">back to home</Link>
+                            <Link to="/home" className="btn btn-primary">back to home</Link>
                         </p>
                         <p>
                             Don't have an account? <br />
-                            <Link to="/register" className="btn btn-primary waves-effect">Register</Link>
+                            <Link to="/register" className="btn btn-primary">Register</Link>
                         </p>
 
                         <form onSubmit={this.onSubmit}>
                             <div className="form-group">
                                 <label>Username: </label>
+                                <span className="red-text">
+                                    {errors.username}
+                                    {errors.usernamenotfound}
+                                </span>
                                 <input
                                     onChange={this.onChange}
                                     value={this.state.username}
                                     error={errors.username}
                                     id="username"
                                     type="text"
+                                    className={classnames("", {
+                                        invalid: errors.username ||
+                                        errors.usernamenotfound
+                                    })}
                                 />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="password">Password: </label>
+                                <span className="red-text">
+                                    {errors.password}
+                                    {errors.passwordincorrect}
+                                </span>
                                 <input
                                     onChange={this.onChange}
                                     value={this.state.password}
                                     error={errors.password}
                                     id="password"
                                     type="password"
+                                    className={classnames("", {
+                                        invalid: errors.password ||
+                                        errors.passwordincorrect
+                                    })}
                                 />
                             </div>
                             <div className="form-group">
                                 <button
                                     type="submit"
-                                    value="Register"
+                                    value="Login"
                                     className="btn btn-primary"
                                 >Login</button>
                             </div>
@@ -84,3 +113,17 @@ export default class Register extends Component {
         )
     }
 }
+
+Login.propTypes = {
+    loginUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+  };
+  const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+  });
+  export default connect(
+    mapStateToProps,
+    { loginUser }
+  )(Login);
