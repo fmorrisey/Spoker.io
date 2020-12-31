@@ -13,7 +13,7 @@ code {
     monospace;
 }
 
-div.search {
+.search {
   display: flex;
   justify-content: center;
 }
