@@ -17,7 +17,7 @@ require('dotenv').config();
 app.use(cors());
 app.use(express.json());
 
-//===========Bodyparser=============
+//===========Body Parser=============
 app.use(
     bodyParser.urlencoded({ 
         extended: false

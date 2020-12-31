@@ -59,7 +59,7 @@ class Routes extends Component {
               <Navbar />
             <div className="App">
               {/* AUTH */}
-              <Route path="/" component={Landing} />
+              <Route path="/home" component={Landing} />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
               <Switch>
