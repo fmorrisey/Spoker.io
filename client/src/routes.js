@@ -23,21 +23,24 @@ import OrdersManager from "./container/manager/orders";
 function Routes() {
     return (
     <div>
-    <Navbar />
+    
     {/* <Landing /> */}
       <Switch>
-        {/* AUTH */}
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        {/* Invnetory */}
-        <Route path="/home" component={Landing} />
-        <Route path="/inventory" component={ProductList} />
-        <Route path="/add" component={AddProduct} />
-        <Route path="/details/:id" component={DetailsProduct} />
-        <Route path="/edit/:id" component={EditProduct} />
-        {/* Manager */}
-        <Route path="/sales" component={SalesManager} />
-        <Route path="/orders" component={OrdersManager} />
+          <div className="App">
+          <Navbar />
+            {/* AUTH */}
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            {/* Invnetory */}
+            <Route path="/home" component={Landing} />
+            <Route path="/inventory" component={ProductList} />
+            <Route path="/add" component={AddProduct} />
+            <Route path="/details/:id" component={DetailsProduct} />
+            <Route path="/edit/:id" component={EditProduct} />
+            {/* Manager */}
+            <Route path="/sales" component={SalesManager} />
+            <Route path="/orders" component={OrdersManager} />
+          </div>
       </Switch>
     </div>
   );
