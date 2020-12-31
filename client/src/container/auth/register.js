@@ -21,7 +21,7 @@ export default class Register extends Component {
             errors: {}
         };
     }
-    
+
     /*
     componentDidMount() {
          //Redirect is logged in
@@ -54,7 +54,7 @@ export default class Register extends Component {
         };
 
         console.log(newUser);
-        this.props.registerUser(newUser, this.props.history);
+        // this.props.registerUser(newUser, this.props.history);
     }
 
     render() {
@@ -138,7 +138,7 @@ export default class Register extends Component {
                                 type="submit"
                                 value="Register"
                                 className="btn btn-primary"
-                                onClick={this.onSubmit}
+                                // onClick={this.onSubmit}
                                 >Register Account</button>
                             </div>
                         </form>
