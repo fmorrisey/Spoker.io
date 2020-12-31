@@ -17,22 +17,7 @@ export default class Register extends Component {
             errors: {}
         };
     }
-
-    /*
-    componentDidMount() {
-         //Redirect is logged in
-         if (this.props.auth.isAuthenticated()) {
-             this.props.history.push('/inventory');
-         }
-    }
-
-    componentWillReceiveProps(nextProps) {
-         if (nextProps.errors) {
-             this.setState({ errors: nextProps.errors});
-         }
-    }
-    */
-
+  
     onChange(e) {
         this.setState({ [e.target.id]: e.target.value });
     };
@@ -60,7 +45,7 @@ export default class Register extends Component {
                             <Link to="/home" className="btn btn-primary waves-effect">back to home</Link>
                         </p>
                         <p>
-                            Need an account? <br />
+                            Don't have an account? <br />
                             <Link to="/register" className="btn btn-primary waves-effect">Register</Link>
                         </p>
 
