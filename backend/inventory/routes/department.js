@@ -1,9 +1,9 @@
 "use strict";
 const router = require('express').Router();
-let department = require('../models/department.model');
+let Department = require('../models/department.model');
 
 router.route('/').get((req, res) => {
-    department.find()
+    Department.find()
            .then(departments => res.json(departments))
            .catch(err => res.status(400).json('Error: ' + err));
 });
@@ -11,12 +11,12 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
     const department = req.body.department;
         
-    const newdepartment = new department({
+    const newdepartment = new Department({
         department,
     });
 
     newdepartment.save()
-    .then(() => res.json('department added!'))
+    .then(() => res.json('Department added!'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 

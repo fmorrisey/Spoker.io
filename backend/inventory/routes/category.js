@@ -1,9 +1,9 @@
 "use strict";
 const router = require('express').Router();
-let category = require('../models/category.model');
+let Category = require('../models/category.model');
 
 router.route('/').get((req, res) => {
-    category.find()
+    Category.find()
            .then(categories => res.json(categories))
            .catch(err => res.status(400).json('Error: ' + err));
 });
@@ -11,7 +11,7 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
     const category = req.body.category;
         
-    const newcategory = new category({
+    const newcategory = new Category({
         category,
     });
 

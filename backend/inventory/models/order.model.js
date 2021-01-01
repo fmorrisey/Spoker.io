@@ -6,7 +6,7 @@ const ORDER_STATUS = {
     SHIPPED: [2 , 'SHIPPED'],
 };
 
-const OrderSchema = new mongoose.Schema({
+const orderSchema = new mongoose.Schema({
     trackingNumber: {type: String},
     orderStatus: {type: Number, default: ORDER_STATUS.PROCESSED[0]},
     orderItems: [{type: mongoose.Schema.Types.ObjectId, ref: 'orderItem'}],
@@ -25,7 +25,7 @@ orderSchema.methods.getOrderStatusString = function () {
     return ORDER_STATUS[Object.keys(ORDER_STATUS)[this.orderStatus]][1];
 };
 
-const Order = mongoose.model('Order', OrderSchema);
+const Order = mongoose.model('Order', orderSchema);
 module.exports = Order;
 
 module.exports = {
