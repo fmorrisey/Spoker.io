@@ -179,7 +179,7 @@ class Register extends Component {
     );
   }
 }
-//Defines our prototypes outside the constructor
+//Defines our proptypes outside the constructor
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,

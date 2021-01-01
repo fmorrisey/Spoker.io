@@ -19,6 +19,7 @@ export default class EditProduct extends Component {
       price: 0,
       images: "NA",
       brands: [], //Crucial for mapping dropdowns
+      departments: [], //Crucial for mapping dropdowns
     }
   }
 
@@ -49,7 +50,20 @@ export default class EditProduct extends Component {
             brands: response.data.map(
               (brand) => brand.brand
             ),
-            brand: response.data[0].brand
+          })
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      axios
+      .get("http://localhost:5000/departments/")
+      .then((response) => {
+        if (response.data.length > 0) {
+          this.setState({
+            departments: response.data.map(
+              (department) => department.department
+            ),
           })
         }
       })
@@ -91,17 +105,25 @@ export default class EditProduct extends Component {
         <div className="col-md-12">
           <h3>Update Product</h3>
           <form onSubmit={e => e.preventDefault()}>
-            {/* Type of Product */}
+            {/* Department */}
             <div className="form-group">
               <label>Department: </label>
-              <input
+              <select
                 id="department"
                 type="text"
                 required
                 className="form-control"
                 value={this.state.department}
                 onChange={this.onChange}
-              />
+              >
+               {this.state.departments.map(function (department) {
+                  return (
+                    <option key={department} value={department}>
+                      {department}
+                    </option>
+                  );
+                })}
+              </select>
             </div>
 
             {/* category */}
