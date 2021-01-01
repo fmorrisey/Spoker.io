@@ -6,12 +6,12 @@ const ORDER_STATUS = {
     SHIPPED: [2 , 'SHIPPED'],
 };
 
-const orderSchema = new Schema({
-    tracking: {type: String},
-    orderStatus: {type: Number, default: ORDER_STATUS.PROCESSED[0],
-    orderItems: [{type: mongoose.Object.Types.ObjectId, ref: 'orderItem'}],
-    user: {type: mongoose.Object.Types.ObjectId, ref: 'user'},
-    address: {type: mongoose.Object.Types.ObjectId, ref: 'address'},
+const OrderSchema = new mongoose.Schema({
+    trackingNumber: {type: String},
+    orderStatus: {type: Number, default: ORDER_STATUS.PROCESSED[0]},
+    orderItems: [{type: mongoose.Schema.Types.ObjectId, ref: 'orderItem'}],
+    user: {type: mongoose.Schema.Types.ObjectId, ref: 'user'},
+    address: {type: mongoose.Schema.Types.ObjectId, ref: 'address'},
 }, {timestamps: true});
 
 orderSchema.virtual('total').get(function () {
@@ -22,7 +22,7 @@ orderSchema.virtual('total').get(function () {
 });
 
 orderSchema.methods.getOrderStatusString = function () {
-    return ORDER_STATUS[Object.keys(ORDER_STATUS)[this.orderStatus][1];]
+    return ORDER_STATUS[Object.keys(ORDER_STATUS)[this.orderStatus]][1];
 };
 
 const Order = mongoose.model('Order', OrderSchema);
