@@ -5,15 +5,8 @@ export default class EditProduct extends Component {
   constructor(props) {
     super(props);
 
-    this.onChangeDepartment = this.onChangeDepartment.bind(this);
-    this.onChangeCategory = this.onChangeCategory.bind(this);
-    this.onChangeProductName = this.onChangeProductName.bind(this);
-    this.onChangeBrand = this.onChangeBrand.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
-    this.onChangeMSRP = this.onChangeMSRP.bind(this);
-    this.onChangeRetail = this.onChangeRetail.bind(this);
-    this.onChangeImg = this.onChangeImg.bind(this);
-
+    
+    this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
@@ -65,52 +58,8 @@ export default class EditProduct extends Component {
       })
   }
 
-  onChangeBrand(e) {
-    this.setState({
-      brand: e.target.value
-    })
-  }
-
-  onChangeProductName(e) {
-    this.setState({
-      productName: e.target.value
-    })
-  }
-
-  onChangeDepartment(e) {
-    this.setState({
-      department: e.target.value,
-    })
-  }
-
-  onChangeCategory(e) {
-    this.setState({
-      category: e.target.value
-    })
-  }
-
-  onChangeDescription(e) {
-    this.setState({
-      description: e.target.value
-    })
-  }
-
-  onChangeMSRP(e) {
-    this.setState({
-      msrpCost: e.target.value
-    })
-  }
-
-  onChangeRetail(e) {
-    this.setState({
-      priceRetail: e.target.value
-    })
-  }
-
-  onChangeImg(e) {
-    this.setState({
-      img: e.target.value
-    })
+  onChange(e) {
+    this.setState({ [e.target.id]: e.target.value });
   }
 
   onSubmit(e) {
@@ -146,11 +95,12 @@ export default class EditProduct extends Component {
             <div className="form-group">
               <label>Department: </label>
               <input
+                id="department"
                 type="text"
                 required
                 className="form-control"
                 value={this.state.department}
-                onChange={this.onChangedepartment}
+                onChange={this.onChange}
               />
             </div>
 
@@ -158,11 +108,12 @@ export default class EditProduct extends Component {
             <div className="form-group">
               <label>Category: </label>
               <input
+                id="category"
                 type="text"
                 required
                 className="form-control"
                 value={this.state.category}
-                onChange={this.onChangecategory}
+                onChange={this.onChange}
               />
             </div>
 
@@ -170,11 +121,12 @@ export default class EditProduct extends Component {
             <div className="form-group">
               <label>Product Name: </label>
               <input
+                id="productName"
                 type="text"
                 required
                 className="form-control"
                 value={this.state.productName}
-                onChange={this.onChangeProductName}
+                onChange={this.onChange}
               />
             </div>
 
@@ -182,11 +134,12 @@ export default class EditProduct extends Component {
             <div className="form-group">
               <label>Brand: </label>
               <select
+                id="brand"
                 ref="userInput"
                 required
                 className="form-control"
                 value={this.state.brand}
-                onChange={this.onChangebrand}
+                onChange={this.onChange}
               >
                 {this.state.brands.map(function (brand) {
                   return (
@@ -202,12 +155,13 @@ export default class EditProduct extends Component {
             <div className="form-group">
               <label>Description: </label>
               <textarea
+                id="description"
                 type="text"
                 rows="5"
                 required
                 className="form-control"
                 value={this.state.description}
-                onChange={this.onChangeDescription}
+                onChange={this.onChange}
               />
             </div>
 
@@ -215,11 +169,12 @@ export default class EditProduct extends Component {
             <div className="form-group">
               <label>MSRP: </label>
               <input
+                id="msrpCost"
                 type="number"
                 required
                 className="form-control"
                 value={this.state.msrpCost}
-                onChange={this.onChangeMSRP}
+                onChange={this.onChange}
               />
             </div>
 
@@ -227,11 +182,12 @@ export default class EditProduct extends Component {
             <div className="form-group">
               <label>Retail: </label>
               <input
+                id="priceRetail"
                 type="number"
                 required
                 className="form-control"
                 value={this.state.priceRetail}
-                onChange={this.onChangeRetail}
+                onChange={this.onChange}
               />
             </div>
 
@@ -240,12 +196,13 @@ export default class EditProduct extends Component {
               <label>Img Upload: </label>
               <span className="form-inline">
                 <input
+                  id="img"
                   type="upload"
                   placeholder="Upload Image"
                   className="form-control mr-md-6"
                   aria-label="Upload Upload"
                   value={this.state.img}
-                  onChange={this.onChangeImg}
+                  onChange={this.onChange}
                 />
                 <button className="btn btn-secondary mt-sm-0" type="upload">
                   ...
