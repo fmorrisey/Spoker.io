@@ -18,7 +18,7 @@ return (
             <h4>
               <b>Hey there,</b> {user.name.split(" ")[0]}
               <p className="">
-                You are logged into a full-stack{" "}
+                You are logged into Spoker{" "}
                
               </p>
             </h4>

@@ -18,7 +18,6 @@ export default class DetailsProduct extends Component {
       msrp: 0,
       price: 0,
       images: "NA",
-      Brands: [], //Crucial for mapping dropdowns
     }
   }
 
@@ -100,7 +99,7 @@ export default class DetailsProduct extends Component {
 
             {/* images Upload */}
             <div className="form-group">
-              <label>images: </label>
+              <label>Images: </label>
              
             </div>
             {/* SUBMIT */}

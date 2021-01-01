@@ -4,8 +4,8 @@ const { ObjectId } = mongoose.Schema;
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
-    department:{type: mongoose.Schema.Types.ObjectId, ref: 'Department', default: 'Bike'},                                         // Bike, Accessory, Component, etc
-    category: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'},                                              // Road, Endurance, Kids, Tandem, etc
+    department:{type: String, default: 'Bike'},                                         // Bike, Accessory, Component, etc
+    category: {type: String, ref: 'Category'},                                              // Road, Endurance, Kids, Tandem, etc
     name: {  // Example Domane AlR3
         type: String,
         required: true,
