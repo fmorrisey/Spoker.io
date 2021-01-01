@@ -91,14 +91,14 @@ export default class AddProduct extends Component {
             {/* Department */}
             <div className="form-group">
               <label>Department: </label>
-              <input
+              <select
                 id="department"
                 type="text"
                 required
                 className="form-control"
                 value={this.state.department}
                 onChange={this.onChange}
-              />
+              >
                {this.state.departments.map(function (department) {
                   return (
                     <option key={department} value={department}>
@@ -106,6 +106,7 @@ export default class AddProduct extends Component {
                     </option>
                   );
                 })}
+              </select>
             </div>
 
             {/* category */}
