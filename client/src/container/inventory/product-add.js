@@ -14,8 +14,8 @@ export default class AddProduct extends Component {
       productName: '',
       brand: '',
       description: '',
-      msrpCost: 0,
-      priceRetail: 0,
+      msrp: 0,
+      price: 0,
       img: "NA",
       brands: [], //Crucial for mapping dropdowns
     }
@@ -52,8 +52,8 @@ export default class AddProduct extends Component {
       productName: this.state.productName,
       brand: this.state.brand,
       description: this.state.description,
-      msrpCost: this.state.msrpCost,
-      priceRetail: this.state.priceRetail,
+      msrp: this.state.msrp,
+      price: this.state.price,
       img: this.state.img,
     }
     console.log(product);
@@ -150,11 +150,11 @@ export default class AddProduct extends Component {
             <div className="form-group">
               <label>MSRP: </label>
               <input
-                id="msrpCost"
+                id="msrp"
                 type="number"
                 required
                 className="form-control"
-                value={this.state.msrpCost}
+                value={this.state.msrp}
                 onChange={this.onChange}
               />
             </div>
@@ -163,11 +163,11 @@ export default class AddProduct extends Component {
             <div className="form-group">
               <label>Retail: </label>
               <input
-                id="priceRetail"
+                id="price"
                 type="number"
                 required
                 className="form-control"
-                value={this.state.priceRetail}
+                value={this.state.price}
                 onChange={this.onChange}
               />
             </div>

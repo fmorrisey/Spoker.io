@@ -15,8 +15,8 @@ export default class DetailsProduct extends Component {
       department: '',
       category: '',
       description: '',
-      msrpCost: 0,
-      priceRetail: 0,
+      msrp: 0,
+      price: 0,
       img: "NA",
       Brands: [], //Crucial for mapping dropdowns
     }
@@ -40,8 +40,8 @@ export default class DetailsProduct extends Component {
           productName: response.data.productName,
           brand: response.data.brand,
           description: response.data.description,
-          msrpCost: response.data.msrpCost,
-          priceRetail: response.data.priceRetail,
+          msrp: response.data.msrp,
+          price: response.data.price,
           img: response.data.img,
         })
       })
@@ -89,13 +89,13 @@ export default class DetailsProduct extends Component {
             {/* MSRP COST */}
             <div className="form-group">
               <div><u>MSRP: </u></div>
-              <div>${this.state.msrpCost}</div>
+              <div>${this.state.msrp}</div>
             </div>
 
             {/* Retail Price */}
             <div className="form-group">
               <div><u>Retails Price: </u></div>
-              <div>${this.state.priceRetail}</div>
+              <div>${this.state.price}</div>
             </div>
 
             {/* Img Upload */}

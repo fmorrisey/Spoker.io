@@ -16,8 +16,8 @@ router.route('/add').post((req, res) => {
     const productName = req.body.productName;
     const brand = req.body.brand;
     const description = req.body.description;
-    const msrpCost = Number(req.body.msrpCost);
-    const priceRetail = Number(req.body.priceRetail);
+    const msrp = Number(req.body.msrp);
+    const price = Number(req.body.price);
     const img = req.body.img;
     
     const newProduct = new Product({
@@ -26,8 +26,8 @@ router.route('/add').post((req, res) => {
         productName,
         brand,
         description,
-        msrpCost,
-        priceRetail,
+        msrp,
+        price,
         img,
     });
 
@@ -59,8 +59,8 @@ router.route('/update/:id').post((req, res) => {
             product.productName = req.body.productName;
             product.brand = req.body.brand;
             product.description = req.body.description;
-            product.msrpCost = Number(req.body.msrpCost);
-            product.priceRetail = Number(req.body.priceRetail);
+            product.msrp = Number(req.body.msrp);
+            product.price = Number(req.body.price);
             product.img = req.body.img;
 
             product.save()

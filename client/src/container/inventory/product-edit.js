@@ -15,8 +15,8 @@ export default class EditProduct extends Component {
       productName: '',
       brand: '',
       description: '',
-      msrpCost: 0,
-      priceRetail: 0,
+      msrp: 0,
+      price: 0,
       img: "NA",
       brands: [], //Crucial for mapping dropdowns
     }
@@ -32,8 +32,8 @@ export default class EditProduct extends Component {
           productName: response.data.productName,
           brand: response.data.brand,
           description: response.data.description,
-          msrpCost: response.data.msrpCost,
-          priceRetail: response.data.priceRetail,
+          msrp: response.data.msrp,
+          price: response.data.price,
           img: response.data.img,
         })
       })
@@ -71,8 +71,8 @@ export default class EditProduct extends Component {
       department: this.state.department,
       category: this.state.category,
       description: this.state.description,
-      msrpCost: this.state.msrpCost,
-      priceRetail: this.state.priceRetail,
+      msrp: this.state.msrp,
+      price: this.state.price,
       img: this.state.img,
     };
 
@@ -169,11 +169,11 @@ export default class EditProduct extends Component {
             <div className="form-group">
               <label>MSRP: </label>
               <input
-                id="msrpCost"
+                id="msrp"
                 type="number"
                 required
                 className="form-control"
-                value={this.state.msrpCost}
+                value={this.state.msrp}
                 onChange={this.onChange}
               />
             </div>
@@ -182,11 +182,11 @@ export default class EditProduct extends Component {
             <div className="form-group">
               <label>Retail: </label>
               <input
-                id="priceRetail"
+                id="price"
                 type="number"
                 required
                 className="form-control"
-                value={this.state.priceRetail}
+                value={this.state.price}
                 onChange={this.onChange}
               />
             </div>

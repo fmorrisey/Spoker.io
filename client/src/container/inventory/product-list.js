@@ -9,7 +9,7 @@ const Product = props => (
     <td>{props.product.brand}</td>
     <td>{props.product.department}</td>
     <td>{props.product.category}</td>
-    <td>${props.product.msrpCost} / ${props.product.priceRetail}</td>
+    <td>${props.product.msrp} / ${props.product.price}</td>
     {/* <td>
       <Link to={"/edit/"+props.product._id}>edit</Link> | <a href="#" onClick={() => { props.deleteProduct(props.product._id) }}>delete</a>
     </td> */}

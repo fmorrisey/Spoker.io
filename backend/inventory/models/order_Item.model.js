@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const orderItemSchema = new chema({
+const orderItemSchema = new Schema({
     name: {type: String, required: true},
     price: {type: String, required: true},
     quantity: {type: Number, required: true},
@@ -8,5 +8,5 @@ const orderItemSchema = new chema({
     user: {type: mongoose.Object.Types.ObjectId, ref: "User"},
 }, {timestamps: true});
 
-const orderItem = mongoose.model('orderItem', orderItemSchema);
-module.exports = orderItem;
+const OrderItem = mongoose.model('OrderItem', orderItemSchema);
+module.exports = OrderItem;
