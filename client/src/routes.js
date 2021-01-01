@@ -8,9 +8,9 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 //========= REDUX =============
-import { Provider } from 'react-redux';
-import store from './store';
-import PrivateRoute from "./components/privateroute"
+import { Provider } from "react-redux";
+import store from "./store";
+import PrivateRoute from "./components/privateroute";
 
 //=============Layout=============
 import Navbar from "./container/layout/navbar";
@@ -27,7 +27,7 @@ import EditProduct from "./container/inventory/product-edit";
 import DetailsProduct from "./container/inventory/product-details";
 import ProductList from "./container/inventory/product-list";
 
-//=============Manager================ 
+//=============Manager================
 import SalesManager from "./container/manager/sales";
 import OrdersManager from "./container/manager/orders";
 
@@ -41,7 +41,7 @@ if (localStorage.jwtToken) {
   const decoded = jwt_decode(token);
   // Set user and isAuthenticated
   store.dispatch(setCurrentUser(decoded));
-// Check for expired token
+  // Check for expired token
   const currentTime = Date.now() / 1000; // to get in milliseconds
   if (decoded.exp < currentTime) {
     // Logout user
@@ -53,29 +53,29 @@ if (localStorage.jwtToken) {
 class Routes extends Component {
   render() {
     return (
-        <Provider store={store}>
-          <BrowserRouter>
-            {/* <Landing /> */}
-              <Navbar />
-            <div className="App">
-              {/* AUTH */}
-              <Route path="/home" component={Landing} />
-              <Route path="/login" component={Login} />
-              <Route path="/register" component={Register} />
-              <Switch>
-                {/* Inventory */}
-                {/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}
-                <Route path="/inventory" component={ProductList} />
-                <Route path="/add" component={AddProduct} />
-                <Route path="/details/:id" component={DetailsProduct} />
-                <Route path="/edit/:id" component={EditProduct} />
-                {/* Manager */}
-                <Route path="/sales" component={SalesManager} />
-                <Route path="/orders" component={OrdersManager} />
-              </Switch>
-            </div>
-          </BrowserRouter>
-        </Provider>
+      <Provider store={store}>
+        <BrowserRouter>
+          {/* <Landing /> */}
+          <Navbar />
+          <div className="App">
+            {/* AUTH */}
+            <Route path="/home" component={Landing} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Switch>
+              {/* Inventory */}
+              {/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}
+              <Route path="/inventory" component={ProductList} />
+              <Route path="/add" component={AddProduct} />
+              <Route path="/details/:id" component={DetailsProduct} />
+              <Route path="/edit/:id" component={EditProduct} />
+              {/* Manager */}
+              <Route path="/sales" component={SalesManager} />
+              <Route path="/orders" component={OrdersManager} />
+            </Switch>
+          </div>
+        </BrowserRouter>
+      </Provider>
     );
   }
 }

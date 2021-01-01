@@ -18,6 +18,7 @@ export default class AddProduct extends Component {
       price: 0,
       images: "NA",
       brands: [], //Crucial for mapping dropdowns
+      departments: [], //Crucial for mapping dropdowns
     }
   }
 
@@ -31,6 +32,21 @@ export default class AddProduct extends Component {
               (brand) => brand.brand
             ),
             brand: response.data[0].brand
+          })
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      axios
+      .get("http://localhost:5000/departments/")
+      .then((response) => {
+        if (response.data.length > 0) {
+          this.setState({
+            departments: response.data.map(
+              (department) => department.department
+            ),
+            department: response.data[0].department
           })
         }
       })
@@ -83,6 +99,13 @@ export default class AddProduct extends Component {
                 value={this.state.department}
                 onChange={this.onChange}
               />
+               {this.state.departments.map(function (department) {
+                  return (
+                    <option key={department} value={department}>
+                      {department}
+                    </option>
+                  );
+                })}
             </div>
 
             {/* category */}
