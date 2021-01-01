@@ -9,7 +9,7 @@ export default class AddProduct extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      department: 'Bike',
+      department: '',
       category: '',
       name: '',
       brand: '',
