@@ -65,7 +65,7 @@ class Routes extends Component {
               <Switch>
                 {/* Inventory */}
                 {/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}
-                <PrivateRoute path="/inventory" component={ProductList} />
+                <Route path="/inventory" component={ProductList} />
                 <Route path="/add" component={AddProduct} />
                 <Route path="/details/:id" component={DetailsProduct} />
                 <Route path="/edit/:id" component={EditProduct} />
