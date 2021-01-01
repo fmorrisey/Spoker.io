@@ -12,12 +12,12 @@ export default class EditProduct extends Component {
     this.state = {
       department: '',
       category: '',
-      productName: '',
+      name: '',
       brand: '',
       description: '',
       msrp: 0,
       price: 0,
-      img: "NA",
+      images: "NA",
       brands: [], //Crucial for mapping dropdowns
     }
   }
@@ -29,12 +29,12 @@ export default class EditProduct extends Component {
         this.setState({
           department: response.data.department,
           category: response.data.category,
-          productName: response.data.productName,
+          name: response.data.name,
           brand: response.data.brand,
           description: response.data.description,
           msrp: response.data.msrp,
           price: response.data.price,
-          img: response.data.img,
+          images: response.data.images,
         })
       })
       .catch((error) => {
@@ -66,14 +66,14 @@ export default class EditProduct extends Component {
     e.preventDefault();
 
     const product = {
-      productName: this.state.productName,
+      name: this.state.name,
       brand: this.state.brand,
       department: this.state.department,
       category: this.state.category,
       description: this.state.description,
       msrp: this.state.msrp,
       price: this.state.price,
-      img: this.state.img,
+      images: this.state.images,
     };
 
     console.log(product);
@@ -121,11 +121,11 @@ export default class EditProduct extends Component {
             <div className="form-group">
               <label>Product Name: </label>
               <input
-                id="productName"
+                id="name"
                 type="text"
                 required
                 className="form-control"
-                value={this.state.productName}
+                value={this.state.name}
                 onChange={this.onChange}
               />
             </div>
@@ -191,17 +191,17 @@ export default class EditProduct extends Component {
               />
             </div>
 
-            {/* Img Upload */}
+            {/* images Upload */}
             <div className="form-group">
-              <label>Img Upload: </label>
+              <label>images Upload: </label>
               <span className="form-inline">
                 <input
-                  id="img"
+                  id="images"
                   type="upload"
                   placeholder="Upload Image"
                   className="form-control mr-md-6"
                   aria-label="Upload Upload"
-                  value={this.state.img}
+                  value={this.state.images}
                   onChange={this.onChange}
                 />
                 <button className="btn btn-secondary mt-sm-0" type="upload">

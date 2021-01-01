@@ -11,12 +11,12 @@ export default class AddProduct extends Component {
     this.state = {
       department: 'Bike',
       category: '',
-      productName: '',
+      name: '',
       brand: '',
       description: '',
       msrp: 0,
       price: 0,
-      img: "NA",
+      images: "NA",
       brands: [], //Crucial for mapping dropdowns
     }
   }
@@ -49,12 +49,12 @@ export default class AddProduct extends Component {
     const product = {
       department: this.state.department,
       category: this.state.category,
-      productName: this.state.productName,
+      name: this.state.name,
       brand: this.state.brand,
       description: this.state.description,
       msrp: this.state.msrp,
       price: this.state.price,
-      img: this.state.img,
+      images: this.state.images,
     }
     console.log(product);
 
@@ -102,11 +102,11 @@ export default class AddProduct extends Component {
             <div className="form-group">
               <label>Product Name: </label>
               <input
-                id="productName"
+                id="name"
                 type="text"
                 required
                 className="form-control"
-                value={this.state.productName}
+                value={this.state.name}
                 onChange={this.onChange}
               />
             </div>
@@ -172,17 +172,17 @@ export default class AddProduct extends Component {
               />
             </div>
 
-            {/* Img Upload */}
+            {/* images Upload */}
             <div className="form-group">
-              <label>Img Upload: </label>
+              <label>images Upload: </label>
               <span className="form-inline">
                 <input
-                  id="img"
+                  id="images"
                   type="upload"
                   placeholder="Upload Image"
                   className="form-control mr-md-6"
                   aria-label="Upload Upload"
-                  value={this.state.img}
+                  value={this.state.images}
                   onChange={this.onChange}
                 />
                 <button className="btn btn-secondary mt-sm-0" type="upload">

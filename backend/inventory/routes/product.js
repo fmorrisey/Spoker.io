@@ -13,22 +13,22 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
     const department = req.body.department;
     const category = req.body.category;
-    const productName = req.body.productName;
+    const name = req.body.name;
     const brand = req.body.brand;
     const description = req.body.description;
     const msrp = Number(req.body.msrp);
     const price = Number(req.body.price);
-    const img = req.body.img;
+    const images = req.body.images;
     
     const newProduct = new Product({
         department,
         category,
-        productName,
+        name,
         brand,
         description,
         msrp,
         price,
-        img,
+        images,
     });
 
     newProduct.save()
@@ -56,15 +56,15 @@ router.route('/update/:id').post((req, res) => {
            .then(product => {
             product.department = req.body.department;
             product.category = req.body.category;
-            product.productName = req.body.productName;
+            product.name = req.body.name;
             product.brand = req.body.brand;
             product.description = req.body.description;
             product.msrp = Number(req.body.msrp);
             product.price = Number(req.body.price);
-            product.img = req.body.img;
+            product.images = req.body.images;
 
             product.save()
-            .then(() => res.json(product.productName + ' Updated!'))
+            .then(() => res.json(product.name + ' Updated!'))
             .catch(err => res.status(400).json('Error: ' + err));
            })
 

@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const productSchema = new Schema({
     department:{type: String, required: true, default: "Bike"},                                         // Bike, Accessory, Component, etc
     category: {type: String, required: true},                                              // Road, Endurance, Kids, Tandem, etc
-    productName: {  // Example Domane AlR3
+    name: {  // Example Domane AlR3
         type: String,
         required: true,
         trim: true,
@@ -18,7 +18,7 @@ const productSchema = new Schema({
     price: { type: Number, required: [true, 'Retail price required'] },           // retail price ex $2799
     //size: { type: Number, required: true},
     //color: { type: String, required: true},
-    img:
+    images:
     {
         data: Buffer,
         contentType: String

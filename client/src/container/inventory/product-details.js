@@ -10,14 +10,14 @@ export default class DetailsProduct extends Component {
 
     this.state = {
       _id: '',
-      productName: '',
+      name: '',
       brand: '',
       department: '',
       category: '',
       description: '',
       msrp: 0,
       price: 0,
-      img: "NA",
+      images: "NA",
       Brands: [], //Crucial for mapping dropdowns
     }
   }
@@ -37,12 +37,12 @@ export default class DetailsProduct extends Component {
           _id: response.data._id,
           department: response.data.department,
           category: response.data.category,
-          productName: response.data.productName,
+          name: response.data.name,
           brand: response.data.brand,
           description: response.data.description,
           msrp: response.data.msrp,
           price: response.data.price,
-          img: response.data.img,
+          images: response.data.images,
         })
       })
       .catch((error) => {
@@ -72,7 +72,7 @@ export default class DetailsProduct extends Component {
             {/* PRODUCT NAME */}
             <div className="form-group">
               <div><u>Product Name: </u></div>
-              <div>{this.state.productName}</div>
+              <div>{this.state.name}</div>
             </div>
             {/* Brand */}
             <div className="form-group">
@@ -98,9 +98,9 @@ export default class DetailsProduct extends Component {
               <div>${this.state.price}</div>
             </div>
 
-            {/* Img Upload */}
+            {/* images Upload */}
             <div className="form-group">
-              <label>Img: </label>
+              <label>images: </label>
              
             </div>
             {/* SUBMIT */}

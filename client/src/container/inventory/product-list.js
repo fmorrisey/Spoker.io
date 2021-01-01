@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const Product = props => (
   <tr>
-    <td><Link to={"/details/"+props.product._id}>{props.product.productName}</Link></td>
+    <td><Link to={"/details/"+props.product._id}>{props.product.name}</Link></td>
     <td>{props.product.brand}</td>
     <td>{props.product.department}</td>
     <td>{props.product.category}</td>
