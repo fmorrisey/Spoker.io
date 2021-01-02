@@ -1,28 +1,17 @@
 import React, { Component } from 'react';
-import Link from 'react-router-dom';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { getStoreItems } from '../../actions/shopActions';
 
-class Shop extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            products: []
-        }
+class Shop extends Component {  
+
+    componentDidMount() {
+        this.props.getStoreItems(); //Retrieve data
     }
 
-    componentWillMount() {
-        axios.get('http://localhost:5000/products/')
-          .then(response => {
-            this.setState({ products: response.data })
-          })
-          .catch((error) => {
-            console.log(error);
-          })
-      }
-
     render() {
-        const shopItems = this.state.products.map(product => (
+        const shopItems = this.props.products.map(product => (
             <div className="row">
                 <div key={product.id}>
                     <h3>{product.name}</h3>
@@ -40,4 +29,13 @@ class Shop extends Component {
     }
 }
 
-export default Shop;
+Shop.propTypes = {
+    getStoreItems: PropTypes.func.isRequired,
+    products: PropTypes.array.isRequired
+};
+
+const mapStateToProps = state => ({
+    products: state.shopItems.items
+});
+
+export default connect( mapStateToProps, { getStoreItems })(Shop);
