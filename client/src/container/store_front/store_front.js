@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-import store from 'store';
+import Shop from "./shop";
 
 
-export class store extends Component {
+export class Store extends Component {
     render() {
         return (
             <div>
-            <Store/>
+            <Shop/>
             </div>
         )
     }
 }
 
-export default store
+export default Store

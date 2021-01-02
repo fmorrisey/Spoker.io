@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Link from 'react-router-dom';
 import axios from 'axios';
 
-export class shop extends Component {
+class Shop extends Component {
 
     constructor(props) {
         super(props);
@@ -23,18 +23,21 @@ export class shop extends Component {
 
     render() {
         const shopItems = this.state.products.map(product => (
-            <div key={product.id}>
-                <h3>{product.name}</h3>
-                <p>{product.category}</p>
+            <div className="row">
+                <div key={product.id}>
+                    <h3>{product.name}</h3>
+                    <p>{product.category}</p>
+                    <p>${product.price}.00</p>
+                </div>
             </div>
         ));
 
         return (
-            <div>
+            <div className="container">
                 {shopItems}
             </div>
         )
     }
 }
 
-export default shop
+export default Shop;

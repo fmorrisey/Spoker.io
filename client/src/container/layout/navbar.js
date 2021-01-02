@@ -65,13 +65,7 @@ class Navbar extends Component {
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <div class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                Store
-                            </div>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <Link to="/shop" className="nav-link">Shop</Link>
-                            </div>
+                            <Link to="/store" className="nav-link">Store</Link>
                         </li>
                         <li class="nav-item dropdown">
                             <div class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
