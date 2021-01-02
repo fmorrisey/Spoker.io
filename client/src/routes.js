@@ -22,6 +22,9 @@ import Register from "./container/auth/register";
 import Login from "./container/auth/login";
 
 //=============Inventory=============
+import Shop from "./container/store_front/shop";
+
+//=============Inventory=============
 import AddProduct from "./container/inventory/product-add";
 import EditProduct from "./container/inventory/product-edit";
 import DetailsProduct from "./container/inventory/product-details";
@@ -58,6 +61,9 @@ class Routes extends Component {
           {/* <Landing /> */}
           <Navbar />
           <div className="App">
+            {/* Store */}
+            <Route path="/shop" component={Shop} />
+
             {/* AUTH */}
             <Route path="/home" component={Landing} />
             <Route path="/login" component={Login} />

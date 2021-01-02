@@ -67,6 +67,15 @@ class Navbar extends Component {
                         <li class="nav-item dropdown">
                             <div class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
+                                Store
+                            </div>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <Link to="/shop" className="nav-link">Shop</Link>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <div class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
                                 Login
                             </div>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -75,6 +84,7 @@ class Navbar extends Component {
                                 <Link to="/register" className="nav-link">Register</Link>
                             </div>
                         </li>
+                       
                     </ul>
                 </div>
                 
