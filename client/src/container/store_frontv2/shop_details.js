@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getStoreItems } from '../../actions/shopActions';
+import { getStoreItems, getItemById} from '../../actions/shopActions';
 import { Link } from 'react-router-dom';
 
 
-class Shop extends Component {  
+class DetailsProduct extends Component {
 
     componentDidMount() {
-        this.props.getStoreItems(); //Retrieve data
+        this.props.getItemById()
     }
 
     render() {
@@ -30,13 +30,19 @@ class Shop extends Component {
     }
 }
 
-Shop.propTypes = {
-    getStoreItems: PropTypes.func.isRequired,
+DetailsProduct.propTypes = {
+    getItemById: PropTypes.func.isRequired,
     products: PropTypes.array.isRequired
 };
 
-const mapStateToProps = state => ({
-    products: state.shopItems.items
-});
+const mapStateToProps = (state, props) =>  {
 
-export default connect( mapStateToProps, { getStoreItems })(Shop);
+    const product = state.shopItems.products.find(product => product.id === props.match.params.id);
+
+    return {
+        product
+    }
+};
+
+
+export default connect( mapStateToProps, { getItemById })(DetailsProduct);

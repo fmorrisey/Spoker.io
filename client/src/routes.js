@@ -23,6 +23,7 @@ import Login from "./container/auth/login";
 
 //=============STORE FRONT=============
 import StoreFront from "./container/store_front/store_front";
+import ShopDetails from "./container/store_front/shop_details";
 
 //=============Inventory=============
 import AddProduct from "./container/inventory/product-add";
@@ -63,7 +64,8 @@ class Routes extends Component {
           <div className="App">
             {/* Store */}
             <Route path="/store" component={StoreFront} />
-
+            <Route path="/shopdetails/:id" component={ShopDetails} />
+            
             {/* AUTH */}
             <Route path="/home" component={Landing} />
             <Route path="/login" component={Login} />
