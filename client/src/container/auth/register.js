@@ -19,6 +19,7 @@ class Register extends Component {
       email: "",
       password: "",
       password2: "",
+      role: '',
       errors: {},
     };
   }
@@ -52,6 +53,7 @@ class Register extends Component {
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2,
+      role: this.state.role,
     };
 
     console.log(newUser);
@@ -150,7 +152,7 @@ class Register extends Component {
               </div>
               <div className="form-group">
                 <span className="red-text">{errors.password2}</span>
-                <label htmlFor="password">Confirm Password: </label>
+                <label htmlFor="password2">Confirm Password: </label>
                 <input
                   onChange={this.onChange}
                   value={this.state.password2}
@@ -159,6 +161,20 @@ class Register extends Component {
                   type="password"
                   className={classnames("", {
                     invalid: errors.password2,
+                  })}
+                />
+              </div>
+              <div className="form-group">
+                <span className="red-text">{errors.role}</span>
+                <label htmlFor="role">Confirm Role: </label>
+                <input
+                  onChange={this.onChange}
+                  value={this.state.role}
+                  error={errors.role}
+                  id="role"
+                  type="text"
+                  className={classnames("", {
+                    invalid: errors.role,
                   })}
                 />
               </div>
