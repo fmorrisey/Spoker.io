@@ -1,42 +1,61 @@
+
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { getStoreItems } from '../../actions/shopActions';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Item from "../../components/item";
 
+export default class ProductList extends Component {
+  constructor(props) {
+    super(props);
 
-class Shop extends Component {  
+    this.state = {
+      products: [],
+      search: ''};
+  }
 
-    componentDidMount() {
-        this.props.getStoreItems(); //Retrieve data
-    }
+  componentDidMount() {
+    axios.get('http://localhost:5000/products/')
+      .then(response => {
+        this.setState({ products: response.data })
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+  
+  updateSearch(e) {
+    this.setState({search: e.target.value.substr(0,20)})
+  }
 
-    render() {
-        const shopItems = this.props.products.map(product => (
-            <div className="row">
-                <div key={product.id}>
-                    <h3><Link to={`/shopdetails/${product._id}`}>{product.name}</Link></h3>
-                    <p>{product.category}</p>
-                    <p>${product.price}.00</p>
-                </div>
-            </div>
-        ));
-
-        return (
-            <div className="container">
-                {shopItems}
-            </div>
-        )
-    }
+  render() {
+    let isEmptyInventory = this.state.products.length === 0;
+    
+    let filteredProducts = this.state.products.filter(
+      (product) => {
+        return product.name.toLowerCase().indexOf(
+          this.state.search.toLowerCase()) !== -1;
+      }            
+      )
+    
+    return (
+      <div className="container">
+        <div>
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+          defaultValue={this.state.search}
+          onChange={this.updateSearch.bind(this)} 
+        />
+        </div>
+        <div className="col-md-12">
+        <h3>Shop Inventory</h3>
+        <div className="">
+        <div className="container">
+        { filteredProducts.map((currentproduct) => {
+            return <Item product={currentproduct} key={currentproduct._id}/>
+               }) }
+        </div>
+        </div>
+        </div>
+      </div>
+    );
+  }
 }
-
-Shop.propTypes = {
-    getStoreItems: PropTypes.func.isRequired,
-    products: PropTypes.array.isRequired
-};
-
-const mapStateToProps = state => ({
-    products: state.shopItems.items
-});
-
-export default connect( mapStateToProps, { getStoreItems })(Shop);
