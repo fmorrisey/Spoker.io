@@ -17,7 +17,7 @@ export default class DetailsProduct extends Component {
       description: '',
       msrp: 0,
       price: 0,
-      images: "NA",
+      images: '',
     }
   }
 
@@ -100,6 +100,7 @@ export default class DetailsProduct extends Component {
             {/* images Upload */}
             <div className="form-group">
               <label>Images: </label>
+              <div><img src={this.state.images}></img></div>
              
             </div>
             {/* SUBMIT */}

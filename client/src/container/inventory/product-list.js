@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Product from "../../components/product";
 
+import jwt_decode from "jwt-decode";
+import setAuthToken from "../../utils/setAuthToken";
+
 export default class ProductList extends Component {
   constructor(props) {
     super(props);
@@ -29,7 +32,10 @@ export default class ProductList extends Component {
 
   render() {
     let isEmptyInventory = this.state.products.length === 0;
-    
+    const token = localStorage.jwtToken;
+    setAuthToken(token);
+    // Decode token and get user info and exp
+    const decoded = jwt_decode(token);
     let filteredProducts = this.state.products.filter(
       (product) => {
         return product.name.toLowerCase().indexOf(
@@ -45,6 +51,7 @@ export default class ProductList extends Component {
           onChange={this.updateSearch.bind(this)} 
         />
         </div>
+        <p>{token}</p>
         <div className="col-md-12">
         <h3>Shop Inventory</h3>
         <table className="table">

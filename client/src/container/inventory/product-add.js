@@ -210,7 +210,7 @@ export default class AddProduct extends Component {
                   value={this.state.images}
                   onChange={this.onChange}
                 />
-                <button className="btn btn-secondary mt-sm-0" type="upload">
+                <button className="btn btn-secondary mt-sm-0" type="text">
                   ...
                 </button>
               </span>
