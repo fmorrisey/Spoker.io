@@ -23,7 +23,7 @@ class Navbar extends Component {
                     <Link to="/home" className="navbar-brand order-1">Spoker.io</Link>
                 </div>
 
-                <div className="search">
+                {/* <div className="search">
                     <ul className="navbar-nav mx-auto ">
                         <li className="navbar-item">
                             <form className="d-flex form-inline">
@@ -32,7 +32,7 @@ class Navbar extends Component {
                             </form>
                         </li>
                     </ul>
-                </div>
+                </div> */}
 
                 <div>
                     <span><button className="navbar-toggler" type="button" data-toggle="collapse"

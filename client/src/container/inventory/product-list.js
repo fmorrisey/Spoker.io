@@ -2,26 +2,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Product from "../../components/product";
 
-const Product = props => (
-  <tr>
-    <td><Link to={"/details/"+props.product._id}>{props.product.name}</Link></td>
-    <td>{props.product.brand}</td>
-    <td>{props.product.department}</td>
-    <td>{props.product.category}</td>
-    <td>${props.product.msrp} / ${props.product.price}</td>
-    {/* <td>
-      <Link to={"/edit/"+props.product._id}>edit</Link> | <a href="#" onClick={() => { props.deleteProduct(props.product._id) }}>delete</a>
-    </td> */}
-  </tr>
-)
 export default class ProductList extends Component {
   constructor(props) {
     super(props);
 
-    this.deleteProduct = this.deleteProduct.bind(this)
-
-    this.state = {products: []};
+    this.state = {
+      products: [],
+      search: ''};
   }
 
   componentDidMount() {
@@ -33,26 +22,29 @@ export default class ProductList extends Component {
         console.log(error);
       })
   }
-
-  deleteProduct(id) {
-    axios.delete('http://localhost:5000/products/'+id)
-      .then(response => { console.log(response.data)});
-
-    this.setState({
-      products: this.state.products.filter(el => el._id !== id)
-    })
-  }
-
-  productList() {
-    return this.state.products.map(currentproduct => {
-      return <Product product={currentproduct} deleteProduct={this.deleteProduct} key={currentproduct._id}/>;
-    })
+  
+  updateSearch(e) {
+    this.setState({search: e.target.value.substr(0,20)})
   }
 
   render() {
-    const isEmptyInventory = this.state.products.length === 0;
+    let isEmptyInventory = this.state.products.length === 0;
+    
+    let filteredProducts = this.state.products.filter(
+      (product) => {
+        return product.name.toLowerCase().indexOf(
+          this.state.search.toLowerCase()) !== -1;
+      }            
+      )
+    
     return (
       <div className="container">
+        <div>
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+          defaultValue={this.state.search}
+          onChange={this.updateSearch.bind(this)} 
+        />
+        </div>
         <div className="col-md-12">
         <h3>Shop Inventory</h3>
         <table className="table">
@@ -66,7 +58,9 @@ export default class ProductList extends Component {
             </tr>
           </thead>
           <tbody>
-            { this.productList() }
+            { filteredProducts.map((currentproduct) => {
+            return <Product product={currentproduct} key={currentproduct._id}/>
+               }) }
           </tbody>
         </table>
         </div>

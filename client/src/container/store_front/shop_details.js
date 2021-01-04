@@ -8,6 +8,7 @@ export default class DetailsProduct extends Component {
     super(props);
 
     this.backToTop = this.backToTop.bind(this)
+    this.purchase = this.purchase.bind(this)
 
     this.state = {
       _id: "",
@@ -24,6 +25,10 @@ export default class DetailsProduct extends Component {
 
   backToTop() {
     window.location = "/store";
+  }
+
+  purchase() {
+      
   }
 
   componentDidMount() {
@@ -92,18 +97,10 @@ export default class DetailsProduct extends Component {
               <div>{this.state.description}</div>
             </div>
 
-            {/* MSRP COST */}
-            <div className="form-group">
-              <div>
-                <u>MSRP: </u>
-              </div>
-              <div>${this.state.msrp}</div>
-            </div>
-
             {/* Retail Price */}
             <div className="form-group">
               <div>
-                <u>Retails Price: </u>
+                <u>Price: </u>
               </div>
               <div>${this.state.price}</div>
             </div>

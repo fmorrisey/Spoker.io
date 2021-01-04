@@ -15,6 +15,7 @@ import PrivateRoute from "./components/privateroute";
 //=============Layout=============
 import Navbar from "./container/layout/navbar";
 import Landing from "./container/layout/landing";
+//import Search from "./components/search/search";
 //import Dashboard from "./container/layout/dashboard";
 
 //=============AUTH================
@@ -61,6 +62,8 @@ class Routes extends Component {
         <BrowserRouter>
           {/* <Landing /> */}
           <Navbar />
+          
+          
           <div className="App">
             {/* Store */}
             <Route path="/store" component={StoreFront} />

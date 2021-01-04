@@ -55,7 +55,7 @@ export default class DetailsProduct extends Component {
         <div className="container">
         <div className="col-md-12">
           <h3>Product Details</h3>
-          <form onSubmit={e => e.preventDefault()}>
+          
             {/* Type of Product */}
             <div className="form-group">
               <div><u>Department: </u></div>
@@ -113,7 +113,7 @@ export default class DetailsProduct extends Component {
                 Delete Product
               </button>
             </div>
-          </form>
+          
         </div>
       </div>
       </div>
