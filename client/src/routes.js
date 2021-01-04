@@ -5,8 +5,6 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-
 //========= REDUX =============
 import { Provider } from "react-redux";
 import store from "./store";
@@ -23,7 +21,7 @@ import Register from "./container/auth/register";
 import Login from "./container/auth/login";
 
 //=============STORE FRONT=============
-import StoreFront from "./container/store_front/store_front";
+import StoreFront from "./container/store_front/shop";
 import ShopDetails from "./container/store_front/shop_details";
 
 //=============Inventory=============

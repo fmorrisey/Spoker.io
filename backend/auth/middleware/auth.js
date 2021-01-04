@@ -10,8 +10,6 @@ function auth(req, res, next) {
 
         let secret = process.env.JWT_PRIVATE_SECRET;
         const decoded = jwt.verify(token, secret);
-        //decode it
-
         req.user = decoded;
         console.log(req.user);
         return next();

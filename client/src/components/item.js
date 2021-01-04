@@ -15,7 +15,7 @@ export default class Item extends Component {
           <p>${this.props.product.price}.00</p>
           </div>
           <div className="col-md-3">
-            
+            <img src={this.props.product.images} className=""></img>
           </div>
          </div>
         </div>

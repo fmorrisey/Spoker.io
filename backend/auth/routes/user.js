@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const keys = process.env.SecretOrKey
+const keys = process.env.JWT_PRIVATE_SECRET
 
 // Load input validation
 const validateRegisterInput = require("../validation/register");
@@ -74,6 +74,8 @@ router.post("/login", (req, res) => {
             id: user.id,
             first_name: user.first_name,
             last_name: user.last_name,
+            email: user.email,
+            username: user.username
           };
   // Sign token
           jwt.sign(
@@ -85,7 +87,7 @@ router.post("/login", (req, res) => {
             (err, token) => {
               res.json({
                 success: true,
-                token: "Bearer " + token
+                token: token
               });
             }
           );
