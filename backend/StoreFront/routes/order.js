@@ -1,15 +1,15 @@
 "use strict";
-const routes = require('express').Router();
-const Order = require('../../inventory/models/order.model').Order;
+const router = require('express').Router();
+const Order = require('../../inventory/models/order.model');
 const { auth } = require('../../auth/middleware/auth');
 
-router.get('/:id', [auth], (req, res) => {
+router.route('/:id').get([auth], (req, res) => {
     Order.findById(req.params.id)
          .then(order => res.json(order))
          .catch(err => res.status(400).json('Error: ' + err))
 });
 
-route.post('/add', [auth], (req, res) => {
+router.post('/add', [auth], (req, res) => {
     const trackingNumber = req.body.trackingNumber;
     const orderStatus = req.body.orderStatus;
     const pickUpStatus = req.body.pickupStatus;
@@ -31,3 +31,5 @@ route.post('/add', [auth], (req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 
 });
+
+module.exports = router;

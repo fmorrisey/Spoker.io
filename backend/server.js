@@ -70,6 +70,7 @@ const productsRouter = require('./inventory/routes/product');
 const brandsRouter = require('./inventory/routes/brand');
 const categoriesRouter = require('./inventory/routes/category');
 const departmentsRouter = require('./inventory/routes/department');
+const ordersRouter = require('./StoreFront/routes/order')
 //... More routers to come
 
 app.use('/products', productsRouter);
