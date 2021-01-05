@@ -79,7 +79,7 @@ class Routes extends Component {
               <Route path="/details/:id" component={DetailsProduct} />
               <Route path="/edit/:id" component={EditProduct} />
               {/* Manager */}
-              <Route path="/sales" component={SalesManager} />
+              <PrivateRoute path="/sales" component={SalesManager} />
               <Route path="/orders" component={OrdersManager} />
             </Switch>
           </div>

@@ -6,6 +6,7 @@ export default class OrdersManager extends Component {
     return (
       <div>
         <p>You are on the orders component!</p>
+        
       </div>
     )
   }
