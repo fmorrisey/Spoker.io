@@ -1,22 +1,22 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { setCurrentUser, logoutUser } from "../../actions/authActions";
+
 class SalesManager extends Component {
+  constructor(props){
+    super(props);
+    this.state = { role: " "};
+  }
   
   componentDidMount() {
-    if (this.props.auth.user.role.toLowerCase() != 'owner') {
-      this.props.history.push("/shop");
-    } else {
-      console.log('YEP')
-    }
-
+   this.setState({role: this.props.auth.user.role.toLowerCase()});
   }
   render() {
     return (
       <div>
         <p>You are on the Sales component!</p>
-
+        <p>{this.state.role}</p>
+        
       </div>
     )
   }

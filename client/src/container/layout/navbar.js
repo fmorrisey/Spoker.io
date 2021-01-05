@@ -3,24 +3,34 @@ import PropTypes from "prop-types";
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions'
+import ProductMenu from '../../components/nav/productMenu';
+import ManagerMenu from '../../components/nav/managerMenu';
 
 class Navbar extends Component {
+
+    constructor(props){
+        super(props);
+        this.state = { role: 'null'};
+      }
+      
+      componentDidMount() {
+        this.setState({role: this.props.auth.user.role});
+      }
 
     onLogoutClick = e => {
         e.preventDefault();
         this.props.logoutUser();
-        window.location = "/home";
+        window.location = "/store";
       };
    
-
     render() {
-        const { user } = this.props.auth;
+        console.log(this.state.role)
 
         return (
             <nav className="navbar navbar-light bg-light navbar-expand-lg">
 
                 <div>
-                    <Link to="/home" className="navbar-brand order-1">Spoker.io</Link>
+                    <Link to="/store" className="navbar-brand order-1">Spoker.io</Link>
                 </div>
 
                 {/* <div className="search">
@@ -43,27 +53,10 @@ class Navbar extends Component {
 
                 <div className="collapse navbar-collapse order-3" id="navbarNavDropdown">
                     <ul className="navbar-nav mr-auto">
-                        <li class="nav-item dropdown">
-                            <div class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                Products
-                            </div>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <Link to="/inventory" className="nav-link">Inventory</Link>
-                                <Link to="/add" className="nav-link">Add</Link>
-
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <div class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                Manager
-                            </div>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <Link to="/orders" className="nav-link">Orders</Link>
-                                <Link to="/sales" className="nav-link">Sales</Link>
-                            </div>
-                        </li>
+                        <ProductMenu userRole={this.state.role} />
+                        <ManagerMenu userRole={this.state.role} />
+                        
+                        
                         <li class="nav-item dropdown">
                             <Link to="/store" className="nav-link">Store</Link>
                         </li>
