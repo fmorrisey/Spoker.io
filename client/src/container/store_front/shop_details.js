@@ -108,7 +108,7 @@ export default class DetailsProduct extends Component {
             {/* images Upload */}
             <div className="form-group">
               <label>Images: </label>
-
+              <div><img src={this.state.images}></img></div>  
 
             <div className="">
                 <button type="button" className="btn btn-primary" onClick={this.backToTop}>Back</button>
