@@ -24,7 +24,11 @@ export default class AddProduct extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/brands/")
+      .get("http://localhost:5000/brands/", {
+        headers: {
+          'x-auth-token': localStorage.jwtToken
+        }
+      })
       .then((response) => {
         if (response.data.length > 0) {
           this.setState({
