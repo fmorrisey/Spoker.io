@@ -1,6 +1,7 @@
 "use strict";
 const router = require('express').Router();
 const Order = require('../../inventory/models/order.model').Order;
+const Address = require('../../inventory/models/address.model');
 const { auth } = require('../../auth/middleware/auth');
 const Str = require('@supercharge/strings')
 
@@ -18,33 +19,28 @@ router.route('/:id').get([auth], (req, res) => {
          .catch(err => res.status(400).json('Error: ' + err))
 });
 
+exports.findAddressById = async function (addressId) {
+    Address.findById(addressId).populate('user', '_id')
+           .then(address => {return address})
+};
+
 router.post('/add', [auth], (req, res) => {
     console.log("req: ", req.body)
     const user = req.user.id;
     const trackingNumber = Str.random(15);
-    const orderStatus = Order.getOrderStatusString;
-    const pickUpStatus = req.body.pickupStatus;    
-    const street1 = req.body.street1;
-    const street2 = req.body.street2;
-    const city = req.body.city;
-    const state = req.body.state;
-    const country = req.body.country;
-    const zipCode = req.body.zip;
+    const orderStatus = req.body.orderStatus;
+    const pickUpStatus = req.body.pickUpStatus; 
+    const address = findAddressById(req.user.address);
 
     const newOrder = new Order({
         trackingNumber,
         orderStatus,
         pickUpStatus,        
         user,
-        street1,
-        street2,
-        city,
-        state,
-        country,
-        zipCode,
+        address,
     });
 
-    console.log("newORder: ",newOrder);
+    console.log("New Order: ",newOrder);
     newOrder.save()
     .then(() => res.json('Order added!'))
     .catch(err => res.status(400).json('Error: ' + err));

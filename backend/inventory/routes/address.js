@@ -16,8 +16,8 @@ router.post('/add', [auth], (req, res) => {
     const city = req.body.city;
     const state = req.body.state;
     const country = req.body.country;
-    const zipCode = req.body.zip;
-    const user = req.body.user;
+    const zipCode = req.body.zipCode;
+    const user = req.user.id;
     const orders = req.body.orders;
     
     const newAddress = new Address({
@@ -30,7 +30,7 @@ router.post('/add', [auth], (req, res) => {
         user,
         orders,
     });
-
+    console.log(newAddress);
     newAddress.save()
     .then(() => res.json('Address added!'))
     .catch(err => res.status(400).json('Error: ' + err));

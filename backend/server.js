@@ -70,7 +70,8 @@ const productsRouter = require('./inventory/routes/product');
 const brandsRouter = require('./inventory/routes/brand');
 const categoriesRouter = require('./inventory/routes/category');
 const departmentsRouter = require('./inventory/routes/department');
-const ordersRouter = require('./StoreFront/routes/order')
+const ordersRouter = require('./StoreFront/routes/order');
+const addressRouter = require('./inventory/routes/address');
 //... More routers to come
 
 app.use('/products', productsRouter);
@@ -78,5 +79,6 @@ app.use('/brands', brandsRouter);
 app.use('/categories', categoriesRouter);
 app.use('/departments', departmentsRouter);
 app.use('/orders', ordersRouter);
+app.use('/address', addressRouter);
 
 module.exports = app;
