@@ -77,5 +77,6 @@ app.use('/products', productsRouter);
 app.use('/brands', brandsRouter);
 app.use('/categories', categoriesRouter);
 app.use('/departments', departmentsRouter);
+app.use('/orders', ordersRouter);
 
 module.exports = app;

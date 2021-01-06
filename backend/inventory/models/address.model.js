@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const addressSchema = new Schema({
-    address: {type: String},
+    street1: {type: String},
+    street2: {type: String},
     city: {type: String},
+    status: {type: String},
     country: {type: String},
     zipCode: {type: String},
-    firstName: {type: String},
-    lastName: {type: String},
     user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     orders: [{type: mongoose.Schema.Types.ObjectId, ref: 'Order'}],
 });
