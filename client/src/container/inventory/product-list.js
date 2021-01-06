@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Product from "../../components/product";
+import Product from "../../components/store/product";
 
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../../utils/setAuthToken";

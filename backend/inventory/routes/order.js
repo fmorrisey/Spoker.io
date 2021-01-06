@@ -20,10 +20,6 @@ router.route('/:id').get([auth], (req, res) => {
     .catch(err => res.status(400).json('Error: ' + err))
 });
 
-function findAddressById(addressId) {
-    Address.findById(addressId).populate('user', '_id')
-    .then(address => {return address})
-};
 
 //=========CREATE/ADD ORDER============
 router.post('/add', [auth], (req, res) => {
@@ -34,7 +30,7 @@ router.post('/add', [auth], (req, res) => {
     const orderStatus = req.body.orderStatus;
     const pickUpStatus = req.body.pickUpStatus; 
     const address = findAddressById(req.user.address);
-    
+    //Remember to add product check!
     const newOrder = new Order({
         user,
         trackingNumber,
@@ -48,16 +44,8 @@ router.post('/add', [auth], (req, res) => {
     newOrder.save()
     .then(() => res.json('Order added!'))
     .catch(err => res.status(400).json('Error: ' + err));
-
-
 });
 
-//============DELETE======
-router.route('/:id').delete((req, res) => {
-    Order.findByIdAndDelete(req.params.id)
-           .then(() => res.json('Product Deleted'))
-           .catch(err => res.status(400).json('Error: ' + err));
-});
 
 //============UPDATE======
 router.route('/update/:id').post((req, res) => {
@@ -77,5 +65,39 @@ router.route('/update/:id').post((req, res) => {
            })
 
 });
+
+
+//============DELETE======
+router.route('/:id').delete((req, res) => {
+    Order.findByIdAndDelete(req.params.id)
+           .then(() => res.json('Product Deleted'))
+           .catch(err => res.status(400).json('Error: ' + err));
+});
+
+//============Helper Functions=============
+ function findAddressById(addressId) {
+     Address.findById(addressId).populate('user', '_id')
+     .then(address => {return address})
+ };
+/*
+function findAddressById(addressId) {
+    Address.findById(addressId).populate('user', '_id')
+    .then(address => {
+        // if address does not exist, or address exist but it was from a guest user, or exists and belongs to another user
+        if (!address || !address.user || address.user.id !== req.user.id)
+            return res.status(401).json(('You do not own this address'));
+        else {
+            return createOrderWithAddress(res, req.body.cart_items, address, req.user);
+        }
+    }).catch(err => {
+    throw err;
+    });
+    };
+*/
+
+
+
+
+
 
 module.exports = router;

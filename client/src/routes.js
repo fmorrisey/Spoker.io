@@ -8,8 +8,9 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 //========= REDUX =============
 import { Provider } from "react-redux";
 import store from "./store";
-import PrivateRoute from "./components/privateroute";
-import CustomerRoute from "./components/customerRoute";
+import PrivateRoute from "./components/routing/privateroute";
+import CustomerRoute from "./components/routing/customerRoute"; 
+//update customer router for general profile usage!
 
 //=============Layout=============
 import Navbar from "./container/layout/navbar";

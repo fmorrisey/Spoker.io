@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Item from "../../components/item";
+import Item from "../../components/store/item";
 
 export default class ProductList extends Component {
   constructor(props) {
