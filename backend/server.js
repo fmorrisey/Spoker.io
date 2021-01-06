@@ -70,7 +70,7 @@ const productsRouter = require('./inventory/routes/product');
 const brandsRouter = require('./inventory/routes/brand');
 const categoriesRouter = require('./inventory/routes/category');
 const departmentsRouter = require('./inventory/routes/department');
-const ordersRouter = require('./StoreFront/routes/order');
+const ordersRouter = require('./inventory/routes/order');
 const addressRouter = require('./inventory/routes/address');
 //... More routers to come
 

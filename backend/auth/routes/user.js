@@ -14,6 +14,7 @@ const User = require("../models/user.model");
 
 
 //============UPDATE======
+//===========UNTESTED=====
 router.route('/update/:id').post([auth], (req, res) => {
   User.findById(req.params.id)
          .then(user => {
@@ -46,7 +47,8 @@ router.post("/register", (req, res) => {
           username: req.body.username,
           email: req.body.email,
           password: req.body.password,
-          role: req.body.role
+          role: req.body.role,
+          address: null,
         });
   // Hash password before saving in database
         bcrypt.genSalt(10, (err, salt) => {

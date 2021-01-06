@@ -16,6 +16,7 @@ const PICKUP_STATUS = {
 const orderSchema = new mongoose.Schema({
     trackingNumber: {type: String},
     user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+    prodId: [{type: mongoose.Schema.Types.ObjectId, ref: 'Product'}],
     orderStatus: {type: Number, default: ORDER_STATUS.PROCESSED[0]},
     pickUpStatus: {type: Number, default: PICKUP_STATUS.INSTORE[0]},        
     address: {type: mongoose.Schema.Types.ObjectId, ref: 'Address'},

@@ -1,7 +1,7 @@
 "use strict";
 const router = require('express').Router();
-const Order = require('../../inventory/models/order.model').Order;
-const Address = require('../../inventory/models/address.model');
+const Order = require('../models/order.model').Order;
+const Address = require('../models/address.model');
 const { auth } = require('../../auth/middleware/auth');
 const Str = require('@supercharge/strings')
 
@@ -27,10 +27,11 @@ function findAddressById(addressId) {
 router.post('/add', [auth], (req, res) => {
     console.log("req: ", req.body)
     const user = req.user.id;
+    const prodId = [req.body.prodId];
     const trackingNumber = Str.random(15);
     const orderStatus = req.body.orderStatus;
     const pickUpStatus = req.body.pickUpStatus; 
-    const address = findAddressById(req.body.address);
+    const address = findAddressById(req.user.address);
     
     const newOrder = new Order({
         trackingNumber,
