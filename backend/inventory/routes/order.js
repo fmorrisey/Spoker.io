@@ -30,7 +30,7 @@ router.post('/add', [auth], (req, res) => {
     const orderStatus = req.body.orderStatus;
     const pickUpStatus = req.body.pickUpStatus; 
     const address = findAddressById(req.user.address);
-    //Remember to add product check!
+    //Remeber to add product check!
     const newOrder = new Order({
         user,
         trackingNumber,
