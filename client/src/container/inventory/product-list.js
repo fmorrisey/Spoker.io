@@ -57,7 +57,7 @@ export default class ProductList extends Component {
               <th>Brand</th>
               <th>Dept.</th>
               <th>Category</th>
-              <th>MSRP / Retail</th>
+              <th>MSRP/Retail</th>
             </tr>
           </thead>
           <tbody>

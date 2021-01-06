@@ -4,7 +4,7 @@ let OwnerCode = process.env.OWNER_CODE;
 
 const ManagerMenu = props => {
     let {userRole} = props;
-        if (userRole === 'owner' || 'Owner') {
+        if (userRole === 'Owner') {
             return (
                 
                 <li class="nav-item dropdown">

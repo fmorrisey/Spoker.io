@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 const ProductMenu = props => {
     let {userRole} = props;
-        if (userRole === 'owner' || 'Owner') {
+        if (userRole === 'Owner') {
             return (
                 
                     <li class="nav-item dropdown">
