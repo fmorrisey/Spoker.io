@@ -18,6 +18,24 @@ export const registerUser = (userData, history) => dispatch => {
       })
     );
 };
+
+export const updateProfile = userData => dispatch => {
+    axios
+    .post("http://localhost:5000/address/add/", userData, {
+      headers: {
+        'x-auth-token': localStorage.jwtToken
+      }
+    })
+    .then((response) => {
+      console.log(response.data)
+    })
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
 // Login - get user token
 export const loginUser = userData => dispatch => {
   axios
@@ -41,6 +59,8 @@ export const loginUser = userData => dispatch => {
       })
     );
 };
+
+
 // Set logged in user
 export const setCurrentUser = decoded => {
   return {

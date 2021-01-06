@@ -19,7 +19,7 @@ router.route('/:id').get([auth], (req, res) => {
          .catch(err => res.status(400).json('Error: ' + err))
 });
 
-exports.findAddressById = async function (addressId) {
+function findAddressById(addressId) {
     Address.findById(addressId).populate('user', '_id')
            .then(address => {return address})
 };
@@ -30,8 +30,8 @@ router.post('/add', [auth], (req, res) => {
     const trackingNumber = Str.random(15);
     const orderStatus = req.body.orderStatus;
     const pickUpStatus = req.body.pickUpStatus; 
-    const address = findAddressById(req.user.address);
-
+    const address = findAddressById(req.body.address);
+    
     const newOrder = new Order({
         trackingNumber,
         orderStatus,

@@ -3,6 +3,8 @@ const router = require('express').Router();
 const Address = require('../../inventory/models/address.model');
 const { auth } = require('../../auth/middleware/auth');
 
+const validateAddressInput = require("../../auth/validation/address");
+
 router.route('/').get((req, res) => {
     Address.find()
            .then(address => res.json(address))
@@ -11,6 +13,13 @@ router.route('/').get((req, res) => {
 
 //============CRUDs==============
 router.post('/add', [auth], (req, res) => {
+    
+    const { errors, isValid } = validateAddressInput(req.body);
+    // Check validation
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+    
     const street1 = req.body.street1;
     const street2 = req.body.street2;
     const city = req.body.city;
@@ -30,6 +39,7 @@ router.post('/add', [auth], (req, res) => {
         user,
         orders,
     });
+    
     console.log(newAddress);
     newAddress.save()
     .then(() => res.json('Address added!'))

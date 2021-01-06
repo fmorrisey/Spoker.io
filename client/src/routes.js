@@ -9,6 +9,7 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
 import PrivateRoute from "./components/privateroute";
+import CustomerRoute from "./components/customerRoute";
 
 //=============Layout=============
 import Navbar from "./container/layout/navbar";
@@ -19,6 +20,7 @@ import Landing from "./container/layout/landing";
 //=============AUTH================
 import Register from "./container/auth/register";
 import Login from "./container/auth/login";
+import Profile from "./container/auth/profile";
 
 //=============STORE FRONT=============
 import StoreFront from "./container/store_front/shop";
@@ -72,15 +74,17 @@ class Routes extends Component {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Switch>
+              {/* Profile */}
+              <CustomerRoute path="/profile" component={Profile} />
               {/* Inventory */}
               {/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}
-              <Route path="/inventory" component={ProductList} />
-              <Route path="/add" component={AddProduct} />
-              <Route path="/details/:id" component={DetailsProduct} />
-              <Route path="/edit/:id" component={EditProduct} />
+              <PrivateRoute path="/inventory" component={ProductList} />
+              <PrivateRoute path="/add" component={AddProduct} />
+              <PrivateRoute path="/details/:id" component={DetailsProduct} />
+              <PrivateRoute path="/edit/:id" component={EditProduct} />
               {/* Manager */}
               <PrivateRoute path="/sales" component={SalesManager} />
-              <Route path="/orders" component={OrdersManager} />
+              <PrivateRoute path="/orders" component={OrdersManager} />
             </Switch>
           </div>
         </BrowserRouter>

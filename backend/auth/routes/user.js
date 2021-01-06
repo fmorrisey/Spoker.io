@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { auth } = require('../middleware/auth');
 const keys = process.env.JWT_PRIVATE_SECRET
 
 // Load input validation
@@ -10,6 +11,20 @@ const validateLoginInput = require("../validation/login");
 
 // Load User model
 const User = require("../models/user.model");
+
+
+//============UPDATE======
+router.route('/update/:id').post([auth], (req, res) => {
+  User.findById(req.params.id)
+         .then(user => {
+          
+          user.save()
+          .then(() => res.json(user.first_name + ' Updated!'))
+          .catch(err => res.status(400).json('Error: ' + err));
+         })
+
+});
+
 
 // @route POST api/users/register
 // @desc Register user

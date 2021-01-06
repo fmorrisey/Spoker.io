@@ -11,7 +11,8 @@ module.exports = function validateRegisterInput(data) {
   data.username = !isEmpty(data.username) ? data.username : "";
   password = !isEmpty(data.password) ? data.password : "";
   password2 = !isEmpty(data.password2) ? data.password2 : "";
-  role = !isEmpty(data.role) ? data.role : "";
+  //Check me later
+  data.role = !isEmpty(data.role) ? data.role : "";
 
   //Name Checks
   if (Validator.isEmpty(data.first_name)) {

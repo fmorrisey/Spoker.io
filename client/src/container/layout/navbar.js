@@ -24,6 +24,7 @@ class Navbar extends Component {
       };
    
     render() {
+        const { user } = this.props.auth;
         console.log(this.state.role)
 
         return (
@@ -63,12 +64,14 @@ class Navbar extends Component {
                         <li class="nav-item dropdown">
                             <div class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
+                                {/* Welcome {user.first_name.split(" ")[0]} */}
                                 Login
                             </div>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <Link to="/login" className="nav-link">Login</Link>
                                 <navlink className="nav-link" onClick={this.onLogoutClick} >log out</navlink>
                                 <Link to="/register" className="nav-link">Register</Link>
+                                <Link to="/profile" className="nav-link">Profile</Link>
                             </div>
                         </li>
                        
