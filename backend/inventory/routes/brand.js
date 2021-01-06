@@ -1,13 +1,7 @@
 const router = require('express').Router();
 let Brand = require('../models/brand.model');
-const { auth } = require('../../auth/middleware/auth');
 
-router.get('/', [auth] ,(req, res) => {
-
-
-    console.log('User From Brand', req.user);
-
-    // get user id
+router.route('/').get((req, res) => {
     Brand.find()
            .then(brands => res.json(brands))
            .catch(err => res.status(400).json('Error: ' + err));
