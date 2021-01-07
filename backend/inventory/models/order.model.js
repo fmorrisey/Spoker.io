@@ -17,8 +17,8 @@ const orderSchema = new mongoose.Schema({
     trackingNumber: {type: String},
     user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     prodId: {type: mongoose.Schema.Types.ObjectId, ref: 'Product'},
-    orderStatus: {type: Number, default: ORDER_STATUS.PROCESSED[0]},
-    pickUpStatus: {type: Number, default: PICKUP_STATUS.INSTORE[0]},        
+    orderStatus: {type: String, default: ORDER_STATUS.PROCESSED[0]},
+    pickUpStatus: {type: String, default: PICKUP_STATUS.INSTORE[0]},        
     address: {type: mongoose.Schema.Types.ObjectId, ref: 'Address'},
 }, {timestamps: true});
 
@@ -40,7 +40,8 @@ orderSchema.methods.getPickUpString = function () {
 const Order = mongoose.model('Order', orderSchema);
 module.exports = Order;
 
-
+/*
 module.exports = {
     Order, ORDER_STATUS, PICKUP_STATUS
 }
+*/
