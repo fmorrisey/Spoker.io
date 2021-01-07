@@ -11,6 +11,11 @@ router.route('/').get((req, res) => {
            .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.get('/customer/:id', [auth], (req, res) => {
+    Address.findOne({ user: req.user.id}).then(address => res.json(address))
+           .catch(err => res.status(400).json('Error: ' + err));
+});
+
 //============CRUDs==============
 router.post('/add', [auth], (req, res) => {
     
