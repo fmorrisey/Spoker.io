@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Order from "../../components/store/order";
 import Product from "../../components/store/product";
 
 import jwt_decode from "jwt-decode";
@@ -13,6 +14,7 @@ export default class OrdersManager extends Component {
 
     this.state = {
       orders: [],
+      products: [],
       search: ''};
   }
 
@@ -36,18 +38,20 @@ export default class OrdersManager extends Component {
 
   render() {
     let isEmptyInventory = this.state.orders.length === 0;
-  
+    
     let filteredOrders = this.state.orders.filter(
       (order) => {
-        return order.name.toLowerCase().indexOf(
-          this.state.search.toLowerCase()) !== -1;
+        return order._id.indexOf(
+          this.state.search) !== -1;
       }            
       )
     
+   console.log("State: ", this.state.orders)
     return (
       <div className="container">
         <div>
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+        <input class="form-control mr-sm-2" type="search" 
+          placeholder="Search" aria-label="Search"
           defaultValue={this.state.search}
           onChange={this.updateSearch.bind(this)} 
         />
@@ -66,7 +70,12 @@ export default class OrdersManager extends Component {
           </thead>
           <tbody>
             { filteredOrders.map((currentOrder) => {
-            return <Product product={currentOrder} key={currentOrder._id}/>
+            return <Order order={currentOrder} key={currentOrder._id}
+                          order={currentOrder} key={currentOrder._id}
+/>
+               }) }
+            { this.state.products.map((currentProduct) => {
+            return <Product product={currentProduct} key={currentProduct._id}/>
                }) }
           </tbody>
         </table>
