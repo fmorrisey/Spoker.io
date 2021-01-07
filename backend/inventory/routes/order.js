@@ -21,16 +21,25 @@ router.route('/:id').get([auth], (req, res) => {
 });
 
 
+
 //=========CREATE/ADD ORDER============
 router.post('/add', [auth], (req, res) => {
-    console.log("req: ", req.body)
+    res = createOrderWithAddress(req, res);   
+   
+});
+
+async function createOrderWithAddress(req, res){
+    console.log("req: ", req.body);
+    console.log("user: ", req.user.id);
     const user = req.user.id;
     const prodId = [req.body.prodId];
     const trackingNumber = Str.random(15);
     const orderStatus = req.body.orderStatus;
     const pickUpStatus = req.body.pickUpStatus; 
-    const address = findAddressById(req.user.address);
+    const address = await findAddressById(req);
     //Remeber to add product check!
+    console.log("address return: ", address);
+
     const newOrder = new Order({
         user,
         trackingNumber,
@@ -39,13 +48,13 @@ router.post('/add', [auth], (req, res) => {
         pickUpStatus,        
         address,
     });
-
     console.log("New Order: ",newOrder);
-    newOrder.save()
+    newOrder.save() 
     .then(() => res.json('Order added!'))
     .catch(err => res.status(400).json('Error: ' + err));
-});
+    return await newOrder, res;
 
+}
 
 //============UPDATE======
 router.route('/update/:id').post((req, res) => {
@@ -75,10 +84,14 @@ router.route('/:id').delete((req, res) => {
 });
 
 //============Helper Functions=============
- function findAddressById(addressId) {
-     Address.findById(addressId).populate('user', '_id')
-     .then(address => {return address})
+ async function findAddressById(req) {
+    //console.log("addID: ",req.user.id);
+    let userAddress = await Address.findOne({ user: req.user.id});
+    console.log("address found ",userAddress);
+    return userAddress;
+    
  };
+
 /*
 function findAddressById(addressId) {
     Address.findById(addressId).populate('user', '_id')

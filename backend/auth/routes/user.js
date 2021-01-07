@@ -12,6 +12,12 @@ const validateLoginInput = require("../validation/login");
 // Load User model
 const User = require("../models/user.model");
 
+//=========GET BY ID============
+router.route('/:id').get([auth], (req, res) => {
+  User.findById(req.params.id)
+  .then(user => res.json(user))
+  .catch(err => res.status(400).json('Error: ' + err))
+});
 
 //============UPDATE======
 //===========UNTESTED=====

@@ -11,7 +11,8 @@ function auth(req, res, next) {
         let secret = process.env.JWT_PRIVATE_SECRET;
         const decoded = jwt.verify(token, secret);
         req.user = decoded;
-        console.log(req.user);
+        //console.log(req.user);
+        console.log("USER ACCESED LOGGED");
         return next();
     }catch (err){
         console.log(err);

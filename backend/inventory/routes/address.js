@@ -12,7 +12,7 @@ router.route('/').get((req, res) => {
 });
 
 router.get('/customer/', [auth], (req, res) => {
-    console.log(req.user.id)
+    //console.log(req.user.id)
     Address.findOne({ user: req.user.id}).then(address => res.json(address))
            .catch(err => res.status(400).json('Error: ' + err));
            
