@@ -26,6 +26,8 @@ import Profile from "./container/auth/profile";
 //=============STORE FRONT=============
 import StoreFront from "./container/store_front/shop";
 import ShopDetails from "./container/store_front/shop_details";
+import CheckOut from "./container/store_front/checkout";
+import CustomerOrder from "./container/store_front/order_customer";
 
 //=============Inventory=============
 import AddProduct from "./container/inventory/product-add";
@@ -36,6 +38,7 @@ import ProductList from "./container/inventory/product-list";
 //=============Manager================
 import SalesManager from "./container/manager/sales";
 import OrdersManager from "./container/manager/orders";
+import OrderItem from "./container/manager/orderItem";
 
 //Check for token to keep user logged in
 // Check for token to keep user logged in
@@ -76,7 +79,9 @@ class Routes extends Component {
             <Route path="/register" component={Register} />
             <Switch>
               {/* Profile */}
-              <CustomerRoute path="/profile" component={Profile} />
+              <Route path="/profile" component={Profile} />
+              <Route path="/checkout/:id" component={CheckOut} />
+              <Route path="/customer/order/:id" component={CustomerOrder} />
               {/* Inventory */}
               {/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}
               <PrivateRoute path="/inventory" component={ProductList} />
@@ -85,7 +90,8 @@ class Routes extends Component {
               <PrivateRoute path="/edit/:id" component={EditProduct} />
               {/* Manager */}
               <PrivateRoute path="/sales" component={SalesManager} />
-              <PrivateRoute path="/orders" component={OrdersManager} />
+              <PrivateRoute path="/manager/orders" component={OrdersManager} />
+              <PrivateRoute path="/manager/order/:id" component={OrderItem} />
             </Switch>
           </div>
         </BrowserRouter>

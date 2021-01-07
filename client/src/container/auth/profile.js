@@ -160,7 +160,7 @@ class Profile extends Component {
                 error={errors.country}
                 id="country"
                 type="text"
-                placeholder="USA"
+                value="USA"
                 className={classnames("", {
                   invalid: errors.country || errors.countrynotfound,
                 })}
