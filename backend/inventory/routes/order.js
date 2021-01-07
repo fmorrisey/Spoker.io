@@ -43,7 +43,7 @@ async function createOrderWithAddress(req, res) {
   const orderStatus = "PROCESSED";
   const pickUpStatus = req.body.pickUpStatus;
   const address = await findAddressById(req);
-  //Remeber to add product check!
+  //Remember to add product check!
   //console.log("address return: ", address);
 
   const newOrder = new Order({
