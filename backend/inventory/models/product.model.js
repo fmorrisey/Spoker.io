@@ -16,7 +16,8 @@ const productSchema = new Schema({
     description: {type: String, required: false},                                       // Sales Jargon
     msrp: { type: Number, required: [true, 'MSRP cost required'] },                     // msrp ex $2500
     price: { type: Number, required: [true, 'Retail price required'] },                 // retail price ex $2799
-    images: {type: String, required: false}
+    images: {type: String, required: false},
+    status: {type: String, required: true, default: 'INSTOCK'},
 }, {
     timeStamp: true,
 });

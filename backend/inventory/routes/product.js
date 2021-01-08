@@ -1,10 +1,24 @@
 "use strict";
 const router = require('express').Router();
 let Product = require('../models/product.model');
-let Brand = require('../models/brand.model');
 
-router.route('/').get((req, res) => {
+
+//============GETS/QUERIES==============
+router.route('/get').get((req, res) => {
     Product.find()
+           .then(product => res.json(product))
+           .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/getStock').get((req, res) => {
+    Product.find({status: "INSTOCK" })
+           .then(product => res.json(product))
+           .catch(err => res.status(400).json('Error: ' + err));
+});
+
+
+router.route('/updateStatus/:Id').post((req, res) => {
+    Product.findByIdAndUpdate(req.params.id, {status: "SOLD" })
            .then(product => res.json(product))
            .catch(err => res.status(400).json('Error: ' + err));
 });
@@ -19,6 +33,7 @@ router.route('/add').post((req, res) => {
     const msrp = Number(req.body.msrp);
     const price = Number(req.body.price);
     const images = req.body.images;
+    const status = req.body.status;
     
     const newProduct = new Product({
         department,
@@ -29,6 +44,7 @@ router.route('/add').post((req, res) => {
         msrp,
         price,
         images,
+        status,
     });
 
     newProduct.save()
@@ -62,12 +78,12 @@ router.route('/update/:id').post((req, res) => {
             product.msrp = Number(req.body.msrp);
             product.price = Number(req.body.price);
             product.images = req.body.images;
+            product.status = req.body.status;
 
             product.save()
             .then(() => res.json(product.name + ' Updated!'))
             .catch(err => res.status(400).json('Error: ' + err));
            })
-
 });
 
 module.exports = router;

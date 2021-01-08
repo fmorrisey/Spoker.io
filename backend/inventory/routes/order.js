@@ -2,6 +2,7 @@
 const router = require("express").Router();
 const Order = require("../models/order.model");
 const Address = require("../models/address.model");
+const Product = require("../models/product.model");
 const { auth } = require("../../auth/middleware/auth");
 const Str = require("@supercharge/strings");
 
@@ -37,18 +38,23 @@ async function createOrderWithAddress(req, res) {
   //console.log("req: ", req.body);
   //console.log("user: ", req.user.id);
   const user = req.user.id;
-  const prodId = [req.body.prodId];
+  const prodName = req.body.prodName;
+  const prodId = req.body.prodId;
+  const price = req.body.price;
   const trackingNumber = Str.random(15);
   const orderStatus = "PROCESSED";
   const pickUpStatus = req.body.pickUpStatus;
   const address = await findAddressById(req);
+  await findProductMarkSold(req);
   //Remember to add product check!
   //console.log("address return: ", address);
 
   const newOrder = new Order({
     user,
     trackingNumber,
+    prodName,
     prodId,
+    price,
     orderStatus,
     pickUpStatus,
     address,
@@ -92,7 +98,12 @@ async function findAddressById(req) {
   let userAddress = await Address.findOne({ user: req.user.id });
   console.log("address found ", userAddress);
   return userAddress;
-}
+};
+
+async function findProductMarkSold(req) {
+  await Product.findByIdAndUpdate(req.body.prodId, {status: "SOLD" })
+  
+};
 
 /*
 function findAddressById(addressId) {
