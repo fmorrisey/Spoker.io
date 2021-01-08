@@ -37,6 +37,8 @@ router.post("/add", [auth], (req, res) => {
 async function createOrderWithAddress(req, res) {
   //console.log("req: ", req.body);
   //console.log("user: ", req.user.id);
+  await findProductMarkSold(req);
+  const address = await findAddressById(req);
   const user = req.user.id;
   const prodName = req.body.prodName;
   const prodId = req.body.prodId;
@@ -44,8 +46,6 @@ async function createOrderWithAddress(req, res) {
   const trackingNumber = Str.random(15);
   const orderStatus = "PROCESSED";
   const pickUpStatus = req.body.pickUpStatus;
-  const address = await findAddressById(req);
-  await findProductMarkSold(req);
   //Remember to add product check!
   //console.log("address return: ", address);
 
@@ -101,8 +101,9 @@ async function findAddressById(req) {
 };
 
 async function findProductMarkSold(req) {
-  await Product.findByIdAndUpdate(req.body.prodId, {status: "SOLD" })
-  
+  let soldProduct = await Product.findByIdAndUpdate(req.body.prodId, {status: "SOLD" })
+  console.log("SOLD", soldProduct)
+  return soldProduct;
 };
 
 /*

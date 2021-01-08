@@ -16,13 +16,6 @@ router.route('/getStock').get((req, res) => {
            .catch(err => res.status(400).json('Error: ' + err));
 });
 
-
-router.route('/updateStatus/:Id').post((req, res) => {
-    Product.findByIdAndUpdate(req.params.id, {status: "SOLD" })
-           .then(product => res.json(product))
-           .catch(err => res.status(400).json('Error: ' + err));
-});
-
 //============CRUDs==============
 router.route('/add').post((req, res) => {
     const department = req.body.department;
