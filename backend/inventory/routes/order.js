@@ -14,7 +14,6 @@ router.route("/").get((req, res) => {
 });
 
 //=========GET BY ID============
-//======CURRENTLY BROKEN========
 router.route('/id/:id').get((req, res) => {
     Order.findById(req.params.id)
            .then(order => res.json(order))

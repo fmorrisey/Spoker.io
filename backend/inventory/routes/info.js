@@ -1,16 +1,19 @@
 "use strict";
 const router = require('express').Router();
 let Info = require('../models/info.model');
+const { auth } = require('../../auth/middleware/auth');
 
 
+//============CRUDs==============
 router.route('/').get((req, res) => {
     Info.find()
            .then(info => res.json(info))
            .catch(err => res.status(400).json('Error: ' + err));
 });
 
-//============CRUDs==============
+//============ADD===========
 router.route('/add').post((req, res) => {
+    const name = req.body.name;
     const about = req.body.about;
     const services = req.body.services;
     const phone = req.body.phone;
@@ -23,6 +26,7 @@ router.route('/add').post((req, res) => {
     const zipCode = req.body.zipCode;
     
     const newInfo = new Info({
+        name,
         about,
         services,
         phone,
@@ -47,33 +51,36 @@ router.route('/:id').get((req, res) => {
            .catch(err => res.status(400).json('Error: ' + err));
 });
 
-//============DELETE======
-router.route('/:id').delete((req, res) => {
-    Info.findByIdAndDelete(req.params.id)
-           .then(() => res.json('Info Deleted'))
-           .catch(err => res.status(400).json('Error: ' + err));
-});
-
 //============UPDATE======
-router.route('/update/:id').post((req, res) => {
+router.post('/update/:id', [auth] ,(req, res) => {
     Info.findById(req.params.id)
            .then(info => {
+            info.name = req.body.name;
             info.about = req.body.about;
             info.services = req.body.services;
             info.phone = req.body.phone;
             info.email = req.body.email;
             info.hours = req.body.hours;
-            info.street1 = Number(req.body.street1);
-            info.city = Number(req.body.city);
+            info.street1 = req.body.street1;
+            info.city = req.body.city;
             info.state = req.body.state;
             info.country = req.body.country;
             info.zipCode = req.body.zipCode;
 
             info.save()
-            .then(() => res.json(info.phone + ' Updated!'))
+            .then(() => res.json(info + ' Updated!'))
             .catch(err => res.status(400).json('Error: ' + err));
            })
 
 });
 
 module.exports = router;
+
+/*
+//============DELETE======
+router.route('/:id').delete((req, res) => {
+    Info.findByIdAndDelete(req.params.id)
+           .then(() => res.json('Info Deleted'))
+           .catch(err => res.status(400).json('Error: ' + err));
+});
+*/
