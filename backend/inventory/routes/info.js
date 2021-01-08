@@ -46,6 +46,7 @@ router.route('/add').post((req, res) => {
 
 //============GET BY ID======
 router.route('/:id').get((req, res) => {
+    console.log("Info Request");
     Info.findById(req.params.id)
            .then(info => res.json(info))
            .catch(err => res.status(400).json('Error: ' + err));
@@ -61,11 +62,7 @@ router.post('/update/:id', [auth] ,(req, res) => {
             info.phone = req.body.phone;
             info.email = req.body.email;
             info.hours = req.body.hours;
-            info.street1 = req.body.street1;
-            info.city = req.body.city;
-            info.state = req.body.state;
-            info.country = req.body.country;
-            info.zipCode = req.body.zipCode;
+            
 
             info.save()
             .then(() => res.json(info + ' Updated!'))

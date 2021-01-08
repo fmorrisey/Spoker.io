@@ -57,15 +57,13 @@ export default class OrdersManager extends Component {
         />
         </div>
         <div className="col-md-12">
-        <h3>Shop Inventory</h3>
+        <h3>Orders</h3>
         <table className="table">
           <thead className="thead-light">
             <tr>
-              <th>Name</th>
-              <th>Brand</th>
-              <th>Dept.</th>
-              <th>Category</th>
-              <th>MSRP/Retail</th>
+              <th>Order ID</th>
+              <th>Status</th>
+              <th>Pick Up</th>
             </tr>
           </thead>
           <tbody>

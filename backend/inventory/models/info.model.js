@@ -9,6 +9,12 @@ var validateEmail = function (email) {
 
 
 const infoSchema = new Schema({
+    name: {
+        type: String,
+        required: true, 
+        trim: true, 
+        minlength:[8, "Longer Description Required"]
+    },
     about: {
         type: String,
         required: true, 

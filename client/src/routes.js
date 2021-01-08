@@ -16,7 +16,7 @@ import CustomerRoute from "./components/routing/customerRoute";
 import Navbar from "./container/layout/navbar";
 import Landing from "./container/layout/landing";
 //import Search from "./components/search/search";
-//import Dashboard from "./container/layout/dashboard";
+
 
 //=============AUTH================
 import Register from "./container/auth/register";
@@ -24,7 +24,7 @@ import Login from "./container/auth/login";
 import Profile from "./container/auth/profile";
 
 //=============STORE FRONT=============
-import StoreFront from "./container/store_front/shop";
+import StoreFront from "./container/store_front/store_front";
 import ShopDetails from "./container/store_front/shop_details";
 import CheckOut from "./container/store_front/checkout";
 import CustomerOrder from "./container/store_front/order_customer";
@@ -36,9 +36,13 @@ import DetailsProduct from "./container/inventory/product-details";
 import ProductList from "./container/inventory/product-list";
 
 //=============Manager================
+import Dashboard from "./container/layout/dashboard";
+//import Manager from "./container/manager/manager";
 import SalesManager from "./container/manager/sales";
 import OrdersManager from "./container/manager/orders";
 import OrderItem from "./container/manager/orderItem";
+import InfoView from "./container/manager/infoView";
+import InfoUpdate from "./container/manager/infoUpdate";
 
 //Check for token to keep user logged in
 // Check for token to keep user logged in
@@ -83,15 +87,17 @@ class Routes extends Component {
               <Route path="/checkout/:id" component={CheckOut} />
               <Route path="/customer/order/:id" component={CustomerOrder} />
               {/* Inventory */}
-              {/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}
+              <PrivateRoute path="/dashboard" component={Dashboard} />
               <PrivateRoute path="/inventory" component={ProductList} />
               <PrivateRoute path="/add" component={AddProduct} />
               <PrivateRoute path="/details/:id" component={DetailsProduct} />
               <PrivateRoute path="/edit/:id" component={EditProduct} />
               {/* Manager */}
-              <PrivateRoute path="/sales" component={SalesManager} />
+              <PrivateRoute path="/manager/sales" component={SalesManager} />
               <PrivateRoute path="/manager/orders" component={OrdersManager} />
               <PrivateRoute path="/manager/order/:id" component={OrderItem} />
+              <PrivateRoute path="/manager/info" component={InfoView} />
+              <PrivateRoute path="/manager/update" component={InfoUpdate} />
             </Switch>
           </div>
         </BrowserRouter>
