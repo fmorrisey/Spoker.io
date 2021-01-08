@@ -65,47 +65,44 @@ class CustomerOrder extends Component {
     return (
       <div className="container">
         <div className="col-md-12">
-          <h3>CONFIRMATION!</h3>
+          {/* COMEBACK AND ADD A CONDITIONAL FOR NEW BIKE DAY */}
           <div className="container">
             <div className="row">
               <div className="col-6">
+                <div>
+                  <h3>CONFIRMATION!</h3>
+                  <p>Thank you {user.first_name} for your purchase of:</p>
+                </div>
                 {/* PRODUCT NAME */}
                 <div className="form-group">
-                  <div>{this.state.product.name}</div>
-                  <div>{this.state.product.brand}</div>
-                </div>
-                {/* Retail Price */}
-                <div className="form-group">
-                  <div>${this.state.product.price}</div>
-                </div>
-              </div>
-              <div className="col-6">
-                {/* images Upload */}
-                <div className="form-group">
-                  <div>
-                    <img src={this.state.product.images}></img>
-                  </div>
+                  <div>{this.state.order.prodName}</div>
+                  <div>${this.state.order.price}.00</div>
                 </div>
               </div>
             </div>
-            <div className="form-group">
-              <p>{this.state.first_name}</p>
-              <p>{this.state.last_name}</p>
+            <div>
+              <p>Order ID: {this.state.order._id}</p>
+              <p>Product ID: {this.state.order.prodId}</p>
+              <p>Tracking Number: {this.state.order.trackingNumber}</p>
             </div>
             <div>
-              <p>ORDER</p>
-              <p>{this.state.order._id}</p>
-              <p>{this.state.order.prodId}</p>
-            </div>
-            <div>
-              <p>ADDRESS</p>
-              <p>{this.state.address._id}</p>
-              <p>{this.state.address.street1}</p>
-              <p>{this.state.address.street2}</p>
-              <p>{this.state.address.city}</p>
-              <p>{this.state.address.state}</p>
-              <p>{this.state.address.country}</p>
-              <p>{this.state.address.zipCode}</p>
+              <p>
+                <u>ADDRESSS</u>
+                <br />
+                {user.first_name} {user.last_name}
+                <br />
+                {this.state.address.street1}
+                <br />
+                {this.state.address.street2}
+                <br />
+                {this.state.address.city}
+                <br />
+                {this.state.address.state}
+                <br />
+                {this.state.address.country}
+                <br />
+                {this.state.address.zipCode}
+              </p>
             </div>
           </div>
 

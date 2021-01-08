@@ -92,7 +92,7 @@ class CheckOut extends Component {
     console.log(this.state.product);
     //console.log("address", this.state.address._id);
     //console.log("Addid", this.state.addId);
-    console.log("ORderRepo", this.state.orderRepo._id);
+    console.log("OrderRepo", this.state.orderRepo._id);
     const { user } = this.props.auth;
 
     return (

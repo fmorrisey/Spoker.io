@@ -10,6 +10,7 @@ export default class Product extends Component {
     <td>{this.props.product.department}</td>
     <td>{this.props.product.category}</td>
     <td>${this.props.product.msrp}/${this.props.product.price}</td>
+    <td>{this.props.product.status}</td>
   </tr>
     )
   }
