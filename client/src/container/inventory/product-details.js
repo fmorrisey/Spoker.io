@@ -18,6 +18,7 @@ export default class DetailsProduct extends Component {
       msrp: 0,
       price: 0,
       images: '',
+      status: '',
     }
   }
 
@@ -42,6 +43,7 @@ export default class DetailsProduct extends Component {
           msrp: response.data.msrp,
           price: response.data.price,
           images: response.data.images,
+          status: response.data.status,
         })
       })
       .catch((error) => {
@@ -66,6 +68,12 @@ export default class DetailsProduct extends Component {
             <div className="form-group">
               <div><u>Category:</u></div>
               <div>{this.state.category}</div>
+            </div>
+
+            {/* Status */}
+            <div className="form-group">
+              <div><u>Status:</u></div>
+              <div>{this.state.status}</div>
             </div>
 
             {/* PRODUCT NAME */}

@@ -15,6 +15,7 @@ export default class EditProduct extends Component {
       name: '',
       brand: '',
       description: '',
+      status: '',
       msrp: 0,
       price: 0,
       images: "NA",
@@ -35,6 +36,7 @@ export default class EditProduct extends Component {
           description: response.data.description,
           msrp: response.data.msrp,
           price: response.data.price,
+          status: response.data.status,
           images: response.data.images,
         })
       })
@@ -83,6 +85,7 @@ export default class EditProduct extends Component {
       name: this.state.name,
       brand: this.state.brand,
       department: this.state.department,
+      status: this.state.status,
       category: this.state.category,
       description: this.state.description,
       msrp: this.state.msrp,
@@ -135,6 +138,19 @@ export default class EditProduct extends Component {
                 required
                 className="form-control"
                 value={this.state.category}
+                onChange={this.onChange}
+              />
+            </div>
+
+            {/* category */}
+            <div className="form-group">
+              <label>Status: </label>
+              <input
+                id="status"
+                type="text"
+                required
+                className="form-control"
+                value={this.state.status}
                 onChange={this.onChange}
               />
             </div>

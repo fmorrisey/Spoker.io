@@ -15,7 +15,7 @@ export default class ShopList extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/products/")
+      .get("http://localhost:5000/products/getStock")
       .then((response) => {
         this.setState({ products: response.data });
       })

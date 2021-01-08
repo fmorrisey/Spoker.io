@@ -56,6 +56,8 @@ class CheckOut extends Component {
 
     const order = {
       prodId: this.state.product._id,
+      prodName: this.state.product.name,
+      price: this.state.product.price,
       pickUpStatus: this.state.pickUpStatus,
     };
 
@@ -87,7 +89,7 @@ class CheckOut extends Component {
 
   render() {
     //console.log(this.props.auth.user.id);
-    //console.log(this.state.product);
+    console.log(this.state.product);
     //console.log("address", this.state.address._id);
     //console.log("Addid", this.state.addId);
     console.log("ORderRepo", this.state.orderRepo._id);
