@@ -16,6 +16,7 @@ const PICKUP_STATUS = {
 const orderSchema = new mongoose.Schema({
     trackingNumber: {type: String},
     user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+    customerName: {type: String, required: true},
     prodName: {type: String, required: true},
     prodId: {type: mongoose.Schema.Types.ObjectId, ref: 'Product'},
     price: {type: String, required: true},

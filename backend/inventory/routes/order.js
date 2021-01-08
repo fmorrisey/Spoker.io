@@ -14,6 +14,12 @@ router.route("/").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+router.route('/getSold').get((req, res) => {
+  Product.find({status: "SOLD" })
+         .then(product => res.json(product))
+         .catch(err => res.status(400).json('Error: ' + err));
+});
+
 //=========GET BY ID============
 router.route('/id/:id').get((req, res) => {
     Order.findById(req.params.id)
@@ -40,6 +46,7 @@ async function createOrderWithAddress(req, res) {
   await findProductMarkSold(req);
   const address = await findAddressById(req);
   const user = req.user.id;
+  const customerName = req.user.last_name;
   const prodName = req.body.prodName;
   const prodId = req.body.prodId;
   const price = req.body.price;
@@ -51,6 +58,7 @@ async function createOrderWithAddress(req, res) {
 
   const newOrder = new Order({
     user,
+    customerName,
     trackingNumber,
     prodName,
     prodId,
@@ -67,7 +75,8 @@ async function createOrderWithAddress(req, res) {
   return await res;
 }
 
-//============UPDATE======
+//========================UPDATE========================
+//========STILL NEED TO REFLECT UPDATED ORDER MODELS====
 router.route("/update/:id").post((req, res) => {
   Order.findById(req.params.id).then((order) => {
     if (req.body.prodId != order.prodId) {
