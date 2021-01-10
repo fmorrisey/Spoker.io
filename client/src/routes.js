@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import PrivateRoute from "./components/routing/privateroute";
 import CustomerRoute from "./components/routing/customerRoute"; 
+import UserRoute from "./components/routing/userRoute";
 //update customer router for general profile usage!
 
 //=============Layout=============
@@ -27,7 +28,7 @@ import Profile from "./container/auth/profile";
 import StoreFront from "./container/store_front/store_front";
 import ShopDetails from "./container/store_front/shop_details";
 import CheckOut from "./container/store_front/checkout";
-import CustomerOrder from "./container/store_front/order_customer";
+import CustomerOrder from "./container/store_front/order_confirm";
 
 //=============Inventory=============
 import AddProduct from "./container/inventory/product-add";
@@ -83,9 +84,9 @@ class Routes extends Component {
             <Route path="/register" component={Register} />
             <Switch>
               {/* Profile */}
-              <Route path="/profile" component={Profile} />
-              <Route path="/checkout/:id" component={CheckOut} />
-              <Route path="/customer/order/:id" component={CustomerOrder} />
+              <UserRoute path="/profile" component={Profile} />
+              <CustomerRoute path="/checkout/:id" component={CheckOut} />
+              <CustomerRoute path="/customer/order/:id" component={CustomerOrder} />
               {/* Inventory */}
               <PrivateRoute path="/dashboard" component={Dashboard} />
               <PrivateRoute path="/inventory" component={ProductList} />
