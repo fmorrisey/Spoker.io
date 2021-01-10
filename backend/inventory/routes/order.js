@@ -34,8 +34,32 @@ router.route("/getSales").get((req, res) => {
       }
 
       var profit = retailSales - msrpCost;
+      var percentage = profit / msrpCost * 100;
 
-      var salesData = [{retailSales , msrpCost, profit}]
+      var salesData = [{retailSales , msrpCost, profit, percentage}]
+      res.json(salesData);
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+//==================PROFIT MARGINS====================
+router.route("/margins").get((req, res) => {
+  Product.find({status: -"SOLD"})
+    .then((products) => {
+      var retailSales = 0;
+      for (let index = 0; index < products.length; index++) {
+        retailSales += products[index].price;
+      }
+
+      var msrpCost = 0;
+      for (let index = 0; index < products.length; index++) {
+        msrpCost += products[index].msrp;
+      }
+
+      var profit = retailSales - msrpCost;
+      var percentage = profit / msrpCost * 100;
+
+      var salesData = [{retailSales , msrpCost, profit, percentage}]
       res.json(salesData);
     })
     .catch((err) => res.status(400).json("Error: " + err));
