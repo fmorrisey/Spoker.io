@@ -37,9 +37,8 @@ export default class ProductList extends Component {
       (product) => {
         return product.name.toLowerCase().indexOf(
           this.state.search.toLowerCase()) !== -1;
-      }            
-      )
-    
+      })
+      
     return (
       <div className="container">
         <div>

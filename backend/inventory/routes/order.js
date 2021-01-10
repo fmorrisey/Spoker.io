@@ -14,17 +14,44 @@ router.route("/").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route('/getSold').get((req, res) => {
-  Product.find({status: "SOLD" })
-         .then(product => res.json(product))
-         .catch(err => res.status(400).json('Error: ' + err));
+router.route("/getSold").get((req, res) => {
+  Product.find({ status: "SOLD" })
+    .then((product) => res.json(product))
+    .catch((err) => res.status(400).json("Error: " + err));
 });
 
+router.route("/getSales").get((req, res) => {
+  Product.find({ status: "SOLD" })
+    .then((products) => {
+      var retailSales = 0;
+      for (let index = 0; index < products.length; index++) {
+        retailSales += products[index].price;
+      }
+
+      var msrpCost = 0;
+      for (let index = 0; index < products.length; index++) {
+        msrpCost += products[index].msrp;
+      }
+
+      var profit = retailSales - msrpCost;
+
+      var salesData = [{retailSales , msrpCost, profit}]
+      res.json(salesData);
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+async function getSalesData(req, res) {
+  let salesData = Product.find({ status: "SOLD" });
+
+  return salesData;
+}
+
 //=========GET BY ID============
-router.route('/id/:id').get((req, res) => {
-    Order.findById(req.params.id)
-           .then(order => res.json(order))
-           .catch(err => res.status(400).json('Error: ' + err));
+router.route("/id/:id").get((req, res) => {
+  Order.findById(req.params.id)
+    .then((order) => res.json(order))
+    .catch((err) => res.status(400).json("Error: " + err));
 });
 
 //=========FIND CUSTOMER'S ORDERS============
@@ -107,13 +134,15 @@ async function findAddressById(req) {
   let userAddress = await Address.findOne({ user: req.user.id });
   console.log("address found ", userAddress);
   return userAddress;
-};
+}
 
 async function findProductMarkSold(req) {
-  let soldProduct = await Product.findByIdAndUpdate(req.body.prodId, {status: "SOLD" })
-  console.log("SOLD", soldProduct)
+  let soldProduct = await Product.findByIdAndUpdate(req.body.prodId, {
+    status: "SOLD",
+  });
+  console.log("SOLD", soldProduct);
   return soldProduct;
-};
+}
 
 /*
 function findAddressById(addressId) {
