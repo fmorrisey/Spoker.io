@@ -32,15 +32,23 @@ router.route("/getSales").get((req, res) => {
       for (let index = 0; index < products.length; index++) {
         msrpCost += products[index].msrp;
       }
-
+      
       var profit = retailSales - msrpCost;
       var percentage = profit / msrpCost * 100;
 
-      var salesData = [{retailSales , msrpCost, profit, percentage}]
+      // https://gist.github.com/djD-REK/068cba3d430cf7abfddfd32a5d7903c3
+      // Prevents rounding errors
+      const roundAccurately = (number, decimalPlaces) => 
+        Number(Math.round(number + "e" + decimalPlaces) + "e-" + decimalPlaces);
+      
+      percentage = roundAccurately(percentage, 2);
+      
+      var salesData = {retailSales, msrpCost, profit, percentage}
       res.json(salesData);
     })
     .catch((err) => res.status(400).json("Error: " + err));
 });
+
 
 //==================PROFIT MARGINS====================
 router.route("/margins").get((req, res) => {
@@ -60,7 +68,14 @@ router.route("/margins").get((req, res) => {
       var profit = retailSales - msrpCost;
       var percentage = profit / msrpCost * 100;
 
-      var salesData = [{retailSales , msrpCost, profit, percentage}]
+      // https://gist.github.com/djD-REK/068cba3d430cf7abfddfd32a5d7903c3
+      // Prevents rounding errors
+      const roundAccurately = (number, decimalPlaces) => 
+        Number(Math.round(number + "e" + decimalPlaces) + "e-" + decimalPlaces);
+      
+      percentage = roundAccurately(percentage, 2);
+
+      var salesData = {retailSales , msrpCost, profit, percentage}
       res.json(salesData);
     })
     .catch((err) => res.status(400).json("Error: " + err));
