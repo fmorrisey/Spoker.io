@@ -34,7 +34,7 @@ class SalesManager extends Component {
   }
 
   render() {
-    console.log(this.state.revenue);
+    console.log("REV", this.state.revenue);
     var barData = {
       labels: ["Revenue", "Inventory"],
       datasets: [
@@ -84,66 +84,66 @@ class SalesManager extends Component {
       },
     };
 
-    var revenueData = {
-      labels: [
-          "Costs",
-          "Margins",
-      ],
-      datasets: [
+    if (this.state.revenue.percentage === null) {
+      var revenueData = {
+        labels: ["Costs", "Margins"],
+        datasets: [
           {
-              data: [(100-this.state.revenue.percentage),(this.state.revenue.percentage) ],
-              backgroundColor: [
-                  "#36A2EB",
-                  "#FFCE56"
-              ],
-              hoverBackgroundColor: [
-
-                  "#00B1FB",
-                  "#FFCE56"
-              ]
-          }]
-  };
-
-  var inventoryData = {
-    labels: [
-        "Costs",
-        "Margins",
-    ],
-    datasets: [
-        {
-            data: [(100-this.state.inventory.percentage),(this.state.inventory.percentage) ],
-            backgroundColor: [
-                "#DD2512",
-                "#FFCE56"
+            data: [0, 0],
+            backgroundColor: ["#36A2EB", "#FFCE56"],
+            hoverBackgroundColor: ["#00B1FB", "#FFCE56"],
+          },
+        ],
+      };
+    } else {
+      var revenueData = {
+        labels: ["Costs", "Margins"],
+        datasets: [
+          {
+            data: [
+              100 - this.state.revenue.percentage,
+              this.state.revenue.percentage,
             ],
-            hoverBackgroundColor: [
+            backgroundColor: ["#36A2EB", "#FFCE56"],
+            hoverBackgroundColor: ["#00B1FB", "#FFCE56"],
+          },
+        ],
+      };
+    }
 
-                "#F12A16",
-                "#FFCE56"
-            ]
-        }],
-};
+    var inventoryData = {
+      labels: ["Costs", "Margins"],
+      datasets: [
+        {
+          data: [
+            100 - this.state.inventory.percentage,
+            this.state.inventory.percentage,
+          ],
+          backgroundColor: ["#DD2512", "#FFCE56"],
+          hoverBackgroundColor: ["#F12A16", "#FFCE56"],
+        },
+      ],
+    };
 
     var revOpt = {
-    	rotation: 1 * Math.PI,
+      rotation: 1 * Math.PI,
       circumference: 1 * Math.PI,
       title: {
         display: true,
         text: "Revenue",
         fontSize: 15,
-      },  
+      },
     };
 
     var invOpt = {
-    	rotation: 1 * Math.PI,
+      rotation: 1 * Math.PI,
       circumference: 1 * Math.PI,
       title: {
         display: true,
         text: "Inventory",
         fontSize: 15,
-      },  
+      },
     };
-
 
     return (
       <div className="container">

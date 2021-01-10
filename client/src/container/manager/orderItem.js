@@ -116,7 +116,7 @@ class OrderItem extends Component {
             </div>
             <div>
               <p>
-                <u>ADDRESSS</u>
+                <u>ADDRESS</u>
                 <br />
                 {this.state.customer.first_name} {this.state.customer.last_name}
                 <br />
