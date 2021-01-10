@@ -40,7 +40,7 @@ import ProductList from "./container/inventory/product-list";
 import Dashboard from "./container/layout/dashboard";
 //import Manager from "./container/manager/manager";
 import SalesManager from "./container/manager/sales";
-import OrdersManager from "./container/manager/orders";
+import OrdersManager from "./container/manager/orders_list";
 import OrderItem from "./container/manager/orderItem";
 import InfoView from "./container/manager/infoView";
 import InfoUpdate from "./container/manager/infoUpdate";

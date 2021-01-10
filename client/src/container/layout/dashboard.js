@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import {Link} from 'react-router-dom';
 import Inventory from "../inventory/product-list";
-import Orders from "../manager/orders";
+import Orders from "../manager/orders_list";
 
 class Dashboard extends Component {
   onLogoutClick = (e) => {

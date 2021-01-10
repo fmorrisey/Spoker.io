@@ -64,6 +64,7 @@ export default class OrdersManager extends Component {
               <th>Order ID</th>
               <th>Status</th>
               <th>Pick Up</th>
+              <th>Customer</th>
             </tr>
           </thead>
           <tbody>

@@ -24,6 +24,13 @@ class OrderItem extends Component {
     window.location = "/manager/orders";
   }
 
+  deleteOrder(id) {
+    axios.delete('http://localhost:5000/orders/'+id)
+      .then(response => { console.log(response.data)});
+
+      window.location = "/manager/orders";
+  }
+
   seeOrder() {
     axios
       .get("http://localhost:5000/user/" + this.state.order.user, {
@@ -103,7 +110,8 @@ class OrderItem extends Component {
 
             <div>
               <p>Order ID: {this.state.order._id}</p>
-              <p>Product ID: {this.state.order.prodId}</p>
+              
+              <p>Product ID: <Link to={"/details/"+this.state.order.prodId}>{this.state.order.prodId}</Link></p>
               <p>Tracking Number: {this.state.order.trackingNumber}</p>
             </div>
             <div>
@@ -135,9 +143,14 @@ class OrderItem extends Component {
           >
             Back
           </button>
-          <button className="btn btn-danger" onClick={this.seeOrder}>
+          <button className="btn btn-primary" onClick={this.seeOrder}>
             See Details
           </button>
+          <button className="btn btn-danger"
+                onClick={() => { this.deleteOrder(this.state.order._id) }}
+              >
+                Delete Order
+              </button>
         </div>
       </div>
     );
