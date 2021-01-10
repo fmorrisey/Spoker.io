@@ -32,23 +32,22 @@ router.route("/getSales").get((req, res) => {
       for (let index = 0; index < products.length; index++) {
         msrpCost += products[index].msrp;
       }
-      
+
       var profit = retailSales - msrpCost;
-      var percentage = profit / msrpCost * 100;
+      var percentage = (profit / msrpCost) * 100;
 
       // https://gist.github.com/djD-REK/068cba3d430cf7abfddfd32a5d7903c3
       // Prevents rounding errors
-      const roundAccurately = (number, decimalPlaces) => 
+      const roundAccurately = (number, decimalPlaces) =>
         Number(Math.round(number + "e" + decimalPlaces) + "e-" + decimalPlaces);
-      
+
       percentage = roundAccurately(percentage, 2);
-      
-      var salesData = {retailSales, msrpCost, profit, percentage}
+
+      var salesData = { retailSales, msrpCost, profit, percentage };
       res.json(salesData);
     })
     .catch((err) => res.status(400).json("Error: " + err));
 });
-
 
 //==================PROFIT MARGINS====================
 router.route("/margins").get((req, res) => {
@@ -66,16 +65,16 @@ router.route("/margins").get((req, res) => {
       }
 
       var profit = retailSales - msrpCost;
-      var percentage = profit / msrpCost * 100;
+      var percentage = (profit / msrpCost) * 100;
 
       // https://gist.github.com/djD-REK/068cba3d430cf7abfddfd32a5d7903c3
       // Prevents rounding errors
-      const roundAccurately = (number, decimalPlaces) => 
+      const roundAccurately = (number, decimalPlaces) =>
         Number(Math.round(number + "e" + decimalPlaces) + "e-" + decimalPlaces);
-      
+
       percentage = roundAccurately(percentage, 2);
 
-      var salesData = {retailSales , msrpCost, profit, percentage}
+      var salesData = { retailSales, msrpCost, profit, percentage };
       res.json(salesData);
     })
     .catch((err) => res.status(400).json("Error: " + err));
@@ -163,8 +162,13 @@ router.route("/update/:id").post((req, res) => {
 
 //============DELETE======
 router.route("/:id").delete((req, res) => {
-  Order.findByIdAndDelete(req.params.id)
-    .then(() => res.json("Product Deleted"))
+  Order.findById(req.params.id)
+    .then((order) => {
+      findProductReturnToStock(order);
+      Order.findByIdAndDelete(req.params.id)
+        .then(() => res.json("Order Deleted"))
+        .catch((err) => res.status(400).json("Error: " + err));
+    })
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
@@ -174,7 +178,7 @@ async function findAddressById(req) {
   let userAddress = await Address.findOne({ user: req.user.id });
   console.log("address found ", userAddress);
   return userAddress;
-}
+};
 
 async function findProductMarkSold(req) {
   let soldProduct = await Product.findByIdAndUpdate(req.body.prodId, {
@@ -182,7 +186,15 @@ async function findProductMarkSold(req) {
   });
   console.log("SOLD", soldProduct);
   return soldProduct;
-}
+};
+
+async function findProductReturnToStock(order) {
+  let returnToStock = await Product.findByIdAndUpdate(order.prodId, {
+    status: "INSTOCK",
+  });
+  console.log("INSTOCK", returnToStock);
+  return returnToStock;
+};
 
 /*
 function findAddressById(addressId) {
