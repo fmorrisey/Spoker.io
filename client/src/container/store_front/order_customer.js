@@ -19,7 +19,7 @@ export default class CustomerOrders extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:5000/orders/customer", {
+    axios.get("http://localhost:5000/orders/customer/list/", {
       headers: {
         'x-auth-token': localStorage.jwtToken
       }

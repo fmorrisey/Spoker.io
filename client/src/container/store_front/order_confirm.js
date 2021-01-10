@@ -14,7 +14,50 @@ class CustomerOrder extends Component {
       address: {},
       product: {},
       pickUpStatus: "",
+      dataPulled: 0,
     };
+
+    axios
+      .get("http://localhost:5000/orders/customer/purchase/", {
+        headers: {
+          "x-auth-token": localStorage.jwtToken,
+        },
+      })
+      .then((response) => {
+        this.setState({ order: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    axios
+      .get("http://localhost:5000/address/customer/", {
+        headers: {
+          "x-auth-token": localStorage.jwtToken,
+        },
+      })
+      .then((response) => {
+        this.setState({ address: response.data, addId: response.data.id });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  componentDidUpdate() {
+    if (this.state.dataPulled != 1) {
+      
+      axios
+        .get("http://localhost:5000/products/" + this.state.order.prodId)
+        .then((response) => {
+          this.setState({ product: response.data });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+        this.setState({ dataPulled: 1 });
+        console.log("prodId", this.state.order.prodId)
+    }
   }
 
   emailConfirm() {
@@ -78,33 +121,6 @@ class CustomerOrder extends Component {
   cancelPurchases() {
     window.location = "/shopdetails/" + this.props.match.params.id;
   }
-  componentDidMount() {
-    axios
-      .get("http://localhost:5000/orders/customer/", {
-        headers: {
-          "x-auth-token": localStorage.jwtToken,
-        },
-      })
-      .then((response) => {
-        this.setState({ order: response.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    axios
-      .get("http://localhost:5000/address/customer/", {
-        headers: {
-          "x-auth-token": localStorage.jwtToken,
-        },
-      })
-      .then((response) => {
-        this.setState({ address: response.data, addId: response.data.id });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
 
   render() {
     console.log("USER", this.props.auth.user.id);
@@ -127,7 +143,7 @@ class CustomerOrder extends Component {
                 </div>
                 {/* PRODUCT NAME */}
                 <div className="form-group">
-                  <div>{this.state.order.prodName}</div>
+                  <div>{this.state.product.name}</div>
                   <div>${this.state.order.price}.00</div>
                 </div>
               </div>

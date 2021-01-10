@@ -36,10 +36,21 @@ export default class DetailsProduct extends Component {
     return (
       <div className="container">
         <div className="col-md-12">
-          <h3>Product Details</h3>
+          <div className="container md productHead">
+            <h2>{this.state.product.name}</h2>
+            <h3><i>{this.state.product.brand}</i></h3>
+          </div>
           <div className="container">
             <div className="row">
-              <div className="col-6">
+            <div className="col-md-6">
+                {/* images Upload */}
+                <div className="form-group">
+                  <div>
+                    <img src={this.state.product.images}></img>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-6">
                 {/* Type of Product */}
                 <div className="form-group">
                   <div>
@@ -48,7 +59,12 @@ export default class DetailsProduct extends Component {
                   <div>{this.state.product.department}</div>
                   <div>{this.state.product.category}</div>
                 </div>
-
+                <div className="form-group">
+                  <div>
+                    <u>Retail Price: </u>
+                  </div>
+                  <div className="price">${this.state.product.price}</div>
+                </div>
                 {/* PRODUCT NAME */}
                 <div className="form-group">
                   <div>
@@ -67,21 +83,9 @@ export default class DetailsProduct extends Component {
                 </div>
 
                 {/* Retail Price */}
-                <div className="form-group">
-                  <div>
-                    <u>Retails Price: </u>
-                  </div>
-                  <div>${this.state.product.price}</div>
-                </div>
+                
               </div>
-              <div className="col-6">
-                {/* images Upload */}
-                <div className="form-group">
-                  <div>
-                    <img src={this.state.product.images}></img>
-                  </div>
-                </div>
-              </div>
+              
             </div>
             <div className="">
               <button

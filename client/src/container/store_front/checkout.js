@@ -42,14 +42,12 @@ class CheckOut extends Component {
         },
       })
       .then((response) => {
-        this.setState({ address: response.data,
-        addId: response.data.id });
+        this.setState({ address: response.data, addId: response.data.id });
       })
       .catch((error) => {
         console.log(error);
       });
-    
-  }  
+  }
 
   onSubmit(e) {
     e.preventDefault();
@@ -66,12 +64,12 @@ class CheckOut extends Component {
     axios
       .post("http://localhost:5000/orders/add/", order, {
         headers: {
-          'x-auth-token': localStorage.jwtToken
-        }
+          "x-auth-token": localStorage.jwtToken,
+        },
       })
-      .then((res) => console.log(res.data))
-      
-      axios
+      .then((res) => console.log(res.data));
+
+    axios
       .get("http://localhost:5000/orders/customer/", {
         headers: {
           "x-auth-token": localStorage.jwtToken,
@@ -83,8 +81,7 @@ class CheckOut extends Component {
       .catch((error) => {
         console.log(error);
       });
-    window.location = ("/customer/order/"+ this.state.orderRepo._id);
-    
+    window.location = "/customer/order/" + this.state.orderRepo._id;
   }
 
   render() {
@@ -98,22 +95,18 @@ class CheckOut extends Component {
     return (
       <div className="container">
         <div className="col-md-12">
-          <h3>Purchase!</h3>
           <div className="container">
+            <h3>CheckOut</h3>
             <div className="row">
-              <div className="col-6">
+              <div className="col-md-6">
                 {/* PRODUCT NAME */}
                 <div className="form-group">
-                  <div>{this.state.product.name}</div>
-                  <div>{this.state.product.brand}</div>
-                  <div>{this.state.product._id}</div>
-                </div>
-                {/* Retail Price */}
-                <div className="form-group">
-                  <div>${this.state.product.price}</div>
+                  <div className="prodName">{this.state.product.name}</div>
+                  <div className="brand-small">{this.state.product.brand}</div>
+                  <div>Item ID:{this.state.product._id}</div>
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-md-6">
                 {/* images Upload */}
                 <div className="form-group">
                   <div>
@@ -123,13 +116,28 @@ class CheckOut extends Component {
               </div>
             </div>
             <div className="form-group">
-              <p>{user.first_name}</p>
-              <p>{user.last_name}</p>
+              <p>
+                <u>Your Information:</u> <br />
+                {user.first_name} {user.last_name}
+                <br />
+                {this.state.address.street1}
+                <br />
+                {this.state.address.street2}
+                <br />
+                {this.state.address.city}
+                <br />
+                {this.state.address.state}
+                <br />
+                {this.state.address.country}
+                <br />
+                {this.state.address.zipCode}
+              </p>
             </div>
-            <form Validate >
+            <div className="form-group">
+            <form Validate>
               <div className="form-group">
-                <label>Pick Up: </label>
                 <input
+                  placeholder="Pick up options"
                   onChange={this.onChange}
                   value={this.state.pickUpStatus}
                   id="pickUpStatus"
@@ -137,20 +145,19 @@ class CheckOut extends Component {
                 />
               </div>
             </form>
-            <div>
-              <p>{this.state.address._id}</p>
-              <p>{this.state.address.street1}</p>
-              <p>{this.state.address.street2}</p>
-              <p>{this.state.address.city}</p>
-              <p>{this.state.address.state}</p>
-              <p>{this.state.address.country}</p>
-              <p>{this.state.address.zipCode}</p>
-            </div>
           </div>
-
+          <div className="price">Total: ${this.state.product.price}</div>
+          </div>
+          
+          <hr />
           {/* SUBMIT */}
           <div className="container form-group">
             <div className="btn">
+              <div className="btn">
+                <button className="btn btn-primary" onClick={this.onSubmit}>
+                  Confirm Purchase
+                </button>
+              </div>
               <button
                 type="button"
                 className="btn btn-secondary"
@@ -158,11 +165,6 @@ class CheckOut extends Component {
               >
                 Cancel
               </button>
-            </div>
-            <div className="btn">
-              <button className="btn btn-primary"
-              onClick={this.onSubmit}
-              >Confirm Purchase</button>
             </div>
           </div>
         </div>
