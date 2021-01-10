@@ -4,26 +4,29 @@ import { Link } from "react-router-dom";
 export default class Item extends Component {
   render() {
     return (
-      <div className="container padding">
+      <div className="m-3 padding">
         <div key={this.props.product._id}>
-          <div className="row">
+          <div className="row m-1">
+          <div className="col-md-4">
+              <Link to={`/shopdetails/${this.props.product._id}`}>
+                <img src={this.props.product.images} className="shopItem"></img>
+              </Link>
+            </div>
             <div className="col-md-6">
-              <h3>
+              <a className="prodName">
                 <Link to={`/shopdetails/${this.props.product._id}`}>
                   {this.props.product.name}
                 </Link>
-              </h3>
-              <p>{this.props.product.category}</p>
-              <p>${this.props.product.price}.00</p>
-            </div>
-            <div className="col-md-3">
-              <Link to={`/shopdetails/${this.props.product._id}`}>
-                <img src={this.props.product.images} className=""></img>
-              </Link>
+              </a>
+              <p className="card-text">
+                <a className="brand-small">{this.props.product.brand}</a><br />
+              <a className="price-small">${this.props.product.price}.00</a></p>
             </div>
           </div>
         </div>
+        <hr/>
       </div>
+      
     );
   }
 }

@@ -66,24 +66,13 @@ class Register extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-md-8 offset-2">
-            <p>
-              <Link to="/home" className="btn btn-primary waves-effect">
-                back to home
-              </Link>
-            </p>
-            <p>
-              Already have an account? <br />
-              <Link to="/login" className="btn btn-primary waves-effect">
-                Login
-              </Link>
-            </p>
-
+          <div className="col-md-3 offset-2">
+          <h3 className="padding">Sign up for Spoker</h3>
             <form noValidate onSubmit={this.onSubmit}>
               <div className="form-group">
-                <label>First Name: </label>
                 <span className="red-text">{errors.first_name}</span>
                 <input
+                  placeholder="First Name"
                   onChange={this.onChange}
                   value={this.state.first_name}
                   error={errors.first_name}
@@ -95,9 +84,9 @@ class Register extends Component {
                 />
               </div>
               <div className="form-group">
-                <label>Last Name: </label>
                 <span className="red-text">{errors.last_name}</span>
                 <input
+                  placeholder="Last Name"
                   onChange={this.onChange}
                   value={this.state.last_name}
                   error={errors.last_name}
@@ -109,9 +98,9 @@ class Register extends Component {
                 />
               </div>
               <div className="form-group">
-                <label>Username: </label>
                 <span className="red-text">{errors.username}</span>
                 <input
+                  placeholder="Username"
                   onChange={this.onChange}
                   value={this.state.username}
                   error={errors.username}
@@ -124,11 +113,12 @@ class Register extends Component {
               </div>
               <div className="form-group">
                 <span className="red-text">{errors.email}</span>
-                <label htmlFor="email">Email: </label>
                 <input
+                  placeholder="email"
                   onChange={this.onChange}
                   value={this.state.email}
                   error={errors.email}
+                  htmlFor="email"
                   id="email"
                   type="email"
                   className={classnames("", {
@@ -138,8 +128,8 @@ class Register extends Component {
               </div>
               <div className="form-group">
                 <span className="red-text">{errors.password}</span>
-                <label htmlFor="password">Password: </label>
                 <input
+                  placeholder="password"
                   onChange={this.onChange}
                   value={this.state.password}
                   error={errors.password}
@@ -152,8 +142,8 @@ class Register extends Component {
               </div>
               <div className="form-group">
                 <span className="red-text">{errors.password2}</span>
-                <label htmlFor="password2">Confirm Password: </label>
                 <input
+                  placeholder="confirm password"
                   onChange={this.onChange}
                   value={this.state.password2}
                   error={errors.password2}
@@ -166,8 +156,8 @@ class Register extends Component {
               </div>
               <div className="form-group">
                 <span className="red-text">{errors.role}</span>
-                <label htmlFor="role">Confirm Role: </label>
                 <input
+                  placeholder="Role"
                   onChange={this.onChange}
                   value={this.state.role}
                   error={errors.role}
@@ -178,15 +168,26 @@ class Register extends Component {
                   })}
                 />
               </div>
-              <div className="form-group">
+              <div className="btn-toolbar">
                 <button
                   type="submit"
-                  value="Register"
-                  className="btn btn-primary"
-                  // onClick={this.onSubmit}
+                  value="Login"
+                  className="btn btn-primary mr-2"
                 >
-                  Register Account
+                  Sign Up
                 </button>
+                <Link to="/home" className="btn btn-secondary mr-2">
+                    Cancel
+                </Link>
+                  
+
+              </div>
+              <hr />
+              <div className="">
+                  <h5>Returing to Spoker?</h5>
+                <Link to="/login" className="btn btn-success mr-2">
+                  Login
+                </Link>
               </div>
             </form>
           </div>

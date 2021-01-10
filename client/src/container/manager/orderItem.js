@@ -8,7 +8,7 @@ class OrderItem extends Component {
   constructor(props) {
     super(props);
     this.backToTop = this.backToTop.bind(this);
-    this.seeOrder = this.seeOrder.bind(this);
+    //this.seeOrder = this.seeOrder.bind(this);
 
     this.state = {
       order: {},
@@ -16,65 +16,11 @@ class OrderItem extends Component {
       product: {},
       customerID: "",
       customer: {},
+      info: {},
       pickUpStatus: "",
+      dataPulled: 0,
     };
-  }
 
-  backToTop() {
-    window.location = "/manager/orders";
-  }
-
-  deleteOrder(id) {
-    axios.delete('http://localhost:5000/orders/'+id)
-      .then(response => { console.log(response.data)});
-
-      window.location = "/manager/orders";
-  }
-
-  seeOrder() {
-    axios
-      .get("http://localhost:5000/user/" + this.state.order.user, {
-        headers: {
-          "x-auth-token": localStorage.jwtToken,
-        },
-      })
-      .then((response) => {
-        this.setState({ customer: response.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    axios
-      .get("http://localhost:5000/products/" + this.state.order.prodId)
-      .then((response) => {
-        this.setState({ product: response.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    axios
-      .get("http://localhost:5000/address/" + this.state.order.address)
-      .then((response) => {
-        this.setState({ address: response.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    console.log("USER", this.props.auth.user.id);
-    console.log("Order", this.state.order.user);
-    console.log("product", this.state.product);
-    console.log("address", this.state.address._id);
-    console.log("Addid", this.state.addId);
-  }
-
-  onChange(e) {
-    this.setState({ [e.target.id]: e.target.value });
-  }
-  cancelPurchases() {
-    window.location = "/shopdetails/" + this.props.match.params.id;
-  }
-  componentDidMount() {
     axios
       .get("http://localhost:5000/orders/id/" + this.props.match.params.id)
       .then((response) => {
@@ -83,12 +29,123 @@ class OrderItem extends Component {
       .catch((error) => {
         console.log(error);
       });
+  }
 
-    this.seeOrder();
+  componentDidUpdate() {
+    if (this.state.dataPulled != 1) {
+      axios
+        .get("http://localhost:5000/user/" + this.state.order.user, {
+          headers: {
+            "x-auth-token": localStorage.jwtToken,
+          },
+        })
+        .then((response) => {
+          this.setState({ customer: response.data });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      axios
+        .get("http://localhost:5000/products/" + this.state.order.prodId)
+        .then((response) => {
+          this.setState({ product: response.data });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      axios
+        .get("http://localhost:5000/address/" + this.state.order.address)
+        .then((response) => {
+          this.setState({ address: response.data });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      axios
+        .get("http://localhost:5000/info/5ff7bb696fd4d1898bffa18d")
+        .then((response) => {
+          this.setState({ info: response.data });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
+      this.setState({ dataPulled: 1 });
+    }
+  }
+
+  backToTop() {
+    window.location = "/manager/orders";
+  }
+
+  deleteOrder(id) {
+    axios.delete("http://localhost:5000/orders/" + id).then((response) => {
+      console.log(response.data);
+    });
+
+    window.location = "/manager/orders";
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.id]: e.target.value });
+  }
+
+  cancelPurchases() {
+    window.location = "/shopdetails/" + this.props.match.params.id;
+  }
+
+  sendEmail() {
+    const email = {
+      to: this.state.customer.email,
+      html: `
+      <div>
+        <h3>Ready for Pick Up!</h3>
+       
+      </div>
+      <div className="form-group">
+        <div>${this.state.customer.first_name},<br />
+        Your ${this.state.order.prodName} is ready for ${this.state.order.pickUpStatus}<br />
+        at our store.</div>
+        <p><strong>Contact:</strong> <br />
+      <a href =${"tel:" + this.state.info.phone}>${this.state.info.phone}</a><br />
+          <a href =${"mailto:" + this.state.info.email}>Send Email</a><br />
+          </p>
+          
+      <p><strong>Hours:</strong> <br />
+          ${this.state.info.hours}</p>
+          
+      <p><strong>Location: </strong><br />
+      ${this.state.info.street1}
+      ${this.state.info.city}, ${this.state.info.state}
+      ${this.state.info.zipCode}</p>
+      </div>
+      <div>
+      <p>Order ID: ${this.state.order._id}</p>
+      <p>Product ID: ${this.state.order.prodId}</p>
+      <p>Tracking Number: ${this.state.order.trackingNumber}</p>
+      <img src=${this.state.product.images} style="width:10%;"></img>
+    </div>
+    <div>
+    
+  </div>`,
+    };
+
+    console.log(email);
+
+    axios
+      .post("http://localhost:5000/email/pickUp/", email, {
+        headers: {
+          "x-auth-token": localStorage.jwtToken,
+        },
+      })
+      .then((res) => console.log(res.data));
+    alert("CONFIRMATION EMAIL SENT!");
   }
 
   render() {
-    console.log("CUSTOMER", this.state.order.user);
+    console.log("USER", this.state.order.user);
+    console.log("CUSTOMER", this.state.customer.email);
+    console.log("address", this.state.address);
     const { user } = this.props.auth;
 
     return (
@@ -110,9 +167,18 @@ class OrderItem extends Component {
 
             <div>
               <p>Order ID: {this.state.order._id}</p>
-              
-              <p>Product ID: <Link to={"/details/"+this.state.order.prodId}>{this.state.order.prodId}</Link></p>
-              <p>Tracking Number: {this.state.order.trackingNumber}</p>
+
+              <p>
+                Product ID:{" "}
+                <Link to={"/details/" + this.state.order.prodId}>
+                  {this.state.order.prodId}
+                </Link>
+              </p>
+              <p>
+                Tracking Number: {this.state.order.trackingNumber}
+                <br />
+                Pick Up: {this.state.order.pickUpStatus}
+              </p>
             </div>
             <div>
               <p>
@@ -143,14 +209,20 @@ class OrderItem extends Component {
           >
             Back
           </button>
-          <button className="btn btn-primary" onClick={this.seeOrder}>
-            See Details
+          <button
+            className="btn btn-primary"
+            onClick={this.sendEmail.bind(this)}
+          >
+            Send Email
           </button>
-          <button className="btn btn-danger"
-                onClick={() => { this.deleteOrder(this.state.order._id) }}
-              >
-                Delete Order
-              </button>
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              this.deleteOrder(this.state.order._id);
+            }}
+          >
+            Delete Order
+          </button>
         </div>
       </div>
     );

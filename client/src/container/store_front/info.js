@@ -27,17 +27,22 @@ export class Info extends Component {
             <div className="container">
                 <div className="card-info">
                     <div className="body">
-                        <h4>{this.state.info.name}</h4>
+                        <h2 className="shopHeader">{this.state.info.name}</h2>
+                        <hr />
                         <p>{this.state.info.about}</p>
-                        <p>Services: <br />
+                        <hr />
+                        <p><strong>Services: </strong><br />
                             {this.state.info.services}</p>
-                        <p>Contact: <br />
+                            <hr />
+                        <p><strong>Contact:</strong> <br />
                         <a href ={"tel:" + this.state.info.phone}>{this.state.info.phone}</a><br />
                             <a href ={"mailto:" + this.state.info.email}>Send Email</a><br />
                             </p>
-                        <p>Hours: <br />
+                            <hr />
+                        <p><strong>Hours:</strong> <br />
                             {this.state.info.hours}</p>
-                        <p>Location: <br />
+                            <hr />
+                        <p><strong>Location: </strong><br />
                         {this.state.info.street1}
                         {this.state.info.city}, {this.state.info.state}
                         {this.state.info.zipCode}</p>

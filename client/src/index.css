@@ -20,13 +20,50 @@ code {
 
 img {
   width: 100%;
-  height: auto;
+  padding-left: 5px;
 }
 
 .padding {
   padding-top: 15px;
 }
 
+.align-center {
+  text-align: center;
+}
+
+.productHead{
+  text-align: left;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 25px;
+}
+.price-small {
+  font-weight: bold;
+  font-size: 18px;
+}
+.brand-small {
+  font-style: italic;
+  font-size: 21px;
+}
+.prodName {
+  font-size: 25px;
+  font-weight: bold;
+}
+
 h4 {
   text-align: center;
+}
+
+.shopHeader {
+  font-weight: bold;
+  text-align: center;
+}
+
+.shopItem {
+  height: 120px;
+  object-position: relative;
+  object-fit: contain;
+  background-position: top;
 }

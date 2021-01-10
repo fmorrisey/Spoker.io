@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default class OrderCust extends Component {
   render() {
     return (
-      <tr>
+    <tr className="col-md-12">
     <td><Link to={"/customer/order/"+this.props.order._id}>{this.props.order.prodName}</Link></td>
     <td>{this.props.order.orderStatus}</td>
     <td>{this.props.order.pickUpStatus}</td>
