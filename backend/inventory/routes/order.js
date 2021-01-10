@@ -44,8 +44,9 @@ router.route("/getSales").get((req, res) => {
 
 //==================PROFIT MARGINS====================
 router.route("/margins").get((req, res) => {
-  Product.find({status: -"SOLD"})
+  Product.find({ status: { $ne: "SOLD" } })
     .then((products) => {
+      console.log(products);
       var retailSales = 0;
       for (let index = 0; index < products.length; index++) {
         retailSales += products[index].price;
