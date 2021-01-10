@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import axios from "axios";
+import ScriptTag from 'react-script-tag';
 class SalesManager extends Component {
   constructor(props) {
     super(props);
@@ -33,6 +34,9 @@ class SalesManager extends Component {
 
   render() {
     console.log(this.state.sales);
+    const Demo = props => (
+      <ScriptTag type="text/javascript" src="/path/to/resource.js" />
+      )
 
     return (
       <div className="container">
@@ -60,7 +64,7 @@ class SalesManager extends Component {
         <div className="row">
           <div className="col-md-12">
             <div className="">
-              <h2>CHARTS</h2>
+              <div class="ct-chart ct-perfect-fourth">{Demo()}</div>
             </div>
           </div>
         </div>
