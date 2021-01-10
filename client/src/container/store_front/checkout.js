@@ -122,24 +122,6 @@ class CheckOut extends Component {
                 </div>
               </div>
             </div>
-              {/* <div className="form-group">
-                <label>First Name: </label>
-                <input
-                  onChange={this.onChange}
-                  value={this.state.first_name}
-                  id="first_name"
-                  type="text"
-                />
-              </div>
-              <div className="form-group">
-                <label>Last Name: </label>
-                <input
-                  onChange={this.onChange}
-                  value={this.state.last_name}
-                  id="last_name"
-                  type="text"
-                />
-              </div> */}
             <div className="form-group">
               <p>{user.first_name}</p>
               <p>{user.last_name}</p>

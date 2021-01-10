@@ -4,6 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser, updateProfile } from "../../actions/authActions";
 import classnames from "classnames";
+import CustomerOrders from "../store_front/order_customer"
 
 class Profile extends Component {
   constructor(props) {
@@ -63,7 +64,7 @@ class Profile extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-6">
             <h4>
               <b>Hey there,</b> {user.first_name.split(" ")[0]}{" "}
               {user.last_name.split(" ")[0]}
@@ -79,7 +80,13 @@ class Profile extends Component {
               Logout
             </button>
           </div>
-          <form noValidate onSubmit={this.onSubmit}>
+          <div className="col-md-6">
+            <CustomerOrders />
+          </div>
+        </div>
+        <div className="row">
+            <div className="col-md-6">
+            <form noValidate onSubmit={this.onSubmit}>
           <div className="form-group">
               <label>Street 1: </label>
               <span className="red-text">
@@ -188,8 +195,11 @@ class Profile extends Component {
                 Update Address
               </button>
             </div>
+            
           </form>
-        </div>
+            </div>
+          </div>
+
       </div>
     );
   }

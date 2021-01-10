@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Order from "../../components/store/order";
+import OrderMngr from "../../components/store/orderMngr";
 import Product from "../../components/store/product";
 
 import jwt_decode from "jwt-decode";
@@ -68,7 +68,7 @@ export default class OrdersManager extends Component {
           </thead>
           <tbody>
             { filteredOrders.map((currentOrder) => {
-            return <Order order={currentOrder} key={currentOrder._id}
+            return <OrderMngr order={currentOrder} key={currentOrder._id}
                           order={currentOrder} key={currentOrder._id}
 />
                }) }

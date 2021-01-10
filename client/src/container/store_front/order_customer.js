@@ -1,128 +1,82 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link, withRouter } from "react-router-dom";
-import axios from "axios";
-import PropTypes from "prop-types";
 
-class CustomerOrder extends Component {
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import OrderCust from "../../components/store/orderCust";
+import Product from "../../components/store/product";
+
+import jwt_decode from "jwt-decode";
+import setAuthToken from "../../utils/setAuthToken";
+
+export default class CustomerOrders extends Component {
   constructor(props) {
     super(props);
-    this.backToTop = this.backToTop.bind(this);
+
     this.state = {
-      order: {},
-      address: {},
-      product: {},
-      pickUpStatus: "",
-    };
+      orders: [],
+      products: [],
+      search: ''};
   }
 
-  backToTop() {
-    window.location = "/store";
-  }
-
-  onChange(e) {
-    this.setState({ [e.target.id]: e.target.value });
-  }
-  cancelPurchases() {
-    window.location = "/shopdetails/" + this.props.match.params.id;
-  }
   componentDidMount() {
-    axios
-      .get("http://localhost:5000/orders/customer/", {
-        headers: {
-          "x-auth-token": localStorage.jwtToken,
-        },
-      })
-      .then((response) => {
-        this.setState({ order: response.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    axios
-      .get("http://localhost:5000/address/customer/", {
-        headers: {
-          "x-auth-token": localStorage.jwtToken,
-        },
-      })
-      .then((response) => {
-        this.setState({ address: response.data, addId: response.data.id });
+    axios.get("http://localhost:5000/orders/customer", {
+      headers: {
+        'x-auth-token': localStorage.jwtToken
+      }
+    })
+      .then(response => {
+        this.setState({ orders: response.data })
       })
       .catch((error) => {
         console.log(error);
-      });
+      })
+  }
+  
+  updateSearch(e) {
+    this.setState({search: e.target.value.substr(0,20)})
   }
 
   render() {
-    console.log("USER", this.props.auth.user.id);
-    console.log("Order", this.state.order);
-    console.log("product", this.state.product);
-    console.log("address", this.state.address._id);
-    console.log("Addid", this.state.addId);
-    const { user } = this.props.auth;
-
+    let isEmptyInventory = this.state.orders.length === 0;
+    
+    let filteredOrders = this.state.orders.filter(
+      (order) => {
+        return order._id.indexOf(
+          this.state.search) !== -1;
+      }            
+      )
+    
+   console.log("State: ", this.state.orders)
     return (
       <div className="container">
+        <div>
+        <input class="form-control mr-sm-2" type="search" 
+          placeholder="Search" aria-label="Search"
+          defaultValue={this.state.search}
+          onChange={this.updateSearch.bind(this)} 
+        />
+        </div>
         <div className="col-md-12">
-          {/* COMEBACK AND ADD A CONDITIONAL FOR NEW BIKE DAY */}
-          <div className="container">
-            <div className="row">
-              <div className="col-6">
-                <div>
-                  <h3>CONFIRMATION!</h3>
-                  <p>Thank you {user.first_name} for your purchase of:</p>
-                </div>
-                {/* PRODUCT NAME */}
-                <div className="form-group">
-                  <div>{this.state.order.prodName}</div>
-                  <div>${this.state.order.price}.00</div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <p>Order ID: {this.state.order._id}</p>
-              <p>Product ID: {this.state.order.prodId}</p>
-              <p>Tracking Number: {this.state.order.trackingNumber}</p>
-            </div>
-            <div>
-              <p>
-                <u>ADDRESSS</u>
-                <br />
-                {user.first_name} {user.last_name}
-                <br />
-                {this.state.address.street1}
-                <br />
-                {this.state.address.street2}
-                <br />
-                {this.state.address.city}
-                <br />
-                {this.state.address.state}
-                <br />
-                {this.state.address.country}
-                <br />
-                {this.state.address.zipCode}
-              </p>
-            </div>
-          </div>
-
-          {/* SUBMIT */}
-          <button
-            type="button"
-            className="btn btn-secondary"
-            onClick={this.backToTop}
-          >
-            Back
-          </button>
+        <h3>Orders</h3>
+        <table className="table">
+          <thead className="thead-light">
+            <tr>
+              <th>Order ID</th>
+              <th>Status</th>
+              <th>Pick Up</th>
+              <th>Last Name:</th>
+            </tr>
+          </thead>
+          <tbody>
+            { filteredOrders.map((currentOrder) => {
+            return <OrderCust order={currentOrder} key={currentOrder._id}
+                          order={currentOrder} key={currentOrder._id}
+/>
+               }) }
+          </tbody>
+        </table>
         </div>
       </div>
     );
   }
 }
-CustomerOrder.propTypes = {
-  auth: PropTypes.object.isRequired,
-};
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-});
-export default connect(mapStateToProps)(withRouter(CustomerOrder));
