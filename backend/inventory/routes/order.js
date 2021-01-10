@@ -94,7 +94,15 @@ router.route("/id/:id").get((req, res) => {
 });
 
 //=========FIND CUSTOMER'S ORDERS============
-router.get("/customer", [auth], (req, res) => {
+router.get("/customer/purchase", [auth], (req, res) => {
+  console.log("by customer", req.user.id);
+  Order.findOne({ user: req.user.id })
+    .then((order) => res.json(order))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+//=========FIND CUSTOMER'S ORDERS============
+router.get("/customer/list", [auth], (req, res) => {
   console.log("by customer", req.user.id);
   Order.find({ user: req.user.id })
     .then((order) => res.json(order))

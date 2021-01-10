@@ -60,15 +60,16 @@ router.post("/confirm", [auth], (req, res) => {
 
 
 //=============EMAIL SENDER==========
-router.post("/confirm", [auth], (req, res) => {
+router.post("/pickUp", (req, res) => {
   //const from = req.body.from;
-  const to = req.user.email;
+  const to = req.body.to;
   const html = req.body.html;
+  console.log(to);
 
   const message = {
     to,
     from: "forrestMorrisey@gmail.com",
-    subject: "New Bike Day!",
+    subject: "Your bike is ready!",
     html,
   };
 
