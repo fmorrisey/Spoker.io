@@ -41,7 +41,6 @@ export default class ShopList extends Component {
     return (
       <div className="container">
         <div className="col-md-12">
-          <h3>Shop Inventory</h3>
           <div>
             <input
               class="form-control mr-sm-2"
@@ -52,7 +51,7 @@ export default class ShopList extends Component {
               onChange={this.updateSearch.bind(this)}
             />
           </div>
-          <div className="container">
+          <div className="container" className="padding">
             {filteredProducts.map((currentproduct) => {
               return <Item product={currentproduct} key={currentproduct._id} />;
             })}

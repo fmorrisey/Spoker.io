@@ -10,10 +10,10 @@ export class StoreFront extends Component {
                     <br/>
                 </div>
                <div className="row">
-               <div className="col-md-2">
+               <div className="col-md-3">
                    <Info />
                </div>
-               <div className="col-md-10">
+               <div className="col-md-9">
                     <ShopList />
                </div>
                </div>
