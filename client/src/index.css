@@ -31,6 +31,13 @@ img {
   text-align: center;
 }
 
+.rev-marg {
+  text-align: center;
+  font-size: 18px;
+  font-style: italic;
+  margin-top: -24px;
+}
+
 .productHead{
   text-align: left;
 }

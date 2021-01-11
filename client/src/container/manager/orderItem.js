@@ -99,15 +99,19 @@ class OrderItem extends Component {
       to: this.state.customer.email,
       html: `
       <div>
-        <h3>Ready for Pick Up!</h3>
+        <h3>Ready for ${this.state.order.pickUpStatus}!</h3>
        
       </div>
       <div className="form-group">
         <div>${this.state.customer.first_name},<br />
-        Your ${this.state.order.prodName} is ready for ${this.state.order.pickUpStatus}<br />
+        Your ${this.state.order.prodName} is ready for ${
+        this.state.order.pickUpStatus
+      }<br />
         at our store.</div>
         <p><strong>Contact:</strong> <br />
-      <a href =${"tel:" + this.state.info.phone}>${this.state.info.phone}</a><br />
+      <a href =${"tel:" + this.state.info.phone}>${
+        this.state.info.phone
+      }</a><br />
           <a href =${"mailto:" + this.state.info.email}>Send Email</a><br />
           </p>
           
@@ -202,27 +206,34 @@ class OrderItem extends Component {
           </div>
 
           {/* SUBMIT */}
-          <button
-            type="button"
-            className="btn btn-secondary"
-            onClick={this.backToTop}
-          >
-            Back
-          </button>
-          <button
-            className="btn btn-primary"
-            onClick={this.sendEmail.bind(this)}
-          >
-            Send Email
-          </button>
-          <button
-            className="btn btn-danger"
-            onClick={() => {
-              this.deleteOrder(this.state.order._id);
-            }}
-          >
-            Delete Order
-          </button>
+          <div className="container">
+            <div className="btn btn-toolbar">
+              <button
+                type="button"
+                className="btn btn-secondary mr-2"
+                onClick={this.backToTop}
+              >
+                Back
+              </button>
+              <button
+                className="btn btn-primary"
+                onClick={this.sendEmail.bind(this)}
+              >
+                Send Email
+              </button>
+            </div>
+            <hr />
+            <div className="btn-toolbar">
+              <button
+                className="btn btn-danger ml-2"
+                onClick={() => {
+                  this.deleteOrder(this.state.order._id);
+                }}
+              >
+                Delete Order
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     );

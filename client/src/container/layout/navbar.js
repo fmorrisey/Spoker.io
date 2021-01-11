@@ -28,7 +28,7 @@ class Navbar extends Component {
         console.log(this.state.role)
 
         return (
-            <nav className="navbar navbar-light bg-light navbar-expand-lg">
+            <nav className="navbar navbar-light bg-light navbar-expand-lg mb-3">
 
                 <div>
                     <Link to="/store" className="navbar-brand order-1">Spoker.io</Link>
@@ -69,7 +69,7 @@ class Navbar extends Component {
                             </div>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <Link to="/login" className="nav-link">Login</Link>
-                                <navlink className="nav-link" onClick={this.onLogoutClick} >log out</navlink>
+                                <navlink className="nav-link" onClick={this.onLogoutClick} >Log Out</navlink>
                                 <Link to="/register" className="nav-link">Register</Link>
                                 <Link to="/profile" className="nav-link">Profile</Link>
                             </div>

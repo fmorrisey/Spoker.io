@@ -99,7 +99,7 @@ export default class EditProduct extends Component {
       .post("http://localhost:5000/products/update/"+this.props.match.params.id, product)
       .then((res) => console.log(res.data));
   
-    window.location = "/inventory";
+    window.location = "/details/"+this.props.match.params.id;
   }
 
   render() {

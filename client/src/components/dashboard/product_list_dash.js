@@ -1,18 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Product from "../../components/store/product";
+import Product from "../store/product";
 
-import jwt_decode from "jwt-decode";
-import setAuthToken from "../../utils/setAuthToken";
 export default class ProductList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       products: [],
-      search: "",
-      filter: ""
     };
   }
 
@@ -26,38 +22,12 @@ export default class ProductList extends Component {
         console.log(error);
       });
   }
-
-  updateSearch(e) {
-    this.setState({ search: e.target.value.substr(0, 20) });
-    console.log(this.state.filteredProducts);
-  }
-
   render() {
-    let isEmptyInventory = this.state.products.length === 0;
-    
-    let filteredProducts = [];
-
-    filteredProducts = this.state.products.filter((product) => {
-      return (
-        product.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !==
-        -1
-      );
-    });
     return (
       <div className="container">
-        <div>
-          <input
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-            defaultValue={this.state.search}
-            onChange={this.updateSearch.bind(this)}
-          />
-        </div>
-        <div className="col-md-12">
-          <h3>Shop Inventory</h3>
-          <table className="table">
+        <div className="card col-md-12 padding">
+        <Link to="/iventory" className="card-header"><h2 className="align-center">Inventory</h2></Link>
+          <table className="col-md-12 table">
             <thead className="thead-light">
               <tr>
                 <th>Name</th>
@@ -69,7 +39,7 @@ export default class ProductList extends Component {
               </tr>
             </thead>
             <tbody>
-              {filteredProducts.map((currentproduct) => {
+              {this.state.products.map((currentproduct) => {
                 return (
                   <Product product={currentproduct} key={currentproduct._id} />
                 );

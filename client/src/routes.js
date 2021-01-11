@@ -38,7 +38,6 @@ import ProductList from "./container/inventory/product-list";
 
 //=============Manager================
 import Dashboard from "./container/layout/dashboard";
-//import Manager from "./container/manager/manager";
 import SalesManager from "./container/manager/sales";
 import OrdersManager from "./container/manager/orders_list";
 import OrderItem from "./container/manager/orderItem";
@@ -88,12 +87,13 @@ class Routes extends Component {
               <CustomerRoute path="/checkout/:id" component={CheckOut} />
               <CustomerRoute path="/customer/order/:id" component={CustomerOrder} />
               {/* Inventory */}
-              <PrivateRoute path="/dashboard" component={Dashboard} />
+              
               <PrivateRoute path="/inventory" component={ProductList} />
               <PrivateRoute path="/add" component={AddProduct} />
               <PrivateRoute path="/details/:id" component={DetailsProduct} />
               <PrivateRoute path="/edit/:id" component={EditProduct} />
               {/* Manager */}
+              <PrivateRoute path="/manager/dashboard" component={Dashboard} />
               <PrivateRoute path="/manager/sales" component={SalesManager} />
               <PrivateRoute path="/manager/orders" component={OrdersManager} />
               <PrivateRoute path="/manager/order/:id" component={OrderItem} />

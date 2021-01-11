@@ -58,8 +58,6 @@ export default class DetailsProduct extends Component {
         <h3>Product Details</h3>
         <div className="row">
           <div className="col-md-6">
-            
-
             {/* Type of Product */}
             <div className="form-group">
               <div>
@@ -133,11 +131,14 @@ export default class DetailsProduct extends Component {
           </div>
         </div>
         {/* SUBMIT */}
-        <div className="form-group">
-          <Link to={"/edit/" + this.state._id}>
-            <button className="btn btn-secondary">Update Product</button>
-          </Link>
-          <button
+        <div className="btn-toolbar">
+        <Link to={"/edit/" + this.state._id} className="btn btn-success mr-2">Edit</Link>
+        <Link to="/inventory" className="btn btn-primary">Back</Link>
+
+        </div>
+        <hr className="col-md-12"/>
+        <div className="">
+        <button
             className="btn btn-danger"
             onClick={() => {
               this.deleteProduct(this.state._id);
@@ -146,6 +147,7 @@ export default class DetailsProduct extends Component {
             Delete Product
           </button>
         </div>
+        
       </div>
     );
   }

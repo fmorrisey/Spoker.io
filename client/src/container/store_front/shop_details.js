@@ -39,7 +39,9 @@ export default class DetailsProduct extends Component {
           <div className="container md productHead">
             <h2>{this.state.product.name}</h2>
             <h3><i>{this.state.product.brand}</i></h3>
+            
           </div>
+          
           <div className="container">
             <div className="row">
             <div className="col-md-6">
@@ -53,27 +55,9 @@ export default class DetailsProduct extends Component {
               <div className="col-md-6">
                 {/* Type of Product */}
                 <div className="form-group">
-                  <div>
-                    <u>Department: </u>
-                  </div>
-                  <div>{this.state.product.department}</div>
-                  <div>{this.state.product.category}</div>
-                </div>
-                <div className="form-group">
-                  <div>
-                    <u>Retail Price: </u>
-                  </div>
-                  <div className="price">${this.state.product.price}</div>
-                </div>
-                {/* PRODUCT NAME */}
-                <div className="form-group">
-                  <div>
-                    <u>Product Name: </u>
-                  </div>
-                  <div>{this.state.product.name}</div>
-                  <div>{this.state.product.brand}</div>
-                </div>
-
+                <div className="price">${this.state.product.price}.00</div>
+                  <div>{this.state.product.department} / {this.state.product.category}</div>
+                </div>    
                 {/* Description */}
                 <div className="form-group">
                   <div>
@@ -83,14 +67,10 @@ export default class DetailsProduct extends Component {
                 </div>
 
                 {/* Retail Price */}
-                
-              </div>
-              
-            </div>
-            <div className="">
+                <div className="">
               <button
                 type="button"
-                className="btn btn-secondary"
+                className="btn btn-secondary mr-2"
                 onClick={this.backToTop}
               >
                 Back
@@ -98,6 +78,9 @@ export default class DetailsProduct extends Component {
               <Link to={"/checkout/" + this.state.product._id}>
                 <button className="btn btn-primary">Purchase!</button>
               </Link>
+            </div>
+              </div>
+              
             </div>
           </div>
         </div>
