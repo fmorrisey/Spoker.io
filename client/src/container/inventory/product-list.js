@@ -33,7 +33,6 @@ export default class ProductList extends Component {
   }
 
   render() {
-    let isEmptyInventory = this.state.products.length === 0;
     
     let filteredProducts = [];
 
@@ -56,7 +55,7 @@ export default class ProductList extends Component {
           />
         </div>
         <div className="col-md-12">
-          <h3>Shop Inventory</h3>
+          <h3 className="padding">Shop Inventory</h3>
           <table className="table">
             <thead className="thead-light">
               <tr>

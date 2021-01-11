@@ -55,7 +55,7 @@ export class InfoView extends Component {
                 <Link to={"/manager/update"}>
                 <button className="btn btn-secondary mr-2">Update Info</button>
               </Link>
-              <Link to={"/manager/sales"}>
+              <Link to={"/manager/dashboard"}>
                 <button className="btn btn-primary ">Back</button>
               </Link>
             </div>

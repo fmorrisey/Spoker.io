@@ -76,7 +76,7 @@ class Profile extends Component {
               </p>
               <p className="">You are logged into Spoker </p>
             </h4>
-            <button onClick={this.onLogoutClick} className="btn btn-primary">
+            <button onClick={this.onLogoutClick} className="btn btn-primary mb-2">
               Logout
             </button>
           </div>
@@ -88,12 +88,12 @@ class Profile extends Component {
             <div className="col-md-6">
             <form noValidate onSubmit={this.onSubmit}>
           <div className="form-group">
-              <label>Street 1: </label>
               <span className="red-text">
                 {errors.street1}
                 {errors.street1notfound}
               </span>
               <input
+                placeholder="Street"
                 onChange={this.onChange}
                 value={this.state.street1}
                 error={errors.street1}
@@ -105,12 +105,12 @@ class Profile extends Component {
               />
             </div>
             <div className="form-group">
-              <label>Street 2: </label>
               <span className="red-text">
                 {errors.street2}
                 {errors.street2notfound}
               </span>
               <input
+                placeholder="Unit / Apt"
                 onChange={this.onChange}
                 value={this.state.street2}
                 error={errors.street2}
@@ -122,12 +122,12 @@ class Profile extends Component {
               />
             </div>
             <div className="form-group">
-              <label>City: </label>
               <span className="red-text">
                 {errors.city}
                 {errors.citynotfound}
               </span>
               <input
+                placeholder="City"
                 onChange={this.onChange}
                 value={this.state.city}
                 error={errors.city}
@@ -139,12 +139,12 @@ class Profile extends Component {
               />
             </div>
             <div className="form-group">
-              <label>State: </label>
               <span className="red-text">
                 {errors.state}
                 {errors.statenotfound}
               </span>
               <input
+              placeholder="State"
                 onChange={this.onChange}
                 value={this.state.state}
                 error={errors.state}
@@ -156,7 +156,7 @@ class Profile extends Component {
               />
             </div>
             <div className="form-group">
-              <label>Country: </label>
+
               <span className="red-text">
                 {errors.country}
                 {errors.countrynotfound}
@@ -167,19 +167,20 @@ class Profile extends Component {
                 error={errors.country}
                 id="country"
                 type="text"
-                value="USA"
+                placeholder="Country"
                 className={classnames("", {
                   invalid: errors.country || errors.countrynotfound,
                 })}
               />
             </div>
             <div className="form-group">
-              <label>Zip: </label>
+
               <span className="red-text">
                 {errors.zipCode}
                 {errors.zipCodenotfound}
               </span>
               <input
+                placeholder="Zip Code"
                 onChange={this.onChange}
                 value={this.state.zipCode}
                 error={errors.zipCode}

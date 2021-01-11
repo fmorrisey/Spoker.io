@@ -19,20 +19,6 @@ class Dashboard extends Component {
       <div className="container">
         <div className="col-lg-12 center-align">
           <div className="row">
-            <div className="col-md-10">
-              <h4>
-                <br />
-                <b>Hey there,</b> {user.first_name}
-              </h4>
-            </div>
-            <div className="btn btn-toolbar">
-              <button onClick={this.onLogoutClick} className="btn btn-primary">
-                Logout
-              </button>
-              <Link to="/add" className="nav-link">
-                <button className="btn btn-primary">Add Product</button>
-              </Link>
-            </div>
           </div>
           <div className="row">
             <div className="col-md-6">
@@ -42,7 +28,7 @@ class Dashboard extends Component {
             <Orders />
           </div>
           </div>
-          <div className="row">
+          <div className="row padding ">
             <div className="col-md-12">
               <Inventory />
             </div>

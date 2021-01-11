@@ -99,7 +99,8 @@ class SalesManager extends Component {
 
     return (
       <div className="container">
-        <Link to="/manager/sales" className="nav-link"><h2 className="align-center">Revenue</h2></Link>
+        <div className="card padding">
+        <Link to="/manager/sales" className="nav-link"><h2 className="align-center card-header">Revenue</h2></Link>
         <div className="row">
           <div className="">
             <div className="row">
@@ -129,6 +130,7 @@ class SalesManager extends Component {
             </div>
           </div>
           <hr />
+        </div>
         </div>
       </div>
     );
