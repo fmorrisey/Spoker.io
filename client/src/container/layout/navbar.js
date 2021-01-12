@@ -28,6 +28,7 @@ class Navbar extends Component {
         console.log(this.state.role)
 
         return (
+            <div>
             <nav className="navbar navbar-light bg-light navbar-expand-lg mb-3">
 
                 <div>
@@ -79,6 +80,8 @@ class Navbar extends Component {
                 </div>
                 
             </nav>
+            </div>
+
         )
     }
 }

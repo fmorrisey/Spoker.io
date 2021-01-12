@@ -3,10 +3,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import OrderCust from "../../components/store/orderCust";
-import Product from "../../components/store/product";
-
-import jwt_decode from "jwt-decode";
-import setAuthToken from "../../utils/setAuthToken";
 
 export default class CustomerOrders extends Component {
   constructor(props) {
@@ -49,22 +45,26 @@ export default class CustomerOrders extends Component {
    console.log("State: ", this.state.orders)
     return (
       <div className="container">
-        <div>
+        
+        <div className="col-md-12">
+        
+        
+        <div className="col-md-12">
+        <h3>Orders</h3>
+        <div className="mb-2">
         <input class="form-control mr-sm-2" type="search" 
           placeholder="Search" aria-label="Search"
           defaultValue={this.state.search}
           onChange={this.updateSearch.bind(this)} 
         />
         </div>
-        <div className="col-md-12">
-        <h3>Orders</h3>
         <table className="table">
           <thead className="thead-light">
             <tr>
               <th>Order ID</th>
-              <th>Status</th>
+              {/* <th>Status</th> */}
               <th>Pick Up</th>
-              <th>Last Name:</th>
+              {/* <th>Last Name:</th> */}
             </tr>
           </thead>
           <tbody>
@@ -75,6 +75,7 @@ export default class CustomerOrders extends Component {
                }) }
           </tbody>
         </table>
+        </div>
         </div>
       </div>
     );

@@ -53,7 +53,7 @@ router.route("/getSales").get((req, res) => {
 router.route("/margins").get((req, res) => {
   Product.find({ status: { $ne: "SOLD" } })
     .then((products) => {
-      console.log(products);
+      //console.log(products);
       var retailSales = 0;
       for (let index = 0; index < products.length; index++) {
         retailSales += products[index].price;
@@ -95,7 +95,7 @@ router.route("/id/:id").get((req, res) => {
 
 //=========FIND CUSTOMER'S ORDERS============
 router.get("/customer/purchase", [auth], (req, res) => {
-  console.log("by customer", req.user.id);
+  //console.log("by customer", req.user.id);
   Order.findOne({ user: req.user.id })
     .then((order) => res.json(order))
     .catch((err) => res.status(400).json("Error: " + err));
@@ -103,7 +103,7 @@ router.get("/customer/purchase", [auth], (req, res) => {
 
 //=========FIND CUSTOMER'S ORDERS============
 router.get("/customer/list", [auth], (req, res) => {
-  console.log("by customer", req.user.id);
+  //console.log("by customer", req.user.id);
   Order.find({ user: req.user.id })
     .then((order) => res.json(order))
     .catch((err) => res.status(400).json("Error: " + err));
@@ -141,10 +141,10 @@ async function createOrderWithAddress(req, res) {
     pickUpStatus,
     address,
   });
-  console.log("New Order: ", newOrder);
+  //console.log("New Order: ", newOrder);
   newOrder
     .save()
-    .then(() => res.json("Order added!"))
+    .then(order => res.json(order))
     .catch((err) => res.status(400).json("Error: " + err));
   return await res;
 }
@@ -184,7 +184,7 @@ router.route("/:id").delete((req, res) => {
 async function findAddressById(req) {
   //console.log("addID: ",req.user.id);
   let userAddress = await Address.findOne({ user: req.user.id });
-  console.log("address found ", userAddress);
+  //console.log("address found ", userAddress);
   return userAddress;
 };
 
@@ -192,7 +192,7 @@ async function findProductMarkSold(req) {
   let soldProduct = await Product.findByIdAndUpdate(req.body.prodId, {
     status: "SOLD",
   });
-  console.log("SOLD", soldProduct);
+  //console.log("SOLD", soldProduct);
   return soldProduct;
 };
 
@@ -200,7 +200,7 @@ async function findProductReturnToStock(order) {
   let returnToStock = await Product.findByIdAndUpdate(order.prodId, {
     status: "INSTOCK",
   });
-  console.log("INSTOCK", returnToStock);
+  //console.log("INSTOCK", returnToStock);
   return returnToStock;
 };
 

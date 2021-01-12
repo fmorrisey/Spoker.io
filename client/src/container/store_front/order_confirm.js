@@ -18,7 +18,7 @@ class CustomerOrder extends Component {
     };
 
     axios
-      .get("http://localhost:5000/orders/customer/purchase/", {
+      .get("http://localhost:5000/orders/id/"+ this.props.match.params.id, {
         headers: {
           "x-auth-token": localStorage.jwtToken,
         },

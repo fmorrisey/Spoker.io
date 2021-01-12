@@ -67,21 +67,9 @@ class CheckOut extends Component {
           "x-auth-token": localStorage.jwtToken,
         },
       })
-      .then((res) => console.log(res.data));
+      .then((res) => window.location = "/customer/order/" + res.data._id);
 
-    axios
-      .get("http://localhost:5000/orders/customer/", {
-        headers: {
-          "x-auth-token": localStorage.jwtToken,
-        },
-      })
-      .then((response) => {
-        this.setState({ orderRepo: response.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    window.location = "/customer/order/" + this.state.orderRepo._id;
+    
   }
 
   render() {

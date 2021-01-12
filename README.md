@@ -34,3 +34,5 @@ You will also see any lint errors in the console.
 - Paige Nidedringhaus for her article on Passport and JWT: [Article Here](https://itnext.io/implementing-json-web-tokens-passport-js-in-a-javascript-application-with-react-b86b1f313436) / [GitHub](https://github.com/paigen11/mysql-registration-passport).
 
 - Rishi Prasad for his tutorial on MERN Authentication: [Article Here](https://blog.bitsrc.io/build-a-login-auth-app-with-mern-stack-part-1-c405048e3669) / [GitHub](https://github.com/rishipr/mern-auth).
+
+- Includes many more

@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { logoutUser, updateProfile } from "../../actions/authActions";
 import classnames from "classnames";
 import CustomerOrders from "../store_front/order_customer"
+import axios from "axios";
 
 class Profile extends Component {
   constructor(props) {
@@ -24,6 +25,27 @@ class Profile extends Component {
       zipCode: '',
       errors: {},
     };
+    /*
+    axios
+    .get("http://localhost:5000/address/customer/", {
+      headers: {
+        "x-auth-token": localStorage.jwtToken,
+      },
+    })
+    .then((res) => {
+      this.setState({ 
+        street1: res.data.street1,
+        street2: res.data.street2,
+        city: res.data.city,
+        country: res.data.country,
+        state: res.data.state,
+        zipCode: res.data.zipCode,
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    */
   }
 
   componentDidMount() {
@@ -68,17 +90,16 @@ class Profile extends Component {
             <h4>
               <b>Hey there,</b> {user.first_name.split(" ")[0]}{" "}
               {user.last_name.split(" ")[0]}
-              <p>
-                {user.isAuthenticated} <br />
-                {user.role} <br />
+            </h4>
+              <p className="align-center">
                 email: {user.email} <br />
                 username: {user.username} <br />
-              </p>
-              <p className="">You are logged into Spoker </p>
-            </h4>
+             You are logged into Spoker </p>
+            <div className="text-center">
             <button onClick={this.onLogoutClick} className="btn btn-primary mb-2">
               Logout
             </button>
+            </div>
           </div>
           <div className="col-md-6">
             <CustomerOrders />

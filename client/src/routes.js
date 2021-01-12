@@ -16,7 +16,7 @@ import UserRoute from "./components/routing/userRoute";
 //=============Layout=============
 import Navbar from "./container/layout/navbar";
 import Landing from "./container/layout/landing";
-//import Search from "./components/search/search";
+import Footer from "./container/layout/footer";
 
 
 //=============AUTH================
@@ -101,6 +101,7 @@ class Routes extends Component {
               <PrivateRoute path="/manager/update" component={InfoUpdate} />
             </Switch>
           </div>
+          {/* <Footer/> */}
         </BrowserRouter>
       </Provider>
     );
