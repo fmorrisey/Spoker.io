@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+
+
+const pickUpOptions = [
+  { value: "INSTORE", label: "In Store Pick Up" },
+  { value: "CURBSIDE", label: "Curbside Pick Up" },
+  { value: "DELIVERY", label: "Delivery" },
+];
+
 export default class AddProduct extends Component {
   constructor(props) {
     super(props);

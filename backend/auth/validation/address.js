@@ -18,10 +18,6 @@ module.exports = function validateAddressInput(data) {
     errors.street1 = "Street Address Required field is required";
   }
 
-  if (Validator.isEmpty(data.street2)) {
-    errors.street2 = "Apartment, Unit, or Other field is required";
-  }
-
   // city checks
   if (Validator.isEmpty(data.city)) {
     errors.city = "city field is required";

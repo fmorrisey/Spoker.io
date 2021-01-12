@@ -3,6 +3,13 @@ import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 import PropTypes from "prop-types";
+import Select from 'react-select';
+
+const pickUpOptions = [
+  { value: "INSTORE", label: "In Store Pick Up" },
+  { value: "CURBSIDE", label: "Curbside Pick Up" },
+  { value: "DELIVERY", label: "Delivery" },
+];
 
 class CheckOut extends Component {
   constructor(props) {
@@ -15,14 +22,15 @@ class CheckOut extends Component {
     this.state = {
       product: {},
       address: {},
-      orderRepo: {},
       pickUpStatus: "",
       orderID: "",
+      selectPickUp: null,
     };
   }
   onChange(e) {
-    this.setState({ [e.target.id]: e.target.value });
+    this.setState({ selectPickUp: e.selectPickUp });
   }
+
   cancelPurchases() {
     window.location = "/shopdetails/" + this.props.match.params.id;
   }
@@ -56,7 +64,7 @@ class CheckOut extends Component {
       prodId: this.state.product._id,
       prodName: this.state.product.name,
       price: this.state.product.price,
-      pickUpStatus: this.state.pickUpStatus,
+      pickUpStatus: this.state.selectPickUp,
     };
 
     console.log(order);
@@ -67,94 +75,97 @@ class CheckOut extends Component {
           "x-auth-token": localStorage.jwtToken,
         },
       })
-      .then((res) => window.location = "/customer/order/" + res.data._id);
-
-    
+      .then((res) => (window.location = "/customer/order/" + res.data._id));
   }
 
   render() {
-    //console.log(this.props.auth.user.id);
-    console.log(this.state.product);
-    //console.log("address", this.state.address._id);
-    //console.log("Addid", this.state.addId);
-    console.log("OrderRepo", this.state.orderRepo._id);
     const { user } = this.props.auth;
+    const {selectPickUp} = this.state;
 
     return (
       <div className="container">
         <div className="col-md-12">
           <div className="container">
-            <h3>CheckOut</h3>
+            <h2 className="align-center">Check Out</h2>
+            <hr />
             <div className="row">
+              <div className="col-md-6">
+                {/* images Upload */}
+                <div className="form-group">
+                  <div>
+                    <img
+                      className="padding"
+                      src={this.state.product.images}
+                    ></img>
+                  </div>
+                </div>
+              </div>
               <div className="col-md-6">
                 {/* PRODUCT NAME */}
                 <div className="form-group">
                   <div className="prodName">{this.state.product.name}</div>
                   <div className="brand-small">{this.state.product.brand}</div>
                   <div>Item ID:{this.state.product._id}</div>
+                  <div className="price">
+                    Total: ${this.state.product.price}.00
+                  </div>
                 </div>
-              </div>
-              <div className="col-md-6">
-                {/* images Upload */}
                 <div className="form-group">
-                  <div>
-                    <img src={this.state.product.images}></img>
+                  <p>
+                    <u>Your Information:</u> <br />
+                    {user.first_name} {user.last_name}
+                    <br />
+                    {this.state.address.street1}
+                    <br />
+                    {this.state.address.street2}
+                    <br />
+                    {this.state.address.city}
+                    <br />
+                    {this.state.address.state}
+                    <br />
+                    {this.state.address.country}
+                    <br />
+                    {this.state.address.zipCode}
+                  </p>
+                </div>
+                <div className="form-group">
+                  <form Validate>
+                    <div className="form-group">
+                      <Select
+                      required
+                      className="col-md-5"
+                      value={selectPickUp}
+                      onChange={this.onChange}
+                      options={pickUpOptions}
+                      />
+                    </div>
+                  </form>
+                  <div className="container form-group">
+                    <div className="btn">
+                      <div className="btn">
+                        <button
+                          className="btn btn-primary"
+                          onClick={this.onSubmit}
+                        >
+                          Confirm Purchase
+                        </button>
+                      </div>
+                      <button
+                        type="button"
+                        className="btn btn-secondary"
+                        onClick={this.cancelPurchases}
+                      >
+                        Cancel
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="form-group">
-              <p>
-                <u>Your Information:</u> <br />
-                {user.first_name} {user.last_name}
-                <br />
-                {this.state.address.street1}
-                <br />
-                {this.state.address.street2}
-                <br />
-                {this.state.address.city}
-                <br />
-                {this.state.address.state}
-                <br />
-                {this.state.address.country}
-                <br />
-                {this.state.address.zipCode}
-              </p>
-            </div>
-            <div className="form-group">
-            <form Validate>
-              <div className="form-group">
-                <input
-                  placeholder="Pick up options"
-                  onChange={this.onChange}
-                  value={this.state.pickUpStatus}
-                  id="pickUpStatus"
-                  type="text"
-                />
-              </div>
-            </form>
           </div>
-          <div className="price">Total: ${this.state.product.price}</div>
-          </div>
-          
+
           <hr />
           {/* SUBMIT */}
-          <div className="container form-group">
-            <div className="btn">
-              <div className="btn">
-                <button className="btn btn-primary" onClick={this.onSubmit}>
-                  Confirm Purchase
-                </button>
-              </div>
-              <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={this.cancelPurchases}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     );

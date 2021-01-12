@@ -45,7 +45,6 @@ export default class DetailsProduct extends Component {
           <div className="container">
             <div className="row">
             <div className="col-md-6">
-                {/* images Upload */}
                 <div className="form-group">
                   <div>
                     <img src={this.state.product.images}></img>

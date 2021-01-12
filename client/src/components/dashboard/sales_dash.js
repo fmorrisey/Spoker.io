@@ -110,9 +110,9 @@ class SalesManager extends Component {
               </div>
               <div>
               <h3 className="">Sales Data:</h3>
-              <p>Retail ${this.state.revenue.retailSales}</p>
-              <p>Cost ${this.state.revenue.msrpCost}</p>
-              <p>Profits ${this.state.revenue.profit}</p>
+              <p>Retail: ${this.state.revenue.retailSales}</p>
+              <p>Cost: ${this.state.revenue.msrpCost}</p>
+              <p>Profits: ${this.state.revenue.profit}</p>
             </div>
             </div>
             <div className="row">
@@ -124,8 +124,7 @@ class SalesManager extends Component {
               <h3 className="">Inventory:</h3>
               <p>Value: ${this.state.inventory.retailSales}</p>
               <p>Cost: ${this.state.inventory.msrpCost}</p>
-              <p>Potential${this.state.inventory.profit}</p>
-              <p>Margin %{this.state.inventory.percentage}</p>
+              <p>Potential: ${this.state.inventory.profit}</p>
             </div>
             </div>
           </div>

@@ -173,12 +173,10 @@ class CustomerOrder extends Component {
                 {this.state.address.zipCode}
               </p>
             </div>
-          </div>
-
-          {/* SUBMIT */}
+            {/* SUBMIT */}
           <button
             type="button"
-            className="btn btn-secondary"
+            className="btn btn-secondary mr-2"
             onClick={this.backToTop}
           >
             Back
@@ -191,6 +189,9 @@ class CustomerOrder extends Component {
             Send Email
           </button>
         </div>
+          </div>
+
+          
       </div>
     );
   }
