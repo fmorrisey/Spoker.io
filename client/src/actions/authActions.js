@@ -21,7 +21,7 @@ export const registerUser = (userData, history) => dispatch => {
 
 export const updateProfile = userData => dispatch => {
     axios
-    .post("http://localhost:5000/address/add/", userData, {
+    .post("http://localhost:5000/address/update/customer", userData, {
       headers: {
         'x-auth-token': localStorage.jwtToken
       }

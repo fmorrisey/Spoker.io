@@ -7,7 +7,7 @@ export class pickUpReady extends Component {
                 `
       <div>
         <h3>CONFIRMATION!</h3>
-        <img src=${this.state.product.images} style="width:10%;"></img>
+        <img src={this.state.product.images} style="width:10%;"></img>
         <p>Thank you ${this.props.auth.user.first_name} for your purchase of:</p>
       </div>
       <div className="form-group">

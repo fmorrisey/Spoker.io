@@ -44,7 +44,7 @@ export default class CustomerOrders extends Component {
     
    console.log("State: ", this.state.orders)
     return (
-      <div className="container">
+      <div className="container padding">
         
         <div className="col-md-12">
         
