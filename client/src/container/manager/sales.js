@@ -149,16 +149,21 @@ class SalesManager extends Component {
       <div className="container padding">
         <h2 className="align-center"><u>Revenue</u></h2>
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-2">
             <div>
-              <h3 className="">Sales Data:</h3>
+              <h3 className="">Sales:</h3>
               <p>Retail: ${this.state.revenue.retailSales}</p>
               <p>Cost: ${this.state.revenue.msrpCost}</p>
               <p>Profits: ${this.state.revenue.profit}</p>
               <p>Margin: %{this.state.revenue.percentage}</p>
             </div>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-4">
+                <Doughnut data={revenueData} options={revOpt} />
+                <p className="rev-marg">%{this.state.revenue.percentage}</p>
+          </div>
+          
+          <div className="col-md-2">
             <div>
               <h3 className="">Inventory:</h3>
               <p>Value: ${this.state.inventory.retailSales}</p>
@@ -167,27 +172,23 @@ class SalesManager extends Component {
               <p>Margin %{this.state.inventory.percentage}</p>
             </div>
           </div>
+          <div className="col-md-4">
+                <Doughnut data={inventoryData} options={invOpt} />
+                <p className="rev-marg">%{this.state.inventory.percentage}</p>
+          </div>
         </div>
         <div className="row">
-          <div className="col-md-8">
+          <div className="col-md-12">
             <div className="">
               <Bar data={barData} options={barOptions} />
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="row">
-              <div className="">
-                <Doughnut data={revenueData} options={revOpt} />
-                <p className="rev-marg">%{this.state.revenue.percentage}</p>
-              </div>
-              <div className="">
-                <Doughnut data={inventoryData} options={invOpt} />
-                <p className="rev-marg">%{this.state.inventory.percentage}</p>
-              </div>
-            </div>
           </div>
+          <div className="row">
+            <div className="bottomSpace"></div>
         </div>
-      </div>
+        </div>
+        
     );
   }
 }

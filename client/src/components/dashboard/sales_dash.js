@@ -99,7 +99,7 @@ class SalesManager extends Component {
 
     return (
       <div className="container">
-        <div className="card padding">
+        <div className="card paddingDash">
         <Link to="/manager/sales" className="nav-link"><h2 className="align-center card-header">Revenue</h2></Link>
         <div className="row">
           <div className="">
@@ -109,7 +109,7 @@ class SalesManager extends Component {
                 <p className="rev-marg">%{this.state.revenue.percentage}</p>
               </div>
               <div>
-              <h3 className="">Sales Data:</h3>
+              <h3 className="">Sales:</h3>
               <p>Retail: ${this.state.revenue.retailSales}</p>
               <p>Cost: ${this.state.revenue.msrpCost}</p>
               <p>Profits: ${this.state.revenue.profit}</p>

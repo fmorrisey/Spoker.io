@@ -39,10 +39,11 @@ export default class OrdersManager extends Component {
 
    console.log("State: ", this.state.orders)
     return (
-      <div className="container">
-        <div className="card col-md-12 padding">
+      <div className="container ">
+        <div className="card col-md-12 paddingDash">
         <Link to="/manager/orders" className="card-header align-center"><h3>Orders</h3></Link>
-        <table className="table">
+       <div className="tableContainer">
+       <table className="table">
           <thead className="thead-light">
             <tr>
               <th>Order ID</th>
@@ -60,6 +61,7 @@ export default class OrdersManager extends Component {
   
           </tbody>
         </table>
+       </div>
         </div>
       </div>
     );

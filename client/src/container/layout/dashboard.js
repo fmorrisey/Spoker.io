@@ -16,7 +16,7 @@ class Dashboard extends Component {
   render() {
     const { user } = this.props.auth;
     return (
-      <div className="container">
+      <div className="container padding">
         <div className="col-lg-12 center-align">
           <div className="row">
           </div>

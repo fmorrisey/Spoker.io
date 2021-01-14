@@ -58,6 +58,7 @@ export default class OrdersManager extends Component {
         </div>
         <div className="col-md-12">
         <h3 className="padding">Orders</h3>
+        <div className="tableContainer">
         <table className="padding table">
           <thead className="thead-light">
             <tr>
@@ -78,6 +79,8 @@ export default class OrdersManager extends Component {
                }) }
           </tbody>
         </table>
+
+        </div>
         </div>
       </div>
     );

@@ -25,7 +25,7 @@ export default class ProductList extends Component {
   render() {
     return (
       <div className="container">
-        <div className="card col-md-12 padding">
+        <div className="card col-md-12 paddingDash">
         <Link to="/inventory" className="card-header"><h2 className="align-center">Inventory</h2></Link>
           <table className="col-md-12 table">
             <thead className="thead-light">

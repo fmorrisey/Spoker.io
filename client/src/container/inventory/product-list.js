@@ -55,30 +55,32 @@ export default class ProductList extends Component {
                 onChange={this.updateSearch.bind(this)}
               />
             </div>
-            <div className="col-md-12">
+            <div className="">
               <h3 className="padding">Shop Inventory</h3>
-              <table className="table">
-                <thead className="thead-light">
-                  <tr>
-                    <th>Name</th>
-                    <th>Brand</th>
-                    <th>Dept.</th>
-                    <th>Category</th>
-                    <th>MSRP/Retail</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredProducts.map((currentproduct) => {
-                    return (
-                      <Product
-                        product={currentproduct}
-                        key={currentproduct._id}
-                      />
-                    );
-                  })}
-                </tbody>
-              </table>
+              <div className="tableContainer">
+                <table className="table">
+                  <thead className="thead-light">
+                    <tr>
+                      <th>Name</th>
+                      <th>Brand</th>
+                      <th>Dept.</th>
+                      <th>Category</th>
+                      <th>MSRP/Retail</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredProducts.map((currentproduct) => {
+                      return (
+                        <Product
+                          product={currentproduct}
+                          key={currentproduct._id}
+                        />
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
