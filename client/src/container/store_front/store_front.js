@@ -8,17 +8,13 @@ export class StoreFront extends Component {
       <div className="parallax">
         <div className="container">
           <div className="row shopHeadSpace">
-            <div className="siteHeader">
-              <p>SPOKER</p>
-            </div>
+            <div className="siteHeader">SPOKER</div>
           </div>
           <div className="">
             <div className="row shopCard">
               <div className="col-md-5">
                 <Info />
               </div>
-             
-
               <div className="col-md-7">
                 <ShopList />
               </div>
@@ -31,7 +27,7 @@ export class StoreFront extends Component {
           </div>
         </div>
         <div className="row">
-            <div className="bottomSpace"></div>
+          <div className="bottomSpace"></div>
         </div>
       </div>
     );

@@ -17,22 +17,29 @@ class Dashboard extends Component {
     const { user } = this.props.auth;
     return (
       <div className="container padding">
-        <div className="col-lg-12 center-align">
-          <div className="row">
-          </div>
-          <div className="row">
-            <div className="col-md-6 mr-0">
-              <Sales />
+        <div className="row">
+          <div className="col-lg-12 center-align">
+            <div className="row">
+              <div className="col-md-6 paddingDash">
+                <Sales />
+              </div>
+              
+              <div className="col-md-6">
+              <div className="salesHR paddingDash">
+                <div className=""></div>
+              </div>
+                <Orders />
+              </div>
             </div>
-          <div className="col-md-6 ml-0">
-            <Orders />
-          </div>
-          </div>
-          <div className="row padding ">
-            <div className="col-md-12">
-              <Inventory />
+            <div className="row paddingDash ">
+              <div className="col-md-12">
+                <Inventory />
+              </div>
             </div>
           </div>
+        </div>
+        <div className="row">
+          <div className="bottomSpace"></div>
         </div>
       </div>
     );

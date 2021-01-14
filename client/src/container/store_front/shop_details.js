@@ -39,7 +39,7 @@ export default class DetailsProduct extends Component {
           <div className="container md productHead">
             <h2>{this.state.product.name}</h2>
             <h3>
-              <i>{this.state.product.brand}</i>
+              <i className="brand-reg">{this.state.product.brand}</i>
             </h3>
           </div>
 

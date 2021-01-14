@@ -18,14 +18,14 @@ class Landing extends Component {
   }
   render() {
     return (
-      <div className="container">
+      <div className="container padding">
         <div className="row">
-          <div className="col-12 center-align">
-            <div className="col-6">
-              <Link to="/register" className="btn btn-primary waves-effect">Register</Link>
-            </div>
-            <div className="col-6">
-              <Link to="/login" className="btn btn-primary waves-effect">Log In</Link>
+          <div className="col-12 align-center">
+            <div className="col-md-12">
+              <h3>Welcome to Spoker</h3>
+              <Link to="/register" className="btn btn-success mr-2">Register</Link>
+              <Link to="/login" className="btn btn-primary mr-2">Log In</Link>
+              <Link to="/store" className="btn btn-info waves-effect">Shop</Link>
             </div>
           </div> 
         </div>

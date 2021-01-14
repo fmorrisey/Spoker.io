@@ -147,8 +147,12 @@ class SalesManager extends Component {
 
     return (
       <div className="container padding">
-        <h2 className="align-center"><u>Revenue</u></h2>
-        <div className="salesHR"><hr /></div>
+        <h2 className="align-center">
+          <u>Revenue</u>
+        </h2>
+        <div className="salesHR">
+          <hr />
+        </div>
         <div className="row">
           <div className="col-md-2">
             <div>
@@ -160,8 +164,8 @@ class SalesManager extends Component {
             </div>
           </div>
           <div className="col-md-4">
-                <Doughnut data={revenueData} options={revOpt} />
-                <p className="rev-marg">%{this.state.revenue.percentage}</p>
+            <Doughnut data={revenueData} options={revOpt} />
+            <p className="rev-marg">%{this.state.revenue.percentage}</p>
           </div>
           
           <div className="col-md-2">
@@ -174,23 +178,24 @@ class SalesManager extends Component {
             </div>
           </div>
           <div className="col-md-4">
-                <Doughnut data={inventoryData} options={invOpt} />
-                <p className="rev-marg">%{this.state.inventory.percentage}</p>
+            <Doughnut data={inventoryData} options={invOpt} />
+            <p className="rev-marg">%{this.state.inventory.percentage}</p>
           </div>
         </div>
-        <div className="salesHR"><hr /></div>
+        <div className="salesHR">
+          <hr />
+        </div>
         <div className="row">
           <div className="col-md-12">
             <div className="">
               <Bar data={barData} options={barOptions} />
             </div>
           </div>
-          </div>
-          <div className="row">
-            <div className="bottomSpace"></div>
         </div>
+        <div className="row">
+          <div className="bottomSpace"></div>
         </div>
-        
+      </div>
     );
   }
 }

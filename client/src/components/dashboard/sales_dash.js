@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import axios from "axios";
 import { Doughnut } from "react-chartjs-2";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 class SalesManager extends Component {
   constructor(props) {
     super(props);
@@ -100,36 +100,42 @@ class SalesManager extends Component {
     return (
       <div className="container">
         <div className="card paddingDash">
-        <Link to="/manager/sales" className="nav-link"><h2 className="align-center card-header">Revenue</h2></Link>
-        <div className="row">
-          <div className="salesDash">
-            <div className="row">
-              <div className="">
-                <Doughnut data={revenueData} options={revOpt} />
-                <p className="rev-marg">%{this.state.revenue.percentage}</p>
+          <Link to="/manager/sales" className="nav-link">
+            <h2 className="align-center card-header">Revenue</h2>
+          </Link>
+          <div className="col-12">
+            <div className="">
+              <div className="row">
+                <div className="">
+                  <Doughnut data={revenueData} options={revOpt} />
+                  <p className="rev-marg">%{this.state.revenue.percentage}</p>
+                </div>
+                <div>
+                  <div className="salesPad">
+                    <h3 className="">Sales:</h3>
+                    <p>Retail: ${this.state.revenue.retailSales}</p>
+                    <p>Cost: ${this.state.revenue.msrpCost}</p>
+                    <p>Profits: ${this.state.revenue.profit}</p>
+                  </div>
+                </div>
               </div>
-              <div>
-              <h3 className="">Sales:</h3>
-              <p>Retail: ${this.state.revenue.retailSales}</p>
-              <p>Cost: ${this.state.revenue.msrpCost}</p>
-              <p>Profits: ${this.state.revenue.profit}</p>
-            </div>
-            </div>
-            <div className="row">
-              <div className="">
-                <Doughnut data={inventoryData} options={invOpt} />
-                <p className="rev-marg">%{this.state.inventory.percentage}</p>
+              <hr />
+              <div className="row">
+                <div className="">
+                  <Doughnut data={inventoryData} options={invOpt} />
+                  <p className="rev-marg">%{this.state.inventory.percentage}</p>
+                </div>
+                <div>
+                  <div className="salesPad">
+                    <h3 className="">Inventory:</h3>
+                    <p>Value: ${this.state.inventory.retailSales}</p>
+                    <p>Cost: ${this.state.inventory.msrpCost}</p>
+                    <p>Potential: ${this.state.inventory.profit}</p>
+                  </div>
+                </div>
               </div>
-              <div>
-              <h3 className="">Inventory:</h3>
-              <p>Value: ${this.state.inventory.retailSales}</p>
-              <p>Cost: ${this.state.inventory.msrpCost}</p>
-              <p>Potential: ${this.state.inventory.profit}</p>
-            </div>
             </div>
           </div>
-          <hr />
-        </div>
         </div>
       </div>
     );

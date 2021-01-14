@@ -9,6 +9,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   /* background-color: #151A22; */
   height: 100%;
+  
+}
+
+p {
+  font-family: 'Trispace', sans-serif;
 }
 
 .tableContainer {
@@ -19,6 +24,9 @@ body {
   overflow-x: auto;
 }
 
+.salesPad {
+  padding-left: 5px;
+}
 
 .footer {
   background-color: #343A40;
@@ -36,11 +44,6 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.search {
-  display: flex;
-  justify-content: center;
 }
 
 img {
@@ -78,9 +81,17 @@ img {
   font-weight: bold;
   font-size: 18px;
 }
+
+.brand-reg {
+  font-family: 'Trispace', sans-serif;
+  font-style: italic;
+  font-size: 28px;
+}
+
 .brand-small {
   font-style: italic;
   font-size: 21px;
+  font-family: 'Trispace', sans-serif;
 }
 .prodName {
   font-size: 25px;
@@ -172,6 +183,16 @@ h4 {
 
 .salesHR {
   visibility: visible;
+}
+
+@media screen and (min-device-width: 1200px) {
+  .salesHR {
+    visibility: hidden;
+  }
+}
+
+.nav-black {
+  color: #000000;
 }
 
 @media screen and (max-device-width: 350px) {
