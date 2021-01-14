@@ -12,7 +12,7 @@ export default class Item extends Component {
                 <img src={this.props.product.images} className="shopItem"></img>
               </Link>
             </div>
-            <div className="col-md-6">
+            <div className="col-md-8">
               <a className="prodName">
                 <Link to={`/shopdetails/${this.props.product._id}`}>
                   {this.props.product.name}

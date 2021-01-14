@@ -15,6 +15,11 @@ body {
   overflow-x: auto;
 }
 
+.salesDash {
+  overflow-x: auto;
+}
+
+
 .footer {
   background-color: #343A40;
   height: 75px;
@@ -40,7 +45,6 @@ code {
 
 img {
   width: 100%;
-  padding-left: 5px;
 }
 
 .padding {
@@ -95,6 +99,7 @@ h4 {
 
 .shopItem {
   height: 120px;
+  width: 100%;
   object-position: relative;
   object-fit: contain;
   background-position: top;
@@ -165,7 +170,11 @@ h4 {
   height: 55px;
 }
 
-@media only screen and (max-device-width: 350px) {
+.salesHR {
+  visibility: visible;
+}
+
+@media screen and (max-device-width: 350px) {
   .parallax {
     background-attachment: scroll;
     width: 100%;
@@ -181,6 +190,10 @@ h4 {
 
   .mobile-spacer {
     height: 10px;
+  }
+
+  .salesHR {
+    visibility: visible;
   }
 }
 

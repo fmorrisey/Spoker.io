@@ -54,7 +54,7 @@ export default class DetailsProduct extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container padding">
         <h3>Product Details</h3>
         <div className="row">
           <div className="col-md-6">
@@ -146,6 +146,9 @@ export default class DetailsProduct extends Component {
           >
             Delete Product
           </button>
+        </div>
+        <div className="row">
+          <div className="bottomSpace"></div>
         </div>
         
       </div>

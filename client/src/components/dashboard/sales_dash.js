@@ -102,7 +102,7 @@ class SalesManager extends Component {
         <div className="card paddingDash">
         <Link to="/manager/sales" className="nav-link"><h2 className="align-center card-header">Revenue</h2></Link>
         <div className="row">
-          <div className="">
+          <div className="salesDash">
             <div className="row">
               <div className="">
                 <Doughnut data={revenueData} options={revOpt} />

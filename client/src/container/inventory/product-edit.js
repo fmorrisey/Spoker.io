@@ -104,7 +104,8 @@ export default class EditProduct extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container padding">
+        <div className="row ml-2 mr-2">
         <div className="col-md-12">
           <h3>Update Product</h3>
           <form onSubmit={e => e.preventDefault()}>
@@ -231,20 +232,17 @@ export default class EditProduct extends Component {
 
             {/* images Upload */}
             <div className="form-group">
-              <label>images Upload: </label>
+              <label>Product Image: </label>
               <span className="form-inline">
                 <input
                   id="images"
                   type="upload"
-                  placeholder="Upload Image"
+                  placeholder="Paste Link to Image Here..."
                   className="form-control mr-md-6"
                   aria-label="Upload Upload"
                   value={this.state.images}
                   onChange={this.onChange}
                 />
-                <button className="btn btn-secondary mt-sm-0" type="upload">
-                  ...
-                </button>
               </span>
             </div>
             {/* SUBMIT */}
@@ -257,6 +255,10 @@ export default class EditProduct extends Component {
               >Update Product</button>
             </div>
           </form>
+        </div>
+        </div>
+        <div className="row">
+          <div className="bottomSpace"></div>
         </div>
       </div>
     )

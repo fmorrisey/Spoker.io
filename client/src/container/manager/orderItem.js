@@ -144,7 +144,7 @@ class OrderItem extends Component {
         },
       })
       .then((res) => console.log(res.data));
-    alert("CONFIRMATION EMAIL SENT!");
+    alert("CUSTOMER ALERT EMAIL SENT!");
   }
 
   render() {
@@ -154,7 +154,7 @@ class OrderItem extends Component {
     const { user } = this.props.auth;
 
     return (
-      <div className="container">
+      <div className="container padding">
         <div className="col-md-12">
           <div className="container">
             <div className="row">
@@ -187,7 +187,7 @@ class OrderItem extends Component {
             </div>
             <div>
               <p>
-                <u>ADDRESS</u>
+                <u>Customer Info:</u>
                 <br />
                 {this.state.customer.first_name} {this.state.customer.last_name}
                 <br />
@@ -220,7 +220,7 @@ class OrderItem extends Component {
                 className="btn btn-primary"
                 onClick={this.sendEmail.bind(this)}
               >
-                Send Email
+                Notify Customer
               </button>
             </div>
             <hr />

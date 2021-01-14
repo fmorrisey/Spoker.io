@@ -14,14 +14,12 @@ export class StoreFront extends Component {
           </div>
           <div className="">
             <div className="row shopCard">
-              <div className="col-md-4">
+              <div className="col-md-5">
                 <Info />
               </div>
-              <div className="col-md-1">
-                <p className="mobile-spacer"></p>
-              </div>
+             
 
-              <div className="col-md-6">
+              <div className="col-md-7">
                 <ShopList />
               </div>
             </div>

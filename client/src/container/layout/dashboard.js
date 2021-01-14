@@ -21,10 +21,10 @@ class Dashboard extends Component {
           <div className="row">
           </div>
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-6 mr-0">
               <Sales />
             </div>
-          <div className="col-md-6">
+          <div className="col-md-6 ml-0">
             <Orders />
           </div>
           </div>

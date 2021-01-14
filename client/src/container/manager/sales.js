@@ -148,6 +148,7 @@ class SalesManager extends Component {
     return (
       <div className="container padding">
         <h2 className="align-center"><u>Revenue</u></h2>
+        <div className="salesHR"><hr /></div>
         <div className="row">
           <div className="col-md-2">
             <div>
@@ -177,6 +178,7 @@ class SalesManager extends Component {
                 <p className="rev-marg">%{this.state.inventory.percentage}</p>
           </div>
         </div>
+        <div className="salesHR"><hr /></div>
         <div className="row">
           <div className="col-md-12">
             <div className="">

@@ -71,7 +71,7 @@ class CustomerOrder extends Component {
       </div>
       <div className="form-group">
         <div>${this.state.order.prodName}</div>
-        <div>${this.state.order.price}.00</div>
+        <div>$${this.state.order.price}.00</div>
       </div>
       <div>
       <p>Order ID: ${this.state.order._id}</p>
