@@ -29,23 +29,11 @@ class Navbar extends Component {
 
         return (
             <div>
-            <nav className="navbar navbar-light bg-light navbar-expand-lg mb-3">
+            <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
 
                 <div>
-                    <Link to="/store" className="navbar-brand order-1">Spoker.io</Link>
+                    <Link to="/store" className="navbar-brand order-1 siteBrand">Spoker</Link>
                 </div>
-
-                {/* <div className="search">
-                    <ul className="navbar-nav mx-auto ">
-                        <li className="navbar-item">
-                            <form className="d-flex form-inline">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                                <button className="btn btn-outline-success mt-sm-0" type="submit">Search</button>
-                            </form>
-                        </li>
-                    </ul>
-                </div> */}
-
                 <div>
                     <span><button className="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,14 +53,13 @@ class Navbar extends Component {
                         <li class="nav-item dropdown">
                             <div class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                {/* Welcome {user.first_name.split(" ")[0]} */}
                                 Login
                             </div>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <Link to="/login" className="nav-link">Login</Link>
-                                <navlink className="nav-link" onClick={this.onLogoutClick} >Log Out</navlink>
-                                <Link to="/register" className="nav-link">Register</Link>
-                                <Link to="/profile" className="nav-link">Profile</Link>
+                                <Link to="/login" className="dropdown-item">Login</Link>
+                                <navlink className="dropdown-item" onClick={this.onLogoutClick} >Log Out</navlink>
+                                <Link to="/register" className="dropdown-item">Register</Link>
+                                <Link to="/profile" className="dropdown-item">Profile</Link>
                             </div>
                         </li>
                        

@@ -13,10 +13,10 @@ const ManagerMenu = props => {
                     Manager
                 </div>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <Link to="/manager/dashboard" className="nav-link">Dashboard</Link>
-                    <Link to="/manager/orders" className="nav-link">Orders</Link>
-                    <Link to="/manager/sales" className="nav-link">Sales</Link>
-                    <Link to="/manager/info" className="nav-link">Info</Link>
+                    <Link to="/manager/dashboard" className="dropdown-item">Dashboard</Link>
+                    <Link to="/manager/orders" className="dropdown-item">Orders</Link>
+                    <Link to="/manager/sales" className="dropdown-item">Sales</Link>
+                    <Link to="/manager/info" className="dropdown-item">Info</Link>
                 </div>
                 </li>              
                 

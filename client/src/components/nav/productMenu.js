@@ -13,8 +13,8 @@ const ProductMenu = props => {
                         Products
                                 </div>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <Link to="/inventory" className="nav-link">Inventory</Link>
-                        <Link to="/add" className="nav-link">Add</Link>
+                        <Link to="/inventory" className="dropdown-item">Inventory</Link>
+                        <Link to="/add" className="dropdown-item">Add</Link>
     
                     </div>
                     </li>                
