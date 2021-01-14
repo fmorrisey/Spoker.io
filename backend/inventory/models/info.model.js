@@ -13,19 +13,19 @@ const infoSchema = new Schema({
         type: String,
         required: true, 
         trim: true, 
-        minlength:[8, "Longer Description Required"]
+        minlength:[1, "Welcome Header Required"]
     },
     about: {
         type: String,
         required: true, 
         trim: true, 
-        minlength:[20, "Longer Description Required"]
+        minlength:[1, "About Required"]
     },
     services: {
         type: String, 
         required: true, 
         trim: true, 
-        minlength:[20, "Longer Description Required"]
+        minlength:[1, "Services Description Required"]
     },
     phone: {
         type: String, 
@@ -52,33 +52,33 @@ const infoSchema = new Schema({
     },
     street1: {
         type: String,
-        required: true,
+        required: false,
         trim: true,
         minlength: 3
     },
     city: {
         type: String,
-        required: true,
+        required: false,
         trim: true,
         minlength: 3,
         default: 'Milwaukee'
     },
     state: {
         type: String,
-        required: true,
+        required: false,
         trim: true,
         minlength: 2
     },
     country: {
         type: String,
-        required: true,
+        required: false,
         trim: true,
         minlength: 2,
         default: "USA"
     },
     zipCode: {
         type: Number,
-        required: true,
+        required: false,
         trim: true,
         minlength: 5
     },

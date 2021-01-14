@@ -53,17 +53,17 @@ router.route('/:id').get((req, res) => {
 });
 
 //============UPDATE======
-router.post('/update/:id', [auth] ,(req, res) => {
+router.post('/update/:id', (req, res) => {
     Info.findById(req.params.id)
            .then(info => {
+            console.log(req.body)
             info.name = req.body.name;
             info.about = req.body.about;
             info.services = req.body.services;
+            info.hours = req.body.hours;
             info.phone = req.body.phone;
             info.email = req.body.email;
-            info.hours = req.body.hours;
             
-
             info.save()
             .then(() => res.json(info + ' Updated!'))
             .catch(err => res.status(400).json('Error: ' + err));

@@ -25,9 +25,9 @@ export class Info extends Component {
     render() {
         return (
             <div className="container">
-                <div className="card-info">
+                <div className="">
                     <div className="body">
-                        <h2 className="shopHeader">{this.state.info.name}</h2>
+                        <h2 className="shopHeader padding">{this.state.info.name}</h2>
                         <hr />
                         <p>{this.state.info.about}</p>
                         <hr />
