@@ -12,7 +12,7 @@ export default class ProductList extends Component {
     this.state = {
       products: [],
       search: "",
-      filter: ""
+      filter: "",
     };
   }
 
@@ -33,7 +33,6 @@ export default class ProductList extends Component {
   }
 
   render() {
-    
     let filteredProducts = [];
 
     filteredProducts = this.state.products.filter((product) => {
@@ -43,38 +42,48 @@ export default class ProductList extends Component {
       );
     });
     return (
-      <div className="container">
-        <div>
-          <input
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-            defaultValue={this.state.search}
-            onChange={this.updateSearch.bind(this)}
-          />
+      <div className="container padding">
+        <div className="row">
+          <div className="col-md-12">
+            <div>
+              <input
+                class="form-control mr-sm-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                defaultValue={this.state.search}
+                onChange={this.updateSearch.bind(this)}
+              />
+            </div>
+            <div className="col-md-12">
+              <h3 className="padding">Shop Inventory</h3>
+              <table className="table">
+                <thead className="thead-light">
+                  <tr>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Dept.</th>
+                    <th>Category</th>
+                    <th>MSRP/Retail</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredProducts.map((currentproduct) => {
+                    return (
+                      <Product
+                        product={currentproduct}
+                        key={currentproduct._id}
+                      />
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-        <div className="col-md-12">
-          <h3 className="padding">Shop Inventory</h3>
-          <table className="table">
-            <thead className="thead-light">
-              <tr>
-                <th>Name</th>
-                <th>Brand</th>
-                <th>Dept.</th>
-                <th>Category</th>
-                <th>MSRP/Retail</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredProducts.map((currentproduct) => {
-                return (
-                  <Product product={currentproduct} key={currentproduct._id} />
-                );
-              })}
-            </tbody>
-          </table>
+        <div className="row">
+          <div className="bottomSpace"></div>
         </div>
       </div>
     );

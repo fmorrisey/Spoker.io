@@ -42,7 +42,7 @@ export default class CustomerOrders extends Component {
       }            
       )
     
-   console.log("State: ", this.state.orders)
+   //console.log("State: ", this.state.orders)
     return (
       <div className="container padding">
         

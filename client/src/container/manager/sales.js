@@ -34,7 +34,7 @@ class SalesManager extends Component {
   }
 
   render() {
-    console.log("REV", this.state.revenue);
+    //console.log("REV", this.state.revenue);
     var barData = {
       labels: ["Revenue", "Inventory"],
       datasets: [
@@ -146,7 +146,7 @@ class SalesManager extends Component {
     };
 
     return (
-      <div className="container">
+      <div className="container padding">
         <h2 className="align-center"><u>Revenue</u></h2>
         <div className="row">
           <div className="col-md-6">

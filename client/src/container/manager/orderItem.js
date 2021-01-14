@@ -135,7 +135,7 @@ class OrderItem extends Component {
   </div>`,
     };
 
-    console.log(email);
+    //console.log(email);
 
     axios
       .post("http://localhost:5000/email/pickUp/", email, {
@@ -148,9 +148,9 @@ class OrderItem extends Component {
   }
 
   render() {
-    console.log("USER", this.state.order.user);
-    console.log("CUSTOMER", this.state.customer.email);
-    console.log("address", this.state.address);
+    // console.log("USER", this.state.order.user);
+    // console.log("CUSTOMER", this.state.customer.email);
+    // console.log("address", this.state.address);
     const { user } = this.props.auth;
 
     return (

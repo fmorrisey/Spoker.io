@@ -74,6 +74,7 @@ class Routes extends Component {
           
           <div className="App">
             {/* Store */}
+            
             <Route path="/store" component={StoreFront} />
             <Route path="/shopdetails/:id" component={ShopDetails} />
             
@@ -100,8 +101,9 @@ class Routes extends Component {
               <PrivateRoute path="/manager/info" component={InfoView} />
               <PrivateRoute path="/manager/update" component={InfoUpdate} />
             </Switch>
+            
           </div>
-          {/* <Footer/> */}
+          <Footer/>
         </BrowserRouter>
       </Provider>
     );

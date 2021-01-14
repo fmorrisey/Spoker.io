@@ -46,9 +46,9 @@ export default class OrdersManager extends Component {
       }            
       )
     
-   console.log("State: ", this.state.orders)
+   //console.log("State: ", this.state.orders)
     return (
-      <div className="container">
+      <div className="container padding">
         <div>
         <input class="form-control mr-sm-2" type="search" 
           placeholder="Search" aria-label="Search"

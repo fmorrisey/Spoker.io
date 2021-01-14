@@ -56,7 +56,7 @@ class CustomerOrder extends Component {
           console.log(error);
         });
         this.setState({ dataPulled: 1 });
-        console.log("prodId", this.state.order.prodId)
+        //console.log("prodId", this.state.order.prodId)
     }
   }
 
@@ -99,7 +99,7 @@ class CustomerOrder extends Component {
     </div>`,
     };
 
-    console.log(email);
+    //console.log(email);
 
     axios
       .post("http://localhost:5000/email/confirm/", email, {
@@ -112,7 +112,7 @@ class CustomerOrder extends Component {
   }
 
   backToTop() {
-    window.location = "/store";
+    window.location = "/profile";
   }
 
   onChange(e) {
@@ -123,11 +123,11 @@ class CustomerOrder extends Component {
   }
 
   render() {
-    console.log("USER", this.props.auth.user.id);
-    console.log("Order", this.state.order);
-    console.log("product", this.state.product);
-    console.log("address", this.state.address._id);
-    console.log("Addid", this.state.addId);
+    // console.log("USER", this.props.auth.user.id);
+    // console.log("Order", this.state.order);
+    // console.log("product", this.state.product);
+    // console.log("address", this.state.address._id);
+    // console.log("Addid", this.state.addId);
     const { user } = this.props.auth;
 
     return (
@@ -143,8 +143,8 @@ class CustomerOrder extends Component {
                 </div>
                 {/* PRODUCT NAME */}
                 <div className="form-group">
-                  <div>{this.state.product.name}</div>
-                  <div>${this.state.order.price}.00</div>
+                  <div><b>{this.state.order.prodName}</b></div>
+                  <div><u>Total: ${this.state.order.price}.00</u></div>
                 </div>
               </div>
             </div>

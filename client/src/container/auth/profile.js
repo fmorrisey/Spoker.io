@@ -81,7 +81,7 @@ class Profile extends Component {
     const { user } = this.props.auth;
     const { errors } = this.state;
     return (
-      <div className="container">
+      <div className="container padding">
         <div className="row">
           <div className="col-md-6">
             <h4>
@@ -220,6 +220,9 @@ class Profile extends Component {
             </form>
             </div>
           </div>
+        </div>
+        <div className="row">
+            <div className="bottomSpace"></div>
         </div>
       </div>
     );

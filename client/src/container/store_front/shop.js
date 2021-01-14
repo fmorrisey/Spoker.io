@@ -39,11 +39,11 @@ export default class ShopList extends Component {
     });
 
     return (
-      <div className="container">
+      <div className="container padding" >
         <div className="col-md-12">
           <div>
             <input
-              class="form-control mr-sm-2"
+              class="form-control"
               type="search"
               placeholder="Search"
               aria-label="Search"

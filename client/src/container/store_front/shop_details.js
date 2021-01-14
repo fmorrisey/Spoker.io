@@ -34,17 +34,18 @@ export default class DetailsProduct extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container padding">
         <div className="col-md-12">
           <div className="container md productHead">
             <h2>{this.state.product.name}</h2>
-            <h3><i>{this.state.product.brand}</i></h3>
-            
+            <h3>
+              <i>{this.state.product.brand}</i>
+            </h3>
           </div>
-          
+
           <div className="container">
             <div className="row">
-            <div className="col-md-6">
+              <div className="col-md-6">
                 <div className="form-group">
                   <div>
                     <img src={this.state.product.images}></img>
@@ -54,9 +55,15 @@ export default class DetailsProduct extends Component {
               <div className="col-md-6">
                 {/* Type of Product */}
                 <div className="form-group">
-                <div className="price">${this.state.product.price}.00</div>
-                  <div>{this.state.product.department} / {this.state.product.category}</div>
-                </div>    
+                  <div className="price">${this.state.product.price}.00</div>
+                  <div>
+                    {this.state.product.department} /{" "}
+                    {this.state.product.category}
+                  </div>
+                  <Link to={"/checkout/" + this.state.product._id}>
+                    <button className="btn btn-primary mt-2">Purchase!</button>
+                  </Link>
+                </div>
                 {/* Description */}
                 <div className="form-group">
                   <div>
@@ -67,19 +74,18 @@ export default class DetailsProduct extends Component {
 
                 {/* Retail Price */}
                 <div className="">
-              <button
-                type="button"
-                className="btn btn-secondary mr-2"
-                onClick={this.backToTop}
-              >
-                Back
-              </button>
-              <Link to={"/checkout/" + this.state.product._id}>
-                <button className="btn btn-primary">Purchase!</button>
-              </Link>
-            </div>
+                  <button
+                    type="button"
+                    className="btn btn-secondary mr-2"
+                    onClick={this.backToTop}
+                  >
+                    Back
+                  </button>
+                </div>
               </div>
-              
+            </div>
+            <div className="row">
+              <div className="bottomSpace"></div>
             </div>
           </div>
         </div>

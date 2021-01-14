@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default class Item extends Component {
   render() {
     return (
-      <div className="m-3 padding">
+      <div className="m-3">
         <div key={this.props.product._id}>
           <div className="row m-1">
           <div className="col-md-4">
