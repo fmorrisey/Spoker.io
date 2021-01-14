@@ -25,10 +25,11 @@ class CheckOut extends Component {
       pickUpStatus: "",
       orderID: "",
       selectPickUp: null,
+      pickUpChoice: null,
     };
   }
   onChange(e) {
-    this.setState({ selectPickUp: e.value });
+    this.setState({ selectPickUp: e.selectPickUp, pickUpChoice: e.value });
   }
 
   cancelPurchases() {
@@ -64,7 +65,7 @@ class CheckOut extends Component {
       prodId: this.state.product._id,
       prodName: this.state.product.name,
       price: this.state.product.price,
-      pickUpStatus: this.state.selectPickUp,
+      pickUpStatus: this.state.pickUpChoice,
     };
 
     console.log(order);
@@ -96,18 +97,19 @@ class CheckOut extends Component {
                 <div className="form-group">
                   <div>
                     <img
-                      className="padding"
+                      className=""
                       src={this.state.product.images}
                     ></img>
                   </div>
                 </div>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-6 ">
                 {/* PRODUCT NAME */}
                 <div className="form-group">
                   <div className="prodName">{this.state.product.name}</div>
                   <div className="brand-small">{this.state.product.brand}</div>
                   <div>Item ID:{this.state.product._id}</div>
+                  <br />
                   <div className="price">
                     Total: ${this.state.product.price}.00
                   </div>

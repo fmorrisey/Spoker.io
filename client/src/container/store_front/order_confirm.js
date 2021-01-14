@@ -131,12 +131,12 @@ class CustomerOrder extends Component {
     const { user } = this.props.auth;
 
     return (
-      <div className="container">
+      <div className="container padding">
         <div className="col-md-12">
           {/* COMEBACK AND ADD A CONDITIONAL FOR NEW BIKE DAY */}
           <div className="container">
             <div className="row">
-              <div className="col-6">
+              <div className="col-12">
                 <div>
                   <h3>CONFIRMATION!</h3>
                   <p>Thank you {user.first_name} for your purchase of:</p>
@@ -191,7 +191,9 @@ class CustomerOrder extends Component {
         </div>
           </div>
 
-          
+          <div className="row">
+              <div className="bottomSpace"></div>
+            </div>
       </div>
     );
   }
