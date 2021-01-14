@@ -28,7 +28,7 @@ class CheckOut extends Component {
     };
   }
   onChange(e) {
-    this.setState({ selectPickUp: e.selectPickUp });
+    this.setState({ selectPickUp: e.value });
   }
 
   cancelPurchases() {
@@ -81,9 +81,11 @@ class CheckOut extends Component {
   render() {
     const { user } = this.props.auth;
     const {selectPickUp} = this.state;
+    console.log(this.state.selectPickUp);
 
     return (
-      <div className="container">
+      <div className="container padding">
+        <div className="row">
         <div className="col-md-12">
           <div className="container">
             <h2 className="align-center">Check Out</h2>
@@ -133,6 +135,7 @@ class CheckOut extends Component {
                     <div className="form-group">
                       <Select
                       required
+                      type="submit"
                       className="col-md-5"
                       value={selectPickUp}
                       onChange={this.onChange}
@@ -144,7 +147,7 @@ class CheckOut extends Component {
                     <div className="btn">
                       <div className="btn">
                         <button
-                          className="btn btn-primary"
+                          className="btn btn-success"
                           onClick={this.onSubmit}
                         >
                           Confirm Purchase
@@ -165,8 +168,11 @@ class CheckOut extends Component {
           </div>
 
           <hr />
-          {/* SUBMIT */}
         </div>
+        </div>
+        <div className="row">
+              <div className="bottomSpace"></div>
+            </div>
       </div>
     );
   }
