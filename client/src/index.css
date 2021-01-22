@@ -155,18 +155,18 @@ h4 {
 .siteHeader {
   font-weight: bold;
   text-align: center;
-  font-size: 96px;
+  font-size: 115px;
   color: #ffffff;
   font-family: 'Cuprum', sans-serif;
   font-style: italic;
   position: absolute;
-  top: 40%;
+  top: 35%;
 }
 
 .siteBrand {
   font-weight: bold;
   /* text-align: center; */
-  font-size: 28px;
+  font-size: 30px;
   color: #ffffff;
   font-family: 'Cuprum', sans-serif;
   font-style: italic;

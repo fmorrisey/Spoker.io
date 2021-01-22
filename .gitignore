@@ -26,3 +26,5 @@ yarn-error.log*
 #user specific
 
 client/.eslintcache
+backend/Spoker_BackEnd.code-workspace
+client/Spoker_FrontEnd.code-workspace
