@@ -24,13 +24,14 @@ Includes:
 Create .env file inside the backend directory that includes:
 
 ATLAS_URI= <MONGODB CONNECTION STRING>
-JWT_PRIVATE_SECRET= <GENERATE A KEY AT [GRC.com/passwords](https://www.grc.com/passwords.htm)>
+JWT_PRIVATE_SECRET= <GENERATE A KEY AT LINK BELOW>
 clientId= <GOOGLE OAUTH Client ID>
 clientSecret= <GOOGLE OAUTH Client Secret>
 refreshToken= <GOOGLE OAUTH Refresh Token>
 accessToken= <GOOGLE OAUTH Access Token>
 
 ```
+Generate a JWT Secret Key at [GRC.com/passwords](https://www.grc.com/passwords.htm)
 
 ## Getting Started
 
