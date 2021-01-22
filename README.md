@@ -17,22 +17,47 @@ Includes:
 - Customer Profile
 - Email Confirmation
 - Mobile Responsive Design
-## Getting Started: 
-To run the project use the following commands:
-### `npm start`
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Setup
 
-### `nodemon server`
+```
+Create .env file inside the backend directory that includes:
 
-Runs the backend server.js located at ./backend/server.js
-Command must initiated from the backend directory
+ATLAS_URI= <MONGODB CONNECTION STRING>
+JWT_PRIVATE_SECRET= <GENERATE A KEY AT [GRC.com/passwords](https://www.grc.com/passwords.htm)>
+clientId= <GOOGLE OAUTH Client ID>
+clientSecret= <GOOGLE OAUTH Client Secret>
+refreshToken= <GOOGLE OAUTH Refresh Token>
+accessToken= <GOOGLE OAUTH Access Token>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+
+## Getting Started
+
+From the root directory, run the following commands:
+
+For the very first build run:
+
+- `$ docker-compose build`
+
+Then every time after that:
+
+- `$ docker-compose up -d`
+Remove the `-d` if you want console read out and warnings
+
+Your Node Backend server will be running at `http://localhost:5000` and your client application will be running at `http://localhost:3000`
+
+To stop the services:
+
+- `$ docker compose-stop`
+
+To kill the services:
+
+- `CTRL + C` and then `$ docker compose-down`
+
+
+
+
 
 ### Project Thank Yous / Sources:
 
