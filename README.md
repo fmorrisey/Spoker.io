@@ -36,6 +36,8 @@ You will also see any lint errors in the console.
 
 ### Project Thank Yous / Sources:
 
+- The Instruction Team at devCodeCamp for their wisdom and guidance: [Site Here](https://devcodecamp.com/)
+
 - Beau Carnes for his tutorial on building an exercise tracker with MERN: [Article Here](https://medium.com/@beaucarnes/learn-the-mern-stack-by-building-an-exercise-tracker-mern-tutorial-59c13c1237a1) / [GitHub](https://github.com/beaucarnes/mern-exercise-tracker-mongodb). I completed Beau's article before I attended devCodeCamp and it laid the foundation for Full-Stack development.
 
 - Paige Nidedringhaus for her article on Passport and JWT: [Article Here](https://itnext.io/implementing-json-web-tokens-passport-js-in-a-javascript-application-with-react-b86b1f313436) / [GitHub](https://github.com/paigen11/mysql-registration-passport).
