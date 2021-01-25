@@ -56,9 +56,8 @@ To kill the services:
 
 - `CTRL + C` and then `$ docker compose-down`
 
-
-
-
+### Project Update:
+- 01/24/2021: Docker-Compose tested and Spoker Container deployed successfully on virtual windows machine.
 
 ### Project Thank Yous / Sources:
 
