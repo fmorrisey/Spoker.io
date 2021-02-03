@@ -39,7 +39,7 @@ export default class ShopList extends Component {
     });
 
     return (
-      <div className="container padding" >
+      <div className="container padding">
         <div className="col-md-12">
           <div>
             <input

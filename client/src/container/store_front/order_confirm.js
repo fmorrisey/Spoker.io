@@ -18,7 +18,7 @@ class CustomerOrder extends Component {
     };
 
     axios
-      .get("http://localhost:5000/orders/id/"+ this.props.match.params.id, {
+      .get("http://localhost:5000/orders/id/" + this.props.match.params.id, {
         headers: {
           "x-auth-token": localStorage.jwtToken,
         },
@@ -46,7 +46,6 @@ class CustomerOrder extends Component {
 
   componentDidUpdate() {
     if (this.state.dataPulled != 1) {
-      
       axios
         .get("http://localhost:5000/products/" + this.state.order.prodId)
         .then((response) => {
@@ -55,8 +54,8 @@ class CustomerOrder extends Component {
         .catch((error) => {
           console.log(error);
         });
-        this.setState({ dataPulled: 1 });
-        //console.log("prodId", this.state.order.prodId)
+      this.setState({ dataPulled: 1 });
+      //console.log("prodId", this.state.order.prodId)
     }
   }
 
@@ -143,8 +142,12 @@ class CustomerOrder extends Component {
                 </div>
                 {/* PRODUCT NAME */}
                 <div className="form-group">
-                  <div><b>{this.state.order.prodName}</b></div>
-                  <div><u>Total: ${this.state.order.price}.00</u></div>
+                  <div>
+                    <b>{this.state.order.prodName}</b>
+                  </div>
+                  <div>
+                    <u>Total: ${this.state.order.price}.00</u>
+                  </div>
                 </div>
               </div>
             </div>
@@ -174,26 +177,26 @@ class CustomerOrder extends Component {
               </p>
             </div>
             {/* SUBMIT */}
-          <button
-            type="button"
-            className="btn btn-secondary mr-2"
-            onClick={this.backToTop}
-          >
-            Back
-          </button>
-          <button
-            type="button"
-            className="btn btn-danger"
-            onClick={this.emailConfirm}
-          >
-            Send Email
-          </button>
-        </div>
+            <button
+              type="button"
+              className="btn btn-secondary mr-2"
+              onClick={this.backToTop}
+            >
+              Back
+            </button>
+            <button
+              type="button"
+              className="btn btn-danger"
+              onClick={this.emailConfirm}
+            >
+              Send Email
+            </button>
           </div>
+        </div>
 
-          <div className="row">
-              <div className="bottomSpace"></div>
-            </div>
+        <div className="row">
+          <div className="bottomSpace"></div>
+        </div>
       </div>
     );
   }

@@ -55,10 +55,9 @@ export default class InfoUpdate extends Component {
     console.log(info);
 
     axios
-      .post(
-        "http://localhost:5000/info/update/5ff7bb696fd4d1898bffa18d",info)
+      .post("http://localhost:5000/info/update/5ff7bb696fd4d1898bffa18d", info)
       .then((res) => console.log(res.data));
-      
+
     window.location = "/manager/info";
   }
 

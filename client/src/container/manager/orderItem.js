@@ -56,7 +56,7 @@ class OrderItem extends Component {
       axios
         .get("http://localhost:5000/address/" + this.state.order.address)
         .then((response) => {
-          console.log(response.data)
+          console.log(response.data);
           this.setState({ address: response.data });
         })
         .catch((error) => {

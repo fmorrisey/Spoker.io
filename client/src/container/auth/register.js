@@ -19,7 +19,7 @@ class Register extends Component {
       email: "",
       password: "",
       password2: "",
-      role: '',
+      role: "",
       errors: {},
     };
   }
@@ -67,7 +67,7 @@ class Register extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-3 offset-2">
-          <h3 className="padding">Sign up for Spoker</h3>
+            <h3 className="padding">Sign up for Spoker</h3>
             <form noValidate onSubmit={this.onSubmit}>
               <div className="form-group">
                 <span className="red-text">{errors.first_name}</span>
@@ -177,14 +177,12 @@ class Register extends Component {
                   Sign Up
                 </button>
                 <Link to="/home" className="btn btn-secondary mr-2">
-                    Cancel
+                  Cancel
                 </Link>
-                  
-
               </div>
               <hr />
               <div className="">
-                  <h5>Returing to Spoker?</h5>
+                <h5>Returing to Spoker?</h5>
                 <Link to="/login" className="btn btn-success mr-2">
                   Login
                 </Link>

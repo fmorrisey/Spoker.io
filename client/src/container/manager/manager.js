@@ -6,15 +6,15 @@ class Manager extends Component {
     return (
       <div className="container">
         <div className="row">
-            <button className="btn btn-primary">Add</button>
+          <button className="btn btn-primary">Add</button>
         </div>
         <div className="row">
-            <div className="col-md-6">
-              <Inventory />
-            </div>
-            <div className="col-md-6">
-              <Orders />
-            </div>
+          <div className="col-md-6">
+            <Inventory />
+          </div>
+          <div className="col-md-6">
+            <Orders />
+          </div>
         </div>
       </div>
     );

@@ -6,5 +6,5 @@ import shopReducer from "./shopReducer";
 export default combineReducers({
   auth: authReducer,
   errors: errorReducer,
-  shopItems: shopReducer
+  shopItems: shopReducer,
 });

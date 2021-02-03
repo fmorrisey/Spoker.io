@@ -1,7 +1,6 @@
-
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 import OrderMngr from "../../components/store/orderMngr";
 import Product from "../../components/store/product";
 
@@ -15,72 +14,83 @@ export default class OrdersManager extends Component {
     this.state = {
       orders: [],
       products: [],
-      search: ''};
+      search: "",
+    };
   }
 
   componentDidMount() {
-    axios.get("http://localhost:5000/orders/", {
-      headers: {
-        'x-auth-token': localStorage.jwtToken
-      }
-    })
-      .then(response => {
-        this.setState({ orders: response.data })
+    axios
+      .get("http://localhost:5000/orders/", {
+        headers: {
+          "x-auth-token": localStorage.jwtToken,
+        },
+      })
+      .then((response) => {
+        this.setState({ orders: response.data });
       })
       .catch((error) => {
         console.log(error);
-      })
+      });
   }
-  
+
   updateSearch(e) {
-    this.setState({search: e.target.value.substr(0,20)})
+    this.setState({ search: e.target.value.substr(0, 20) });
   }
 
   render() {
     let isEmptyInventory = this.state.orders.length === 0;
-    
-    let filteredOrders = this.state.orders.filter(
-      (order) => {
-        return order._id.indexOf(
-          this.state.search) !== -1;
-      }            
-      )
-    
-   //console.log("State: ", this.state.orders)
+
+    let filteredOrders = this.state.orders.filter((order) => {
+      return order._id.indexOf(this.state.search) !== -1;
+    });
+
+    //console.log("State: ", this.state.orders)
     return (
       <div className="container padding">
         <div>
-        <input class="form-control mr-sm-2" type="search" 
-          placeholder="Search" aria-label="Search"
-          defaultValue={this.state.search}
-          onChange={this.updateSearch.bind(this)} 
-        />
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            defaultValue={this.state.search}
+            onChange={this.updateSearch.bind(this)}
+          />
         </div>
         <div className="col-md-12">
-        <h3 className="padding">Orders</h3>
-        <div className="tableContainer">
-        <table className="padding table">
-          <thead className="thead-light">
-            <tr>
-              <th>Order ID</th>
-              <th>Status</th>
-              <th>Pick Up</th>
-              <th>Customer</th>
-            </tr>
-          </thead>
-          <tbody>
-            { filteredOrders.map((currentOrder) => {
-            return <OrderMngr order={currentOrder} key={currentOrder._id}
-                          order={currentOrder} key={currentOrder._id}
-/>
-               }) }
-            { this.state.products.map((currentProduct) => {
-            return <Product product={currentProduct} key={currentProduct._id}/>
-               }) }
-          </tbody>
-        </table>
-
-        </div>
+          <h3 className="padding">Orders</h3>
+          <div className="tableContainer">
+            <table className="padding table">
+              <thead className="thead-light">
+                <tr>
+                  <th>Order ID</th>
+                  <th>Status</th>
+                  <th>Pick Up</th>
+                  <th>Customer</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredOrders.map((currentOrder) => {
+                  return (
+                    <OrderMngr
+                      order={currentOrder}
+                      key={currentOrder._id}
+                      order={currentOrder}
+                      key={currentOrder._id}
+                    />
+                  );
+                })}
+                {this.state.products.map((currentProduct) => {
+                  return (
+                    <Product
+                      product={currentProduct}
+                      key={currentProduct._id}
+                    />
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     );

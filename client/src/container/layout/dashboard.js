@@ -23,11 +23,11 @@ class Dashboard extends Component {
               <div className="col-md-6 paddingDash">
                 <Sales />
               </div>
-              
+
               <div className="col-md-6">
-              <div className="salesHR paddingDash">
-                <div className=""></div>
-              </div>
+                <div className="salesHR paddingDash">
+                  <div className=""></div>
+                </div>
                 <Orders />
               </div>
             </div>

@@ -83,7 +83,7 @@ export class InfoView extends Component {
           </div>
         </div>
         <div className="row">
-            <div className="bottomSpace"></div>
+          <div className="bottomSpace"></div>
         </div>
       </div>
     );

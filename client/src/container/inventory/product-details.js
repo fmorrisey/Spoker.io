@@ -132,13 +132,16 @@ export default class DetailsProduct extends Component {
         </div>
         {/* SUBMIT */}
         <div className="btn-toolbar">
-        <Link to={"/edit/" + this.state._id} className="btn btn-success mr-2">Edit</Link>
-        <Link to="/inventory" className="btn btn-primary">Back</Link>
-
+          <Link to={"/edit/" + this.state._id} className="btn btn-success mr-2">
+            Edit
+          </Link>
+          <Link to="/inventory" className="btn btn-primary">
+            Back
+          </Link>
         </div>
-        <hr className="col-md-12"/>
+        <hr className="col-md-12" />
         <div className="">
-        <button
+          <button
             className="btn btn-danger"
             onClick={() => {
               this.deleteProduct(this.state._id);
@@ -150,7 +153,6 @@ export default class DetailsProduct extends Component {
         <div className="row">
           <div className="bottomSpace"></div>
         </div>
-        
       </div>
     );
   }

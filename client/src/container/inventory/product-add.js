@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-
-
 const pickUpOptions = [
   { value: "INSTORE", label: "In Store Pick Up" },
   { value: "CURBSIDE", label: "Curbside Pick Up" },
@@ -17,40 +15,38 @@ export default class AddProduct extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      department: '',
-      category: '',
-      name: '',
-      brand: '',
-      description: '',
+      department: "",
+      category: "",
+      name: "",
+      brand: "",
+      description: "",
       msrp: 0,
       price: 0,
       images: "NA",
       brands: [], //Crucial for mapping dropdowns
       departments: [], //Crucial for mapping dropdowns
-    }
+    };
   }
 
   componentDidMount() {
     axios
       .get("http://localhost:5000/brands/", {
         headers: {
-          'x-auth-token': localStorage.jwtToken
-        }
+          "x-auth-token": localStorage.jwtToken,
+        },
       })
       .then((response) => {
         if (response.data.length > 0) {
           this.setState({
-            brands: response.data.map(
-              (brand) => brand.brand
-            ),
-            brand: response.data[0].brand
-          })
+            brands: response.data.map((brand) => brand.brand),
+            brand: response.data[0].brand,
+          });
         }
       })
       .catch((error) => {
         console.log(error);
-      })
-      axios
+      });
+    axios
       .get("http://localhost:5000/departments/")
       .then((response) => {
         if (response.data.length > 0) {
@@ -58,13 +54,13 @@ export default class AddProduct extends Component {
             departments: response.data.map(
               (department) => department.department
             ),
-            department: response.data[0].department
-          })
+            department: response.data[0].department,
+          });
         }
       })
       .catch((error) => {
         console.log(error);
-      })
+      });
   }
 
   onChange(e) {
@@ -83,24 +79,22 @@ export default class AddProduct extends Component {
       msrp: this.state.msrp,
       price: this.state.price,
       images: this.state.images,
-    }
+    };
     console.log(product);
 
     axios
       .post("http://localhost:5000/products/add", product)
-      .then((res) => console.log(res.data));  
+      .then((res) => console.log(res.data));
 
     window.location = "/inventory";
   }
 
   render() {
-
     return (
       <div className="container">
         <div className="col-md-12">
           <h3>Add a new product into store inventory</h3>
-          <form onSubmit={e => e.preventDefault()}>
-            
+          <form onSubmit={(e) => e.preventDefault()}>
             {/* Department */}
             <div className="form-group">
               <label>Department: </label>
@@ -112,7 +106,7 @@ export default class AddProduct extends Component {
                 value={this.state.department}
                 onChange={this.onChange}
               >
-               {this.state.departments.map(function (department) {
+                {this.state.departments.map(function (department) {
                   return (
                     <option key={department} value={department}>
                       {department}
@@ -167,7 +161,7 @@ export default class AddProduct extends Component {
                   );
                 })}
               </select>
-            </div>            
+            </div>
 
             {/* Description */}
             <div className="form-group">
@@ -234,12 +228,13 @@ export default class AddProduct extends Component {
                 value="Add Product"
                 className="btn btn-primary"
                 onClick={this.onSubmit}
-              >Add Product</button>
-
+              >
+                Add Product
+              </button>
             </div>
           </form>
         </div>
       </div>
-    )
+    );
   }
 }

@@ -71,9 +71,9 @@ class Login extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-3 offset-2">
-          <div className="btn-toolbar mb-2">
+            <div className="btn-toolbar mb-2">
               <h3 className="padding">Welcome Back</h3>
-              </div>
+            </div>
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
                 <span className="red-text">
@@ -118,14 +118,12 @@ class Login extends Component {
                   Login
                 </button>
                 <Link to="/home" className="btn btn-secondary mr-2">
-                    Cancel
+                  Cancel
                 </Link>
-                  
-
               </div>
               <hr />
               <div className="">
-                  <h5>New to Spoker?</h5>
+                <h5>New to Spoker?</h5>
                 <Link to="/register" className="btn btn-primary mr-2">
                   Sign Up
                 </Link>

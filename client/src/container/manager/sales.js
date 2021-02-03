@@ -167,7 +167,7 @@ class SalesManager extends Component {
             <Doughnut data={revenueData} options={revOpt} />
             <p className="rev-marg">%{this.state.revenue.percentage}</p>
           </div>
-          
+
           <div className="col-md-2">
             <div>
               <h3 className="">Inventory:</h3>

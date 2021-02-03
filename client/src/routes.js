@@ -87,12 +87,13 @@ class Routes extends Component {
               <UserRoute path="/profile" component={Profile} />
               <CustomerRoute path="/checkout/:id" component={CheckOut} />
               <CustomerRoute path="/customer/order/:id" component={CustomerOrder} />
+
               {/* Inventory */}
-              
               <PrivateRoute path="/inventory" component={ProductList} />
               <PrivateRoute path="/add" component={AddProduct} />
               <PrivateRoute path="/details/:id" component={DetailsProduct} />
               <PrivateRoute path="/edit/:id" component={EditProduct} />
+
               {/* Manager */}
               <PrivateRoute path="/manager/dashboard" component={Dashboard} />
               <PrivateRoute path="/manager/sales" component={SalesManager} />
