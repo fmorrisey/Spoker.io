@@ -73,7 +73,7 @@ router.route("/:id").delete((req, res) => {
 router.post("/update/customer", [auth], (req, res) => {
   Address.findOne({ user: req.user.id }).then((address) => {
     if (address === null) {
-      console.log('Create address');
+      console.log("Create address");
       const { errors, isValid } = validateAddressInput(req.body);
       // Check validation
       if (!isValid) {
@@ -105,7 +105,7 @@ router.post("/update/customer", [auth], (req, res) => {
         .then(() => res.json("Address added!"))
         .catch((err) => res.status(400).json("Error: " + err));
     } else {
-        console.log('update address');
+      console.log("update address");
       Address.findOne({ user: req.user.id }).then((address) => {
         console.log(address);
         console.log(address);
@@ -118,9 +118,7 @@ router.post("/update/customer", [auth], (req, res) => {
 
         address
           .save()
-          .then(() =>
-            res.json("Address Updated")
-          )
+          .then(() => res.json("Address Updated"))
           .catch((err) => res.status(400).json("Error: " + err));
       });
     }

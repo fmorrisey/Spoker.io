@@ -19,21 +19,20 @@ router.post("/confirm", [auth], (req, res) => {
     html,
   };
 
-
   console.log(message);
 
   let transporter = nodeMailer.createTransport({
-    host: 'smtp.gmail.com',
+    host: "smtp.gmail.com",
     port: 465,
     secure: true,
     auth: {
-        type: 'OAuth2',
-        user: 'forrestMorrisey@gmail.com',
-        clientId: process.env.clientId,
-        clientSecret: process.env.clientSecret,
-        refreshToken: process.env.refreshToken,
-        accessToken: process.env.accessToken,
-    }
+      type: "OAuth2",
+      user: "forrestMorrisey@gmail.com",
+      clientId: process.env.clientId,
+      clientSecret: process.env.clientSecret,
+      refreshToken: process.env.refreshToken,
+      accessToken: process.env.accessToken,
+    },
   });
 
   // verify connection configuration
@@ -56,9 +55,6 @@ router.post("/confirm", [auth], (req, res) => {
   });
 });
 
-
-
-
 //=============EMAIL SENDER==========
 router.post("/pickUp", (req, res) => {
   //const from = req.body.from;
@@ -73,21 +69,20 @@ router.post("/pickUp", (req, res) => {
     html,
   };
 
-
   console.log(message);
 
   let transporter = nodeMailer.createTransport({
-    host: 'smtp.gmail.com',
+    host: "smtp.gmail.com",
     port: 465,
     secure: true,
     auth: {
-        type: 'OAuth2',
-        user: 'forrestMorrisey@gmail.com',
-        clientId: process.env.clientId,
-        clientSecret: process.env.clientSecret,
-        refreshToken: process.env.refreshToken,
-        accessToken: process.env.accessToken,
-    }
+      type: "OAuth2",
+      user: "forrestMorrisey@gmail.com",
+      clientId: process.env.clientId,
+      clientSecret: process.env.clientSecret,
+      refreshToken: process.env.refreshToken,
+      accessToken: process.env.accessToken,
+    },
   });
 
   // verify connection configuration
