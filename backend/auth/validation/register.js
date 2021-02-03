@@ -49,10 +49,8 @@ module.exports = function validateRegisterInput(data) {
     errors.role = "role field is required";
   }
 
-
   return {
     errors,
-    isValid: isEmpty(errors)
+    isValid: isEmpty(errors),
   };
-
 };

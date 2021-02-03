@@ -144,7 +144,7 @@ async function createOrderWithAddress(req, res) {
   //console.log("New Order: ", newOrder);
   newOrder
     .save()
-    .then(order => res.json(order))
+    .then((order) => res.json(order))
     .catch((err) => res.status(400).json("Error: " + err));
   return await res;
 }
@@ -186,7 +186,7 @@ async function findAddressById(req) {
   let userAddress = await Address.findOne({ user: req.user.id });
   //console.log("address found ", userAddress);
   return userAddress;
-};
+}
 
 async function findProductMarkSold(req) {
   let soldProduct = await Product.findByIdAndUpdate(req.body.prodId, {
@@ -194,7 +194,7 @@ async function findProductMarkSold(req) {
   });
   //console.log("SOLD", soldProduct);
   return soldProduct;
-};
+}
 
 async function findProductReturnToStock(order) {
   let returnToStock = await Product.findByIdAndUpdate(order.prodId, {
@@ -202,7 +202,7 @@ async function findProductReturnToStock(order) {
   });
   //console.log("INSTOCK", returnToStock);
   return returnToStock;
-};
+}
 
 /*
 function findAddressById(addressId) {

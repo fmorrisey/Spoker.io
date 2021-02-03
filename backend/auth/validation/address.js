@@ -12,7 +12,6 @@ module.exports = function validateAddressInput(data) {
   data.country = !isEmpty(data.country) ? data.country : "";
   data.zipCode = !isEmpty(data.zipCode) ? data.zipCode : "";
 
-
   //Name Checks
   if (Validator.isEmpty(data.street1)) {
     errors.street1 = "Street Address Required field is required";
@@ -22,7 +21,7 @@ module.exports = function validateAddressInput(data) {
   if (Validator.isEmpty(data.city)) {
     errors.city = "city field is required";
   }
-  
+
   // state checks
   if (Validator.isEmpty(data.state)) {
     errors.state = "State field is required";
@@ -40,7 +39,6 @@ module.exports = function validateAddressInput(data) {
 
   return {
     errors,
-    isValid: isEmpty(errors)
+    isValid: isEmpty(errors),
   };
-
 };
