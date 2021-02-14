@@ -57,16 +57,5 @@ To kill the services:
 - `CTRL + C` and then `$ docker compose-down`
 
 ### Project Update:
+- 01/11/2021: Project MVP version 1.0
 - 01/24/2021: Docker-Compose tested and Spoker Container deployed successfully on virtual windows machine.
-
-### Project Thank Yous / Sources:
-
-- The Instruction Team at devCodeCamp for their wisdom and guidance: [Site Here](https://devcodecamp.com/)
-
-- Beau Carnes for his tutorial on building an exercise tracker with MERN: [Article Here](https://medium.com/@beaucarnes/learn-the-mern-stack-by-building-an-exercise-tracker-mern-tutorial-59c13c1237a1) / [GitHub](https://github.com/beaucarnes/mern-exercise-tracker-mongodb). I completed Beau's article before I attended devCodeCamp and it laid the foundation for Full-Stack development.
-
-- Paige Nidedringhaus for her article on Passport and JWT: [Article Here](https://itnext.io/implementing-json-web-tokens-passport-js-in-a-javascript-application-with-react-b86b1f313436) / [GitHub](https://github.com/paigen11/mysql-registration-passport).
-
-- Rishi Prasad for his tutorial on MERN Authentication: [Article Here](https://blog.bitsrc.io/build-a-login-auth-app-with-mern-stack-part-1-c405048e3669) / [GitHub](https://github.com/rishipr/mern-auth).
-
-- Includes many more
