@@ -29,7 +29,6 @@ export default class ShopList extends Component {
   }
 
   render() {
-    let isEmptyInventory = this.state.products.length === 0;
 
     let filteredProducts = this.state.products.filter((product) => {
       return (
@@ -51,7 +50,7 @@ export default class ShopList extends Component {
               onChange={this.updateSearch.bind(this)}
             />
           </div>
-          <div className="container" className="padding">
+          <div className="container padding">
             {filteredProducts.map((currentproduct) => {
               return <Item product={currentproduct} key={currentproduct._id} />;
             })}
