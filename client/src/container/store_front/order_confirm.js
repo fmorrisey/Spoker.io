@@ -45,6 +45,7 @@ class CustomerOrder extends Component {
   }
 
   componentDidUpdate() {
+    console.log("pre", this.state.dataPulled)
     if (this.state.dataPulled !== true) {
       axios
         .get("http://localhost:5000/products/" + this.state.order.prodId)
@@ -55,6 +56,7 @@ class CustomerOrder extends Component {
           console.log(error);
         });
       this.setState({ dataPulled: true });
+      console.log("post", this.state.dataPulled);
       //console.log("prodId", this.state.order.prodId)
     }
   }
@@ -79,7 +81,7 @@ class CustomerOrder extends Component {
     </div>
     <div>
       <p>
-        <u>ADDRESSS</u>
+        <u>ADDRESS</u>
         <br />
         ${this.props.auth.user.first_name} ${this.props.auth.user.last_name}
         <br />
