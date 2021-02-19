@@ -14,7 +14,7 @@ class CustomerOrder extends Component {
       address: {},
       product: {},
       pickUpStatus: "",
-      dataPulled: 0,
+      dataPulled: false,
     };
 
     axios
@@ -45,7 +45,7 @@ class CustomerOrder extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.dataPulled != 1) {
+    if (this.state.dataPulled !== true) {
       axios
         .get("http://localhost:5000/products/" + this.state.order.prodId)
         .then((response) => {
@@ -54,7 +54,7 @@ class CustomerOrder extends Component {
         .catch((error) => {
           console.log(error);
         });
-      this.setState({ dataPulled: 1 });
+      this.setState({ dataPulled: true });
       //console.log("prodId", this.state.order.prodId)
     }
   }
