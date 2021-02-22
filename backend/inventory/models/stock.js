@@ -1,4 +1,3 @@
-"use strict";
 // This stock model was not used in the development but kept for future inspiration and design
 const mongoose = require("mongoose");
 
