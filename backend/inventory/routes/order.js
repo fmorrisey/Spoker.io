@@ -1,4 +1,3 @@
-"use strict";
 const router = require("express").Router();
 const Order = require("../models/order.model");
 const Address = require("../models/address.model");
@@ -6,7 +5,6 @@ const Product = require("../models/product.model");
 const { auth } = require("../../auth/middleware/auth");
 const Str = require("@supercharge/strings");
 
-const random = Str.random();
 //=========GET============
 router.route("/").get((req, res) => {
   Order.find()
@@ -80,12 +78,6 @@ router.route("/margins").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-async function getSalesData(req, res) {
-  let salesData = Product.find({ status: "SOLD" });
-
-  return salesData;
-}
-
 //=========GET BY ID============
 router.route("/id/:id").get((req, res) => {
   Order.findById(req.params.id)
@@ -153,7 +145,7 @@ async function createOrderWithAddress(req, res) {
 //========STILL NEED TO REFLECT UPDATED ORDER MODELS====
 router.route("/update/:id").post((req, res) => {
   Order.findById(req.params.id).then((order) => {
-    if (req.body.prodId != order.prodId) {
+    if (req.body.prodId !== order.prodId) {
       order.prodId.push(req.body.prodId);
     }
     order.trackingNumber = req.body.trackingNumber;
