@@ -1,4 +1,5 @@
-"use strict";
+// This file serves an example for the authentication methods
+
 const router = require("express").Router();
 let Brand = require("../models/brand.model");
 const { auth } = require("../../auth/middleware/auth");
