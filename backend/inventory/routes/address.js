@@ -1,4 +1,3 @@
-"use strict";
 const router = require("express").Router();
 const Address = require("../../inventory/models/address.model");
 const { auth } = require("../../auth/middleware/auth");
@@ -146,6 +145,7 @@ router.route("/update/byID/:id").post((req, res) => {
             "/n" +
             " Updated!"
         )
+        // `${address.user.first_name + address.street1}/n${address.city}/n${address.state}/n Updated!`
       )
       .catch((err) => res.status(400).json("Error: " + err));
   });
