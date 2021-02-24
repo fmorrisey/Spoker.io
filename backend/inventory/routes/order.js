@@ -5,12 +5,13 @@ const Product = require("../models/product.model");
 const { auth } = require("../../auth/middleware/auth");
 const Str = require("@supercharge/strings");
 
-//=========GET============
+//==================GET=====================
 router.route("/").get((req, res) => {
   Order.find()
     .then((orders) => res.json(orders))
     .catch((err) => res.status(400).json("Error: " + err));
 });
+
 
 router.route("/getSold").get((req, res) => {
   Product.find({ status: "SOLD" })
@@ -18,21 +19,17 @@ router.route("/getSold").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+// Get Sales Data
 router.route("/getSales").get((req, res) => {
-  Product.find({ status: "SOLD" })
+  Product.find({ status: "SOLD" }) // Strict status reference must be all caps "SOLD"
     .then((products) => {
-      var retailSales = 0;
-      for (let index = 0; index < products.length; index++) {
-        retailSales += products[index].price;
-      }
+      
+      let retailSales = products.map(li => li.price).reduce((sum, val) => sum + val, 0);
+      
+      let msrpCost = products.map(li => li.msrp).reduce((sum, val) => sum + val, 0);
 
-      var msrpCost = 0;
-      for (let index = 0; index < products.length; index++) {
-        msrpCost += products[index].msrp;
-      }
-
-      var profit = retailSales - msrpCost;
-      var percentage = (profit / msrpCost) * 100;
+      let profit = retailSales - msrpCost;
+      let percentage = (profit / msrpCost) * 100;
 
       // https://gist.github.com/djD-REK/068cba3d430cf7abfddfd32a5d7903c3
       // Prevents rounding errors
@@ -41,7 +38,7 @@ router.route("/getSales").get((req, res) => {
 
       percentage = roundAccurately(percentage, 2);
 
-      var salesData = { retailSales, msrpCost, profit, percentage };
+      let salesData = { retailSales, msrpCost, profit, percentage };
       res.json(salesData);
     })
     .catch((err) => res.status(400).json("Error: " + err));
