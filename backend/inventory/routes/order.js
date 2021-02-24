@@ -31,11 +31,6 @@ router.route("/getSales").get((req, res) => {
       let profit = retailSales - msrpCost;
       let percentage = (profit / msrpCost) * 100;
 
-      // https://gist.github.com/djD-REK/068cba3d430cf7abfddfd32a5d7903c3
-      // Prevents rounding errors
-      const roundAccurately = (number, decimalPlaces) =>
-        Number(Math.round(number + "e" + decimalPlaces) + "e-" + decimalPlaces);
-
       percentage = roundAccurately(percentage, 2);
 
       let salesData = { retailSales, msrpCost, profit, percentage };
@@ -48,22 +43,17 @@ router.route("/getSales").get((req, res) => {
 router.route("/margins").get((req, res) => {
   Product.find({ status: { $ne: "SOLD" } })
     .then((products) => {
-      //console.log(products);
+      
       let retailSales = products.map(li => li.price).reduce((sum, val) => sum + val, 0);
       
       let msrpCost = products.map(li => li.msrp).reduce((sum, val) => sum + val, 0);
 
-      var profit = retailSales - msrpCost;
-      var percentage = (profit / msrpCost) * 100;
-
-      // https://gist.github.com/djD-REK/068cba3d430cf7abfddfd32a5d7903c3
-      // Prevents rounding errors
-      const roundAccurately = (number, decimalPlaces) =>
-        Number(Math.round(number + "e" + decimalPlaces) + "e-" + decimalPlaces);
+      let profit = retailSales - msrpCost;
+      let percentage = (profit / msrpCost) * 100;
 
       percentage = roundAccurately(percentage, 2);
 
-      var salesData = { retailSales, msrpCost, profit, percentage };
+      let salesData = { retailSales, msrpCost, profit, percentage };
       res.json(salesData);
     })
     .catch((err) => res.status(400).json("Error: " + err));
@@ -186,6 +176,17 @@ async function findProductReturnToStock(order) {
   //console.log("INSTOCK", returnToStock);
   return returnToStock;
 }
+
+function sumReducer(sum, val) {
+  return sum + val;
+}
+
+// https://gist.github.com/djD-REK/068cba3d430cf7abfddfd32a5d7903c3
+// Prevents rounding errors
+function roundAccurately(number, decimalPlaces) {
+  return Number(Math.round(number + "e" + decimalPlaces) + "e-" + decimalPlaces);
+}
+        
 
 /*
 function findAddressById(addressId) {

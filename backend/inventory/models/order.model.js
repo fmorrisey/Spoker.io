@@ -7,6 +7,7 @@ const ORDER_STATUS = {
   SHIPPED: [2, "SHIPPED"],
 };
 
+// Pick up status gets handled by front-end implementations
 const PICKUP_STATUS = {
   INSTORE: [0, "INSTORE"],
   CURBSIDE: [1, "CURBSIDE"],

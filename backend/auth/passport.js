@@ -1,7 +1,7 @@
 // Is not currently in use but left for future implementations
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const User = require("../auth/models/user.model");
 const keys = process.env.JWT_PRIVATE_SECRET;
 
