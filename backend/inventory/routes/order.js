@@ -49,15 +49,9 @@ router.route("/margins").get((req, res) => {
   Product.find({ status: { $ne: "SOLD" } })
     .then((products) => {
       //console.log(products);
-      var retailSales = 0;
-      for (let index = 0; index < products.length; index++) {
-        retailSales += products[index].price;
-      }
-
-      var msrpCost = 0;
-      for (let index = 0; index < products.length; index++) {
-        msrpCost += products[index].msrp;
-      }
+      let retailSales = products.map(li => li.price).reduce((sum, val) => sum + val, 0);
+      
+      let msrpCost = products.map(li => li.msrp).reduce((sum, val) => sum + val, 0);
 
       var profit = retailSales - msrpCost;
       var percentage = (profit / msrpCost) * 100;
