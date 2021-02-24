@@ -33,7 +33,7 @@ router.route("/getSales").get((req, res) => {
 
       percentage = roundAccurately(percentage, 2);
 
-      let salesData = { retailSales, msrpCost, profit, percentage };
+      const salesData = { retailSales, msrpCost, profit, percentage };
       res.json(salesData);
     })
     .catch((err) => res.status(400).json("Error: " + err));
@@ -53,7 +53,7 @@ router.route("/margins").get((req, res) => {
 
       percentage = roundAccurately(percentage, 2);
 
-      let salesData = { retailSales, msrpCost, profit, percentage };
+      const salesData = { retailSales, msrpCost, profit, percentage };
       res.json(salesData);
     })
     .catch((err) => res.status(400).json("Error: " + err));
