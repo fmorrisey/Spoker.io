@@ -19,40 +19,41 @@ router.route("/getSold").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-// Get Sales Data
+// ---------------- SALES DATA -------------------
 router.route("/getSales").get((req, res) => {
-  Product.find({ status: "SOLD" }) // Strict status reference must be all caps "SOLD"
+  Product.find({ status: "SOLD" }) // Strict status reference must be all caps "SOLD", finds all sold products
     .then((products) => {
-      
+      // Calculate the sum of products sold
       let retailSales = products.map(li => li.price).reduce(sumReducer, 0);
-      
       let msrpCost = products.map(li => li.msrp).reduce(sumReducer, 0);
 
-      let profit = retailSales - msrpCost;
-      let percentage = (profit / msrpCost) * 100;
+      let profit = retailSales - msrpCost; // profit margins
+      let percentage = (profit / msrpCost) * 100; // percentages
 
-      percentage = roundAccurately(percentage, 2);
+      percentage = roundAccurately(percentage, 2); // rounds percentages 
 
-      const salesData = { retailSales, msrpCost, profit, percentage };
+      // Builds the return JSON Data for the frontend
+      const salesData = { retailSales, msrpCost, profit, percentage }; 
       res.json(salesData);
     })
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
 //==================PROFIT MARGINS====================
+// ---------------- INVENTORY DATA -------------------
 router.route("/margins").get((req, res) => {
-  Product.find({ status: { $ne: "SOLD" } })
+  Product.find({ status: { $ne: "SOLD" } }) // Finds all products that are not sold
     .then((products) => {
-      
+      // Calculates the sum of products still in inventory
       let retailSales = products.map(li => li.price).reduce(sumReducer, 0);
-      
       let msrpCost = products.map(li => li.msrp).reduce(sumReducer, 0);
 
-      let profit = retailSales - msrpCost;
-      let percentage = (profit / msrpCost) * 100;
+      let profit = retailSales - msrpCost; // profit margins
+      let percentage = (profit / msrpCost) * 100; // percentage of that margin
 
-      percentage = roundAccurately(percentage, 2);
+      percentage = roundAccurately(percentage, 2); // round percentage
 
+      // Builds the return JSON Data for the frontend
       const salesData = { retailSales, msrpCost, profit, percentage };
       res.json(salesData);
     })
