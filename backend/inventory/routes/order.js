@@ -24,9 +24,9 @@ router.route("/getSales").get((req, res) => {
   Product.find({ status: "SOLD" }) // Strict status reference must be all caps "SOLD"
     .then((products) => {
       
-      let retailSales = products.map(li => li.price).reduce((sum, val) => sum + val, 0);
+      let retailSales = products.map(li => li.price).reduce(sumReducer, 0);
       
-      let msrpCost = products.map(li => li.msrp).reduce((sum, val) => sum + val, 0);
+      let msrpCost = products.map(li => li.msrp).reduce(sumReducer, 0);
 
       let profit = retailSales - msrpCost;
       let percentage = (profit / msrpCost) * 100;
@@ -44,9 +44,9 @@ router.route("/margins").get((req, res) => {
   Product.find({ status: { $ne: "SOLD" } })
     .then((products) => {
       
-      let retailSales = products.map(li => li.price).reduce((sum, val) => sum + val, 0);
+      let retailSales = products.map(li => li.price).reduce(sumReducer, 0);
       
-      let msrpCost = products.map(li => li.msrp).reduce((sum, val) => sum + val, 0);
+      let msrpCost = products.map(li => li.msrp).reduce(sumReducer, 0);
 
       let profit = retailSales - msrpCost;
       let percentage = (profit / msrpCost) * 100;
@@ -178,7 +178,7 @@ async function findProductReturnToStock(order) {
 }
 
 function sumReducer(sum, val) {
-  return sum + val;
+  return Number(Math.round(sum + val, 2));
 }
 
 // https://gist.github.com/djD-REK/068cba3d430cf7abfddfd32a5d7903c3
