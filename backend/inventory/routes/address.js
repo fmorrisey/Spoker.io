@@ -135,17 +135,17 @@ router.route("/update/byID/:id").post((req, res) => {
     address
       .save()
       .then(() =>
-        res.json(
-          address.user.first_name +
-            address.street1 +
-            "/n" +
-            address.city +
-            "/n" +
-            address.state +
-            "/n" +
-            " Updated!"
-        )
-        // `${address.user.first_name + address.street1}/n${address.city}/n${address.state}/n Updated!`
+        res.json(`${address.user.first_name + address.street1}/n${address.city}/n${address.state}/n Updated!`)
+          // address.user.first_name +
+          //   address.street1 +
+          //   "/n" +
+          //   address.city +
+          //   "/n" +
+          //   address.state +
+          //   "/n" +
+          //   " Updated!"
+        
+        
       )
       .catch((err) => res.status(400).json("Error: " + err));
   });
