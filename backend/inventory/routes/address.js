@@ -123,6 +123,7 @@ router.post("/update/customer", [auth], (req, res) => {
     }
   });
 });
+
 router.route("/update/byID/:id").post((req, res) => {
   Address.findById(req.params.id).then((address) => {
     address.street1 = req.body.street1;
@@ -130,24 +131,16 @@ router.route("/update/byID/:id").post((req, res) => {
     address.city = req.body.city;
     address.state = req.body.state;
     address.country = req.body.country;
-    address.zipCode = req.body.zip;
+    address.zipCode = req.body.zipCode;
 
     address
       .save()
       .then(() =>
-        res.json(`${address.user.first_name + address.street1}/n${address.city}/n${address.state}/n Updated!`)
-          // address.user.first_name +
-          //   address.street1 +
-          //   "/n" +
-          //   address.city +
-          //   "/n" +
-          //   address.state +
-          //   "/n" +
-          //   " Updated!"
-        
-        
+        res.json(
+          `${address.user.first_name} ${address.street1} ${address.street2} ${address.city} ${address.state}, ${address.zipCode} Updated!`
+        )
       )
-      .catch((err) => res.status(400).json("Error: " + err));
+      .catch((err) => res.status(400).json("Error: here " + err));
   });
 });
 

@@ -18,12 +18,17 @@ app.use(cors());
 app.use(express.json());
 
 //===========Body Parser=============
+/*===========Depreciated=============
 app.use(
-  bodyParser.urlencoded({
-    extended: false,
-  })
-);
-app.use(bodyParser.json());
+    bodyParser.urlencoded({
+        extended: false,
+    })
+    );
+    app.use(bodyParser.json());
+    
+//===================================*/
+// Replacement for body parser
+app.use(express.urlencoded({ extended: true }));
 
 //===========PASSPORT x JWTAuth=============
 //Passport Middleware
