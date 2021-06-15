@@ -24,7 +24,7 @@ class Navbar extends Component {
 
   render() {
     const { user } = this.props.auth;
-    console.log(this.state.role);
+    const isLoggedIn = this.props.auth.isAuthenticated;
 
     return (
       <div>
@@ -77,18 +77,23 @@ class Navbar extends Component {
                   class="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  <Link to="/login" className="dropdown-item">
-                    Login
-                  </Link>
+                  {isLoggedIn ? null : (
+                    <Link to="/login" className="dropdown-item">
+                      Login
+                    </Link>
+                  )}
                   <navlink
                     className="dropdown-item"
                     onClick={this.onLogoutClick}
                   >
                     Log Out
                   </navlink>
-                  <Link to="/register" className="dropdown-item">
-                    Register
-                  </Link>
+
+                  {isLoggedIn ? null : (
+                    <Link to="/register" className="dropdown-item">
+                      Register
+                    </Link>
+                  )}
                   <Link to="/profile" className="dropdown-item">
                     Profile
                   </Link>
