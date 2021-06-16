@@ -77,26 +77,29 @@ class Navbar extends Component {
                   class="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  {isLoggedIn ? null : (
-                    <Link to="/login" className="dropdown-item">
-                      Login
-                    </Link>
+                  {isLoggedIn ? ( //   True
+                    <>
+                      <Link to="/profile" className="dropdown-item">
+                        Profile
+                      </Link>
+                      <navlink
+                        className="dropdown-item"
+                        onClick={this.onLogoutClick}
+                      >
+                        Log Out
+                      </navlink>
+                    </>
+                  ) : (
+                    //   False
+                    <>
+                      <Link to="/login" className="dropdown-item">
+                        Login
+                      </Link>
+                      <Link to="/register" className="dropdown-item">
+                        Register
+                      </Link>
+                    </>
                   )}
-                  <navlink
-                    className="dropdown-item"
-                    onClick={this.onLogoutClick}
-                  >
-                    Log Out
-                  </navlink>
-
-                  {isLoggedIn ? null : (
-                    <Link to="/register" className="dropdown-item">
-                      Register
-                    </Link>
-                  )}
-                  <Link to="/profile" className="dropdown-item">
-                    Profile
-                  </Link>
                 </div>
               </li>
             </ul>
