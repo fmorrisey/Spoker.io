@@ -53,7 +53,7 @@ class Login extends Component {
   }
 
   onSubmit(e) {
-    e.preventDefault();
+    // e.preventDefault();
 
     const userData = {
       email: this.state.email,
@@ -62,6 +62,7 @@ class Login extends Component {
 
     console.log(userData);
     this.props.loginUser(userData);
+    this.props.history.push("/store");
   }
 
   render() {
