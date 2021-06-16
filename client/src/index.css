@@ -1,19 +1,19 @@
-
+:root {
+  background-color: #151a22;
+}
 
 body {
-  
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: #151A22; */
+  background-color: white;
   height: 100%;
-  
 }
 
 p {
-  font-family: 'Trispace', sans-serif;
+  font-family: "Trispace", sans-serif;
 }
 
 .tableContainer {
@@ -29,10 +29,10 @@ p {
 }
 
 .footer {
-  background-color: #343A40;
+  background-color: #343a40;
   height: 75px;
   width: 100%;
-  margin-top:80px;
+  margin-top: 80px;
 }
 
 .footerText {
@@ -42,7 +42,7 @@ p {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -69,7 +69,7 @@ img {
   margin-top: -24px;
 }
 
-.productHead{
+.productHead {
   text-align: left;
 }
 
@@ -83,7 +83,7 @@ img {
 }
 
 .brand-reg {
-  font-family: 'Trispace', sans-serif;
+  font-family: "Trispace", sans-serif;
   font-style: italic;
   font-size: 28px;
 }
@@ -91,7 +91,7 @@ img {
 .brand-small {
   font-style: italic;
   font-size: 21px;
-  font-family: 'Trispace', sans-serif;
+  font-family: "Trispace", sans-serif;
 }
 .prodName {
   font-size: 25px;
@@ -124,7 +124,7 @@ h4 {
   background-image: url(../src/assets/rear.jpeg);
 
   /* Full height */
-  height: 100%; 
+  height: 100%;
 
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
@@ -133,12 +133,11 @@ h4 {
   background-size: cover;
 }
 
-
 .shopCard {
   background-color: #fff;
   border-radius: 15px;
   padding-right: 5px;
-  padding-left: 5px; 
+  padding-left: 5px;
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 25px;
@@ -157,7 +156,7 @@ h4 {
   text-align: center;
   font-size: 115px;
   color: #ffffff;
-  font-family: 'Cuprum', sans-serif;
+  font-family: "Cuprum", sans-serif;
   font-style: italic;
   position: absolute;
   top: 35%;
@@ -168,9 +167,8 @@ h4 {
   /* text-align: center; */
   font-size: 30px;
   color: #ffffff;
-  font-family: 'Cuprum', sans-serif;
+  font-family: "Cuprum", sans-serif;
   font-style: italic;
-  
 }
 
 .shopBottomSpace {
@@ -204,7 +202,7 @@ h4 {
 
   .shopCard {
     padding-right: 5px;
-    padding-left: 5px; 
+    padding-left: 5px;
     margin-left: 10px;
     margin-right: 10px;
   }
@@ -222,19 +220,37 @@ h4 {
   color: #000000;
 }
 
-
-
-
 /* .dropdown {list-style: none; background: green; padding: 10px; display: inline-block;} */
-.dropdown .nav-link {color:#fff; text-decoration: none;}
-.dropdown .dropdown-menu a{color: #000; text-decoration: none;}
-.dropdown .btn {background: green; color:#000;}
-.dropdown .btn:hover {background: cyan; color:#000;}
-.dropdown .btn:active {background: cyan; color:#000;}
-.dropdown .btn:focus {background: cyan; color:#000;}
-.dropdown-menu .dropdown-item {display: inline-block; width: 100%; padding: 15px 10px;}
-.container .dropdown .dropdown-menu a:hover
-{
+.dropdown .nav-link {
+  color: #fff;
+  text-decoration: none;
+}
+.dropdown .dropdown-menu a {
+  color: #000;
+  text-decoration: none;
+}
+.dropdown .btn {
+  background: green;
+  color: #000;
+}
+.dropdown .btn:hover {
+  background: cyan;
+  color: #000;
+}
+.dropdown .btn:active {
+  background: cyan;
+  color: #000;
+}
+.dropdown .btn:focus {
+  background: cyan;
+  color: #000;
+}
+.dropdown-menu .dropdown-item {
+  display: inline-block;
+  width: 100%;
+  padding: 15px 10px;
+}
+.container .dropdown .dropdown-menu a:hover {
   color: #fff;
   background-color: #b91773;
   border-color: #fff;
